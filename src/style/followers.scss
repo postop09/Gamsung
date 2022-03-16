@@ -1,0 +1,61 @@
+@import 'util';
+@import 'navigation';
+
+.sec_followersHeader {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 13px 16px;
+  background-color: white;
+  z-index: 500;
+  .img_backPage {
+    margin-right: 8px;
+  }
+}
+
+.list_searchUser {
+  padding: 60px 16px;
+  .item_searchUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .btn_searchUser {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    transition: all .2s;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+  .img_searchUser {
+    border-radius: 100%;
+    width: 44px;
+    height: 44px;
+    margin-right: 12px;
+  }
+  .txt_userName {
+    display: block;
+    font-size: 14px;
+  }
+  .txt_userId {
+    color: $c-txt;
+  }
+  .btn_follow.on {
+    color: black;
+    background-color: #dbdbdb;
+  }
+  .btn_follow {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    border-radius: 26px;
+    width: 56px;
+    height: 28px;
+    font-size: 12px;
+    color: white;
+    background-color: $c-main;
+  }
+}

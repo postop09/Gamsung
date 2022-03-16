@@ -1,0 +1,123 @@
+@font-face {
+  font-family: AppleGothicM;
+  src: url(../font/AppleSDGothicNeoM.ttf);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: AppleGothicM;
+  text-decoration: none;
+  color: black;
+  list-style: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.txt_hide {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.sec_loginMain {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.sec_loginMain .txt_title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 40px auto;
+  font-size: 28px;
+  color: black;
+}
+
+.sec_loginMain .form_login .wrap_loginId {
+  margin-bottom: 15px;
+}
+
+.sec_loginMain .form_login label,
+.sec_loginMain .form_login input {
+  display: block;
+}
+
+.sec_loginMain .form_login label {
+  font-size: 16px;
+}
+
+.sec_loginMain .form_login .inp_login {
+  border: none;
+  border-bottom: 2px solid #dbdbdb;
+  width: 322px;
+  padding: 5px 2px;
+  font-size: 18px;
+  color: black;
+}
+
+.sec_loginMain .form_login .inp_login::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #dbdbdb;
+}
+
+.sec_loginMain .form_login .inp_login:-ms-input-placeholder {
+  font-size: 16px;
+  color: #dbdbdb;
+}
+
+.sec_loginMain .form_login .inp_login::-ms-input-placeholder {
+  font-size: 16px;
+  color: #dbdbdb;
+}
+
+.sec_loginMain .form_login .inp_login::placeholder {
+  font-size: 16px;
+  color: #dbdbdb;
+}
+
+.sec_loginMain .form_login .inp_login:focus {
+  outline: none;
+  border-bottom: 2px solid #EA7F42;
+}
+
+.sec_loginMain .form_login .txt_err {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  color: red;
+}
+
+.sec_loginMain .form_login .btn_login {
+  border: none;
+  border-radius: 44px;
+  width: 322px;
+  padding: 13px 0;
+  margin: 30px 0 20px;
+  font-size: 14px;
+  color: white;
+  background-color: #FFC7A7;
+  cursor: pointer;
+}
+
+.sec_loginMain .btn_newEmail {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  font-size: 14px;
+}
+/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,29 @@
+@charset 'utf-8';
+@import 'mixin';
+@font-face {
+  font-family: AppleGothicM;
+  src: url(../font/AppleSDGothicNeoM.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: AppleGothicM;
+  text-decoration: none;
+  color: black;
+  list-style: none;
+}
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.txt_hide {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}

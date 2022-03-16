@@ -1,0 +1,65 @@
+@import 'util';
+
+// 스플래쉬 이미지
+.sec_splash {
+  display: none;
+  height: 100vh;
+  .img_splash {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1s;
+  }
+}
+// 로그인 화면
+.sec_indexMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: $c-main;
+  .img_logo {
+    position: relative;
+    top: 25%;
+    width: 144px;
+  }
+  .sec_login {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: white;
+  }
+  .list_btnIndex {
+    width: fit-content;
+    margin: auto;
+  }
+  .item_btnLogin {
+    margin-bottom: 25px;
+  }
+  .btn_index {
+    display: block;
+    border-radius: 44px;
+    width: 322px;
+    padding: 13px 0;
+  }
+  .btn_login {
+    border: 1px solid $c-main;
+    transition: all .1s;
+    &:hover {
+      color: black;
+      background-color: $c-main;
+    }
+  }
+  .btn_new {
+    border: 1px solid $c-txt;
+    transition: all .1s;
+    &:hover {
+      color: black;
+      background-color: $c-main;
+    }
+  }
+}

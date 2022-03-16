@@ -1,0 +1,119 @@
+@font-face {
+  font-family: AppleGothicM;
+  src: url(../font/AppleSDGothicNeoM.ttf);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: AppleGothicM;
+  text-decoration: none;
+  color: black;
+  list-style: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.txt_hide {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.sec_splash {
+  display: none;
+  height: 100vh;
+}
+
+.sec_splash .img_splash {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.sec_indexMain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100vh;
+  background-color: #EA7F42;
+}
+
+.sec_indexMain .img_logo {
+  position: relative;
+  top: 25%;
+  width: 144px;
+}
+
+.sec_indexMain .sec_login {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: white;
+}
+
+.sec_indexMain .list_btnIndex {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.sec_indexMain .item_btnLogin {
+  margin-bottom: 25px;
+}
+
+.sec_indexMain .btn_index {
+  display: block;
+  border-radius: 44px;
+  width: 322px;
+  padding: 13px 0;
+}
+
+.sec_indexMain .btn_login {
+  border: 1px solid #EA7F42;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+.sec_indexMain .btn_login:hover {
+  color: black;
+  background-color: #EA7F42;
+}
+
+.sec_indexMain .btn_new {
+  border: 1px solid #767676;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+.sec_indexMain .btn_new:hover {
+  color: black;
+  background-color: #EA7F42;
+}
+/*# sourceMappingURL=index.css.map */

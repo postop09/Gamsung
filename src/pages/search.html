@@ -5,49 +5,50 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>감귤마켓 | 검색</title>
+  <link rel="stylesheet" href="../style/search.css">
 </head>
 <body>
-  <header>
+  <header class="sec_searchHeader">
     <h1 class="txt_hide">감귤마켓 사용자 검색</h1>
-    <button type="button">
-      <img src="" alt="">
-    </button>
+    <button type="button"><img src="../img/icon/icon-arrow-left.png" alt="뒤로 가기"></button>
     <label for="inp_search" class="txt_hide">사용자 검색창</label>
-    <input type="search" id="inp_search" class="inp_search">
+    <input type="search" id="inp_search" placeholder="계정 검색" class="inp_search">
   </header>
-  <main>
+  <main class="sec_searchMain">
     <h2 class="txt_hide">사용자 검색 결과</h2>
-    <ul>
-      <li>
-        <img src="" alt="">
-        <div class="wrap_txtUser">
-          <strong>애월읍 위니브 감귤농장</strong>
-          <small>@ weniv_Mandarin</small>
-        </div>
+    <ul class="list_searchUser">
+      <li class="item_searchUser">
+        <a href="" class="btn_searchUser">
+          <img src="../img/Ellipse 6.png" alt="" class="img_searchUser">
+          <div class="wrap_txtUser">
+            <strong class="txt_userName">애월읍 위니브 감귤농장</strong>
+            <small class="txt_userId">@ weniv_Mandarin</small>
+          </div>
+        </a>
       </li>
     </ul>
   </main>
-  <footer>
-    <h2>메뉴 선택</h2>
-    <ul>
+  <footer class="sec_footerNav">
+    <h2 class="txt_hide">메뉴 선택</h2>
+    <ul class="list_menu">
       <li>
-        <a href="">
-          <img src="" alt="">홈
+        <a href="home.html" class="btn_menu">
+          <img src="../img/icon/icon-home.png" alt="" class="img_menu">홈
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">채팅
+        <a href="chatList.html" class="btn_menu">
+          <img src="../img/icon/icon-message-circle.png" alt="" class="img_menu">채팅
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">게시물 작성
+        <a href="createPost.html" class="btn_menu">
+          <img src="../img/icon/icon-edit.png" alt="" class="img_menu">게시물 작성
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">프로필
+        <a href="myProfile.html" class="btn_menu">
+          <img src="../img/icon/icon-user.png" alt="" class="img_menu">프로필
         </a>
       </li>
     </ul>

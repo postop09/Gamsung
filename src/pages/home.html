@@ -5,70 +5,159 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>감귤마켓 | 홈</title>
+  <link rel="stylesheet" href="../style/home.css">
 </head>
 <body>
-  <header>
-    <h1>감귤마켓 피드</h1>
-    <button><img src="" alt="검색창으로 이동하기"></button>
+  <header class="sec_homeHeader">
+    <h1 class="txt_title">감귤마켓 피드</h1>
+    <button type="button" class="btn_navSearch"><img src="../img/icon/icon-search.png" alt="사용자 검색창으로 이동하기" class="img_search"></button>
   </header>
-  <main>
-    <section>
-      <h2>유저 게시글이 없습니다.</h2>
-      <img src="" alt="">
-      <p>유저를 검색해 팔로우 해보세요!</p>
-      <button>검색하기</button>
+  <main class="sec_homeMain">
+    <section class="sec_noneFeed">
+      <div class="wrap_noneFeed">
+        <h2 class="txt_hide">유저 게시글이 없습니다.</h2>
+        <img src="../img/symbol-logo-gray.png" alt="">
+        <p class="txt_searchInfo">유저를 검색해 팔로우 해보세요!</p>
+        <button type="button" class="btn_search">검색하기</button>
+      </div>
     </section>
-    <section>
-      <h2>유저 게시글</h2>
-      <article>
-        <h3>게시글</h3>
-        <div>
-          <img src="" alt="">
-          <p>
-            <strong>주은 농장</strong>
-            <small>@EveFarm</small>
-          </p>
-          <button type="button"></button>
+    <section class="sec_feed on">
+      <h2 class="txt_hide">유저 게시글</h2>
+      <article class="artic_feed">
+        <h3 class="txt_hide">게시글</h3>
+        <img src="../img/basic-profile-img.png" alt="" class="img_profile">
+        <div class="wrap_contents">
+          <div class="wrap_profile">
+            <a href="" class="txt_profile">
+              <strong class="txt_profileName">주은 농장</strong>
+              <small class="txt_profileId">@EveFarm</small>
+            </a>
+            <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
+          </div>
+          <p class="txt_feedText">옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.</p>
+          <ul>
+            <li><img src="../img/post-img-example.png" alt="" class="img_feedImg"></li>
+          </ul>
+          <dl class="list_likeComment">
+            <div class="wrap_likeComment">
+              <dt><button type="button"><img src="../img/icon/icon-heart.png" alt="좋아요" class="img_icon"></button></dt>
+              <dd>77</dd>
+            </div>
+            <div class="wrap_likeComment">
+              <dt><button type="button"><img src="../img/icon/icon-message-circle.png" alt="댓글 개수 및 댓글 보러가기" class="img_icon"></button></dt>
+              <dd>77</dd>
+            </div>
+          </dl>
+          <small class="txt_postDate">2022년 02월 22일</small>
         </div>
-        <p>옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.</p>
-        <ul>
-          <li><img src="" alt=""></li>
-        </ul>
-        <dl>
-          <div>
-            <dt><button type="button"><img src="" alt="좋아요"></button></dt>
-            <dd>77</dd>
+      </article>
+      <article class="artic_feed">
+        <h3 class="txt_hide">게시글</h3>
+        <img src="../img/basic-profile-img.png" alt="" class="img_profile">
+        <div class="wrap_contents">
+          <div class="wrap_profile">
+            <a href="" class="txt_profile">
+              <strong class="txt_profileName">주은 농장</strong>
+              <small class="txt_profileId">@EveFarm</small>
+            </a>
+            <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
           </div>
-          <div>
-            <dt><button type="button"><img src="" alt="댓글 개수 및 댓글 보러가기"></button></dt>
-            <dd>77</dd>
+          <p class="txt_feedText">옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.</p>
+          <ul class="list_feedImg">
+            <li><img src="../img/post-img-example.png" alt="" class="img_feedImg"></li>
+          </ul>
+          <dl class="list_likeComment">
+            <div class="wrap_likeComment">
+              <dt><button type="button"><img src="../img/icon/icon-heart.png" alt="좋아요" class="img_icon"></button></dt>
+              <dd>77</dd>
+            </div>
+            <div class="wrap_likeComment">
+              <dt><button type="button"><img src="../img/icon/icon-message-circle.png" alt="댓글 개수 및 댓글 보러가기" class="img_icon"></button></dt>
+              <dd>77</dd>
+            </div>
+          </dl>
+          <small class="txt_postDate">2022년 02월 22일</small>
+        </div>
+      </article>
+      <article class="artic_feed">
+        <h3 class="txt_hide">게시글</h3>
+        <img src="../img/basic-profile-img.png" alt="" class="img_profile">
+        <div class="wrap_contents">
+          <div class="wrap_profile">
+            <a href="" class="txt_profile">
+              <strong class="txt_profileName">주은 농장</strong>
+              <small class="txt_profileId">@EveFarm</small>
+            </a>
+            <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
           </div>
-        </dl>
-        <small>2022년 02월 22일</small>
+          <p class="txt_feedText">옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.</p>
+          <ul>
+            <li><img src="../img/post-img-example.png" alt="" class="img_feedImg"></li>
+          </ul>
+          <dl class="list_likeComment">
+            <div class="wrap_likeComment">
+              <dt><button type="button"><img src="../img/icon/icon-heart.png" alt="좋아요" class="img_icon"></button></dt>
+              <dd>77</dd>
+            </div>
+            <div class="wrap_likeComment">
+              <dt><button type="button"><img src="../img/icon/icon-message-circle.png" alt="댓글 개수 및 댓글 보러가기" class="img_icon"></button></dt>
+              <dd>77</dd>
+            </div>
+          </dl>
+          <small class="txt_postDate">2022년 02월 22일</small>
+        </div>
+      </article>
+      <article class="artic_feed">
+        <h3 class="txt_hide">게시글</h3>
+        <img src="../img/basic-profile-img.png" alt="" class="img_profile">
+        <div class="wrap_contents">
+          <div class="wrap_profile">
+            <a href="" class="txt_profile">
+              <strong class="txt_profileName">주은 농장</strong>
+              <small class="txt_profileId">@EveFarm</small>
+            </a>
+            <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
+          </div>
+          <p class="txt_feedText">옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.</p>
+          <ul>
+            <li><img src="../img/post-img-example.png" alt="" class="img_feedImg"></li>
+          </ul>
+          <dl class="list_likeComment">
+            <div class="wrap_likeComment">
+              <dt><button type="button"><img src="../img/icon/icon-heart.png" alt="좋아요" class="img_icon"></button></dt>
+              <dd>77</dd>
+            </div>
+            <div class="wrap_likeComment">
+              <dt><button type="button"><img src="../img/icon/icon-message-circle.png" alt="댓글 개수 및 댓글 보러가기" class="img_icon"></button></dt>
+              <dd>77</dd>
+            </div>
+          </dl>
+          <small class="txt_postDate">2022년 02월 22일</small>
+        </div>
       </article>
     </section>
   </main>
-  <footer>
-    <h2>메뉴 선택</h2>
-    <ul>
+  <footer class="sec_footerNav">
+    <h2 class="txt_hide">메뉴 선택</h2>
+    <ul class="list_menu">
       <li>
-        <a href="">
-          <img src="" alt="">홈
+        <a href="home.html" class="btn_menu">
+          <img src="../img/icon/icon-home-fill.png" alt="" class="img_menu">홈
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">채팅
+        <a href="chatList.html" class="btn_menu">
+          <img src="../img/icon/icon-message-circle.png" alt="" class="img_menu">채팅
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">게시물 작성
+        <a href="createPost.html" class="btn_menu">
+          <img src="../img/icon/icon-edit.png" alt="" class="img_menu">게시물 작성
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">프로필
+        <a href="myProfile.html" class="btn_menu">
+          <img src="../img/icon/icon-user.png" alt="" class="img_menu">프로필
         </a>
       </li>
     </ul>

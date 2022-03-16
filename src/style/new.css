@@ -1,0 +1,187 @@
+@font-face {
+  font-family: AppleGothicM;
+  src: url(../font/AppleSDGothicNeoM.ttf);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: AppleGothicM;
+  text-decoration: none;
+  color: black;
+  list-style: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.txt_hide {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.form_login .wrap_loginPw {
+  margin-top: 15px;
+}
+
+.form_login label,
+.form_login input {
+  display: block;
+}
+
+.form_login label {
+  font-size: 16px;
+}
+
+.form_login .inp_login {
+  border: none;
+  border-bottom: 2px solid #dbdbdb;
+  width: 322px;
+  padding: 5px 2px;
+  font-size: 18px;
+  color: black;
+}
+
+.form_login .inp_login::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #dbdbdb;
+}
+
+.form_login .inp_login:-ms-input-placeholder {
+  font-size: 16px;
+  color: #dbdbdb;
+}
+
+.form_login .inp_login::-ms-input-placeholder {
+  font-size: 16px;
+  color: #dbdbdb;
+}
+
+.form_login .inp_login::placeholder {
+  font-size: 16px;
+  color: #dbdbdb;
+}
+
+.form_login .inp_login:focus {
+  outline: none;
+  border-bottom: 2px solid #EA7F42;
+}
+
+.form_login .txt_err {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  color: red;
+}
+
+.form_login .btn_newNext.on {
+  background-color: #EA7F42;
+}
+
+.form_login .btn_newNext {
+  border: none;
+  border-radius: 44px;
+  width: 322px;
+  padding: 13px 0;
+  margin: 30px 0 20px;
+  font-size: 14px;
+  color: white;
+  background-color: #FFC7A7;
+  cursor: pointer;
+}
+
+.sec_newEmail {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.sec_newEmail .txt_title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 40px auto;
+  font-size: 28px;
+  color: black;
+}
+
+.sec_newProfile {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.sec_newProfile .txt_title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 40px auto 12px;
+  font-size: 28px;
+  color: black;
+}
+
+.sec_newProfile .txt_profile {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sec_newProfile .wrap_userName {
+  margin-top: 30px;
+}
+
+.sec_newProfile .wrap_userId,
+.sec_newProfile .wrap_intro {
+  margin-top: 15px;
+}
+
+.sec_newProfile .inp_profileImg {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.sec_newProfile .inp_profileImg:focus ~ .label_profileImg {
+  outline: 2px solid black;
+}
+
+.sec_newProfile .label_profileImg {
+  display: block;
+  position: relative;
+  border-radius: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  cursor: pointer;
+}
+
+.sec_newProfile .label_profileImg::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 36px;
+  height: 36px;
+  background-image: url(../img/upload-file.png);
+  background-size: contain;
+}
+
+.sec_newProfile .img_profile {
+  border-radius: 100%;
+}
+/*# sourceMappingURL=new.css.map */

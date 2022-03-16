@@ -1,0 +1,116 @@
+@import 'util';
+
+.form_login {
+  .wrap_loginPw {
+    margin-top: 15px;
+  }
+  label,
+  input {
+    display: block;
+  }
+  label {
+    font-size: 16px;
+  }
+  .inp_login {
+    border: none;
+    border-bottom: 2px solid #dbdbdb;
+    width: 322px;
+    padding: 5px 2px;
+    font-size: 18px;
+    color: black;
+    &::placeholder {
+      font-size: 16px;
+      color: #dbdbdb;
+    }
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $c-main;
+    }
+  }
+  .txt_err {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: red;
+  }
+  .btn_newNext.on {
+    background-color: $c-main;
+  }
+  .btn_newNext {
+    border: none;
+    border-radius: 44px;
+    width: 322px;
+    padding: 13px 0;
+    margin: 30px 0 20px;
+    font-size: 14px;
+    color: white;
+    background-color: $c-disable;
+    cursor: pointer;
+  }
+}
+
+.sec_newEmail {
+  width: fit-content;
+  margin: auto;
+  .txt_title {
+    width: fit-content;
+    margin: 40px auto;
+    font-size: 28px;
+    color: black;
+  }
+}
+
+.sec_newProfile {
+  width: fit-content;
+  margin: auto;
+  .txt_title {
+    width: fit-content;
+    margin: 40px auto 12px;
+    font-size: 28px;
+    color: black;
+  }
+  .txt_profile {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .wrap_userName {
+    margin-top: 30px;
+  }
+  .wrap_userId,
+  .wrap_intro {
+    margin-top: 15px;
+  }
+  .inp_profileImg {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    &:focus ~ .label_profileImg {
+      outline: 2px solid black;
+    }
+  }
+  .label_profileImg {
+    display: block;
+    position: relative;
+    border-radius: 100%;
+    width: fit-content;
+    margin: auto;
+    cursor: pointer;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 36px;
+      height: 36px;
+      background-image: url(../img/upload-file.png);
+      background-size: contain;
+    }
+  }
+  .img_profile {
+    border-radius: 100%;
+  }
+}

@@ -1,0 +1,154 @@
+@font-face {
+  font-family: AppleGothicM;
+  src: url(../font/AppleSDGothicNeoM.ttf);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: AppleGothicM;
+  text-decoration: none;
+  color: black;
+  list-style: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.txt_hide {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.sec_footerNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.sec_footerNav .list_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 1px solid #dbdbdb;
+}
+
+.sec_footerNav .btn_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 84px;
+  padding: 15px 0;
+  font-size: 12px;
+  color: #767676;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+.sec_footerNav .btn_menu:hover {
+  background-color: #dbdbdb;
+}
+
+.sec_footerNav .img_menu {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+}
+
+.sec_searchHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 10px 19px;
+  background-color: white;
+  z-index: 500;
+}
+
+.sec_searchHeader .inp_search {
+  width: 100%;
+  min-width: 316px;
+  font-size: 14px;
+  border: none;
+  border-radius: 32px;
+  margin-left: 20px;
+  padding: 7px 0px 7px 16px;
+  background-color: #f2f2f2;
+}
+
+.sec_searchHeader .inp_search:focus {
+  outline: 2px solid #EA7F42;
+}
+
+.sec_searchMain {
+  padding: 60px 0;
+}
+
+.sec_searchMain .list_searchUser {
+  padding: 10px 16px;
+}
+
+.sec_searchMain .btn_searchUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.sec_searchMain .btn_searchUser:hover {
+  background-color: #f2f2f2;
+}
+
+.sec_searchMain .img_searchUser {
+  border-radius: 100%;
+  width: 44px;
+  height: 44px;
+  margin-right: 12px;
+}
+
+.sec_searchMain .txt_userName {
+  display: block;
+  font-size: 14px;
+}
+
+.sec_searchMain .txt_userId {
+  color: #767676;
+}
+/*# sourceMappingURL=search.css.map */

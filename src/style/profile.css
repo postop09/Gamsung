@@ -1,0 +1,433 @@
+@font-face {
+  font-family: AppleGothicM;
+  src: url(../font/AppleSDGothicNeoM.ttf);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: AppleGothicM;
+  text-decoration: none;
+  color: black;
+  list-style: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.txt_hide {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.sec_footerNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.sec_footerNav .list_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 1px solid #dbdbdb;
+}
+
+.sec_footerNav .btn_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 84px;
+  padding: 15px 0;
+  font-size: 12px;
+  color: #767676;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+.sec_footerNav .btn_menu:hover {
+  background-color: #dbdbdb;
+}
+
+.sec_footerNav .img_menu {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+}
+
+.sec_profileHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 13px 16px;
+  background-color: white;
+  z-index: 500;
+}
+
+.sec_profileMain {
+  padding: 60px 0;
+}
+
+.sec_profile {
+  position: relative;
+  border-bottom: 5px solid #dbdbdb;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.sec_profile .wrap_profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sec_profile .wrap_profile .img_profile {
+  border: 1px solid #dbdbdb;
+  border-radius: 100%;
+  width: 110px;
+  margin: auto;
+}
+
+.sec_profile .wrap_profile .txt_userName {
+  margin: 16px 0 6px;
+}
+
+.sec_profile .wrap_profile .txt_userId {
+  font-size: 12px;
+  color: #767676;
+}
+
+.sec_profile .wrap_profile .txt_overview {
+  margin: 16px 0 24px;
+  font-size: 14px;
+  color: #767676;
+}
+
+.sec_profile .list_follow.on {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sec_profile .list_follow {
+  display: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  padding: 0 50px;
+}
+
+.sec_profile .list_follow .wrap_follow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.sec_profile .list_follow .wrap_follow dt {
+  font-size: 12px;
+  color: #767676;
+}
+
+.sec_profile .list_follow .wrap_follow dd {
+  font-size: 18px;
+  color: #767676;
+}
+
+.sec_profile .list_follow .wrap_follow .txt_followrs {
+  font-weight: 700;
+  color: black;
+}
+
+.sec_profile .list_btnFollow {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sec_profile .list_btnFollow .btn_side {
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  border: 1px solid #dbdbdb;
+  border-radius: 100%;
+  width: 34px;
+  height: 34px;
+  padding: 7px;
+}
+
+.sec_profile .list_btnFollow img {
+  width: 100%;
+  height: 100%;
+}
+
+.sec_profile .list_btnFollow .btn_follow.on {
+  color: black;
+  background-color: #dbdbdb;
+}
+
+.sec_profile .list_btnFollow .btn_follow {
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+  margin: 0 10px;
+  padding: 8px 40px;
+  font-size: 14px;
+  color: white;
+  background-color: #EA7F42;
+}
+
+.sec_profile .list_myProfileBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sec_profile .list_myProfileBtn .btn_myProfile {
+  border: 1px solid #dbdbdb;
+  border-radius: 30px;
+  padding: 8px 26px;
+}
+
+.sec_profile .list_myProfileBtn .btn_editProfile {
+  margin-right: 11px;
+}
+
+.sec_products {
+  border-bottom: 5px solid #dbdbdb;
+  padding: 20px 0 20px 21px;
+}
+
+.sec_products .txt_title {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.sec_products .list_products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.sec_products .list_products::-webkit-scrollbar {
+  display: none;
+}
+
+.sec_products .item_product {
+  margin-right: 10px;
+}
+
+.sec_products .img_product {
+  border-radius: 8px;
+  width: 140px;
+  height: 90px;
+}
+
+.sec_products .txt_name {
+  font-size: 14px;
+}
+
+.sec_products .txt_price {
+  font-size: 12px;
+  color: #EA7F42;
+}
+
+.sec_userFeed .list_contentsType {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
+  border-bottom: 1px solid #dbdbdb;
+  margin-bottom: 16px;
+  padding: 9px 10px;
+}
+
+.sec_userFeed .sec_feed.on {
+  display: block;
+}
+
+.sec_userFeed .sec_feed {
+  display: none;
+  height: 500px;
+  padding: 0 20px;
+  overflow-y: scroll;
+}
+
+.sec_userFeed .sec_feed::-webkit-scrollbar {
+  display: none;
+}
+
+.sec_userFeed .sec_feed .artic_feed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.sec_userFeed .sec_feed .artic_feed .img_profile {
+  border-radius: 100%;
+  width: 42px;
+  height: 42px;
+  margin-right: 12px;
+}
+
+.sec_userFeed .sec_feed .artic_feed .wrap_profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 4px 0;
+}
+
+.sec_userFeed .sec_feed .artic_feed .txt_profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sec_userFeed .sec_feed .artic_feed .txt_profileName {
+  font-size: 14px;
+}
+
+.sec_userFeed .sec_feed .artic_feed .txt_profileId {
+  font-size: 12px;
+  color: #767676;
+}
+
+.sec_userFeed .sec_feed .artic_feed .txt_feedText {
+  margin: 16px 0;
+}
+
+.sec_userFeed .sec_feed .artic_feed .img_feedImg {
+  border-radius: 10px;
+  width: 304px;
+  height: 228px;
+  margin-bottom: 14px;
+}
+
+.sec_userFeed .sec_feed .artic_feed .list_likeComment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.sec_userFeed .sec_feed .artic_feed .wrap_likeComment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 18px;
+}
+
+.sec_userFeed .sec_feed .artic_feed .img_icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.sec_userFeed .sec_feed .artic_feed .txt_postDate {
+  color: #767676;
+}
+
+.sec_userFeed .sec_album.on {
+  display: block;
+}
+
+.sec_userFeed .sec_album {
+  display: none;
+}
+
+.sec_userFeed .sec_album .list_albumImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16px;
+}
+
+.sec_userFeed .sec_album .img_album {
+  width: 114px;
+  height: 114px;
+}
+
+.sec_userFeed .sec_album .list_albumImg:after {
+  content: '';
+  display: block;
+  width: 114px;
+  height: 114px;
+}
+/*# sourceMappingURL=profile.css.map */

@@ -1,0 +1,57 @@
+@import 'util';
+@import 'navigation';
+
+.sec_searchHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 10px 19px;
+  background-color: white;
+  z-index: 500;
+  .inp_search {
+    width: 100%;
+    min-width: 316px;
+    font-size: 14px;
+    border: none;
+    border-radius: 32px;
+    margin-left: 20px;
+    padding: 7px 0px 7px 16px;
+    background-color: #f2f2f2;
+    &:focus {
+      outline: 2px solid $c-main;
+    }
+  }
+}
+
+.sec_searchMain {
+  padding: 60px 0;
+  .list_searchUser {
+    padding: 10px 16px;
+  }
+  .btn_searchUser {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    transition: all .2s;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+  .img_searchUser {
+    border-radius: 100%;
+    width: 44px;
+    height: 44px;
+    margin-right: 12px;
+  }
+  .txt_userName {
+    display: block;
+    font-size: 14px;
+  }
+  .txt_userId {
+    color: $c-txt;
+  }
+}

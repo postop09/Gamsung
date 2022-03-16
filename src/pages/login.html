@@ -5,18 +5,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>감귤마켓 | 로그인</title>
+  <link rel="stylesheet" href="../style/login.css">
 </head>
 <body>
-  <main>
-    <h1>로그인</h1>
-    <form action="">
-      <label for="inp_id">이메일</label>
-      <input type="text" name="" id="inp_id">
-      <label for="inp_pw">비밀번호</label>
-      <input type="password" name="" id="inp_pw">
-      <button type="submit">로그인</button>
+  <main class="sec_loginMain">
+    <h1 class="txt_title">로그인</h1>
+    <form action="" class="form_login">
+      <div class="wrap_loginId">
+        <label for="inp_loginId">이메일</label>
+        <input type="text" name="" id="inp_loginId" placeholder="이메일 주소를 입력해 주세요." class="inp_login">
+      </div>
+      <div class="wrap_loginPw">
+        <label for="inp_loginPw">비밀번호</label>
+        <input type="password" name="" id="inp_loginPw" placeholder="비밀번호를 설정해 주세요." class="inp_login">
+      </div>
+      <strong class="txt_err">*이메일  또는 비밀번호가 일치하지 않습니다.</strong>
+      <button type="submit" class="btn_login">로그인</button>
     </form>
-    <a href="">이메일로 회원가입</a>
+    <a href="" class="btn_newEmail">이메일로 회원가입</a>
   </main>
 </body>
 </html>

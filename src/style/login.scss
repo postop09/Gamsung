@@ -1,0 +1,64 @@
+@import 'util';
+
+.sec_loginMain {
+  width: fit-content;
+  margin: auto;
+  .txt_title {
+    width: fit-content;
+    margin: 40px auto;
+    font-size: 28px;
+    color: black;
+  }
+  .form_login {
+    .wrap_loginId {
+      margin-bottom: 15px;
+    }
+    label,
+    input {
+      display: block;
+    }
+    label {
+      font-size: 16px;
+    }
+    .inp_login {
+      border: none;
+      border-bottom: 2px solid #dbdbdb;
+      width: 322px;
+      padding: 5px 2px;
+      font-size: 18px;
+      color: black;
+      &::placeholder {
+        font-size: 16px;
+        color: #dbdbdb;
+      }
+      &:focus {
+        outline: none;
+        border-bottom: 2px solid $c-main;
+      }
+    }
+    .txt_err {
+      display: block;
+      margin-top: 5px;
+      font-size: 14px;
+      font-weight: 400;
+      color: red;
+    }
+    .btn_login {
+      border: none;
+      border-radius: 44px;
+      width: 322px;
+      padding: 13px 0;
+      margin: 30px 0 20px;
+      font-size: 14px;
+      color: white;
+      background-color: $c-disable;
+      cursor: pointer;
+    }
+  }
+  .btn_newEmail {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    font-size: 14px;
+  }
+}

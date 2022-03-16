@@ -1,0 +1,116 @@
+@import 'util';
+@import 'navigation';
+
+.sec_homeMain {
+  position: relative;
+  overflow: hidden;
+}
+.sec_homeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 13px 10px;
+  background-color: white;
+  z-index: 500;
+  .txt_title {
+    font-size: 20px;
+  }
+}
+
+.sec_noneFeed.on {
+  display: block;
+}
+.sec_noneFeed {
+  display: none;
+  width: fit-content;
+  height: 100vh;
+  margin: auto;
+  padding: 60px 0;
+  text-align: center;
+  .wrap_noneFeed {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .txt_searchInfo {
+    margin: 25px 0 20px;
+    font-size: 14px;
+  }
+  .btn_search {
+    border-radius: 44px;
+    padding: 13px 34px;
+    font-size: 14px;
+    color: white;
+    background-color: $c-main;
+  }
+}
+
+.sec_feed.on {
+  display: block;
+}
+.sec_feed {
+  display: none;
+  height: 100vh;
+  padding: 80px 16px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .artic_feed {
+    display: flex;
+    margin-bottom: 25px;
+    .img_profile {
+      border-radius: 100%;
+      width: 42px;
+      height: 42px;
+      margin-right: 12px;
+    }
+    .wrap_profile {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+    .txt_profile {
+      display: flex;
+      flex-direction: column;
+    }
+    .txt_profileName {
+      font-size: 14px;
+    }
+    .txt_profileId {
+      font-size: 12px;
+      color: $c-txt;
+    }
+    .txt_feedText {
+      margin: 16px 0;
+    }
+    .img_feedImg {
+      border-radius: 10px;
+      width: 304px;
+      height: 228px;
+      margin-bottom: 14px;
+    }
+    .list_likeComment {
+      display: flex;
+      margin-bottom: 15px;
+    }
+    .wrap_likeComment {
+      display: flex;
+      align-items: center;
+      margin-right: 18px;
+    }
+    .img_icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    .txt_postDate {
+      color: $c-txt;
+    }
+  }
+}
