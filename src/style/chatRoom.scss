@@ -1,0 +1,138 @@
+@import 'util';
+@import 'navigation';
+
+.sec_chatRoomHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 13px 16px;
+  background-color: white;
+  z-index: 500;
+  .txt_title {
+    margin: 0 auto 0 16px;
+  }
+}
+
+.sec_chatRoomMain {
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.wrap_chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 60px 16px 70px;
+  article {
+    margin-bottom: 10px;
+  }
+  .artic_userChat {
+    display: flex;
+    .img_profile {
+      border-radius: 100%;
+      width: 42px;
+      height: 42px;
+      margin-right: 12px;
+    }
+    .txt_chat {
+      border: 1px solid #c4c4c4;
+      border-radius: 5px;
+      border-top-left-radius: 0;
+      padding: 12px;
+      font-size: 14px;
+      background-color: white;
+    }
+    .txt_time {
+      margin: auto 0 0 6px;
+      font-size: 10px;
+      color: $c-txt;
+    }
+  }
+  .artic_myChat {
+    display: flex;
+    flex-direction: row-reverse;
+    .txt_chat {
+      border-radius: 5px;
+      border-top-right-radius: 0;
+      padding: 12px;
+      font-size: 14px;
+      color: white;
+      background-color: $c-main;
+    }
+    .txt_time {
+      margin: auto 6px 0 0;
+      font-size: 10px;
+      color: $c-txt;
+    }
+  }
+  .img_chat {
+    border-radius: 10px;
+    width: 240px;
+    height: 240px;
+  }
+}
+
+.sec_chatRoomFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid #dbdbdb;
+  padding: 12px 16px;
+  background-color: white;
+  z-index: 500;
+  .inp_imgSelect {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    &:focus ~ .label_imgSelect {
+      outline: 2px solid black;
+    }
+  }
+  .label_imgSelect {
+    border-radius: 100%;
+    width: 36px;
+    height: 36px;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  .img_comment {
+    width: 100%;
+    height: 100%;
+  }
+  .form_comment {
+    display: flex;
+    width: 100%;
+  }
+  .inp_comment {
+    border: none;
+    border-bottom: 2px solid #dbdbdb;
+    width: 100%;
+    padding: 5px 3px;
+    font-size: 14px;
+  }
+  .inp_comment:focus {
+    outline: none;
+    border-bottom: 2px solid $c-main;
+  }
+  .btn_pushComment.on {
+    color: $c-main;
+  }
+  .btn_pushComment {
+    width: 26px;
+    margin-left: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: $c-txt;
+  }
+}

@@ -5,27 +5,38 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>감귤마켓 | 게시글 등록</title>
+  <link rel="stylesheet" href="../style/createPost.css">
 </head>
 <body>
-  <header>
-    <h1>게시글 작성</h1>
-    <button type="button">
-      <img src="" alt="뒤로 가기">
+  <header class="sec_createPostHeader">
+    <h1 class="txt_hide">내 프로필 수정</h1>
+    <button type="button" class="btn_backPage">
+      <img src="../img/icon/icon-arrow-left.png" alt="뒤로 가기">
     </button>
   </header>
   <main>
-    <h2>내용 입력란</h2>
-    <img src="" alt="">
-    <form action="">
-      <label for="inp_textarea">게시글 입력란</label>
-      <textarea name="" id="inp_textarea" cols="30" rows="10"></textarea>
-      <ul>
-        <li><img src="" alt=""></li>
-      </ul>
-      <label for="inp_imgUpload"><img src="" alt=""></label>
-      <input type="file" id="inp_imgUpload">
-      <button type="submit">업로드</button>
-    </form>
+    <div class="wrap_createPost">
+      <h2 class="txt_hide">게시글 내용 입력</h2>
+      <img src="../img/basic-profile-img.png" alt="" class="img_writer">
+      <form action="" class="form_createPost">
+        <label for="inp_textarea" class="txt_hide">게시글 입력란</label>
+        <textarea name="" id="inp_textarea" cols="30" rows="10" placeholder="게시글 입력하기..." class="inp_textarea"></textarea>
+        <ul class="list_previewImg">
+          <li class="item_previewImg">
+            <img src="../img/post-img-example.png" alt="" class="img_preview">
+          </li>
+          <li class="item_previewImg">
+            <img src="../img/post-img-example.png" alt="" class="img_preview">
+          </li>
+          <li class="item_previewImg">
+            <img src="../img/post-img-example.png" alt="" class="img_preview">
+          </li>
+        </ul>
+        <input type="file" id="inp_imgUpload" class="inp_postImg" accept="image/*" multiple>
+        <label for="inp_imgUpload" class="label_upload"><img src="../img/upload-file.png" alt="업로드할 사진 선택" class="img_select"></label>
+        <button type="submit" class="btn_upload">업로드</button>
+      </form>
+    </div>
   </main>
 </body>
 </html>

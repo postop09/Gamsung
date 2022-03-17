@@ -5,50 +5,75 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>감귤마켓 | 채팅 목록</title>
+  <link rel="stylesheet" href="../style/chatList.css">
 </head>
 <body>
-  <header>
-    <h1 class="txt_hide">채팅방 목록</h1>
-    <button type="button">
-      <img src="" alt="뒤로 가기">
+  <header class="sec_chatListHeader">
+    <h1 class="txt_hide">채팅 목록</h1>
+    <button type="button" class="btn_backPage">
+      <img src="../img/icon/icon-arrow-left.png" alt="뒤로 가기" class="img_backPage">
     </button>
-    <button type="button">
-      <img src="" alt="메뉴 더보기">
+    <button type="button" class="btn_moreMenu">
+      <img src="../img/icon/icon-more-vertical.png" alt="메뉴 더보기" class="img_moreMenu">
     </button>
   </header>
   <main>
-    <ul>
-      <li>
-        <img src="" alt="">
-        <div class="wrap_txtUser">
-          <strong>애월읍 위니브 감귤농장</strong>
-          <small>@ weniv_Mandarin</small>
-        </div>
-        <small type="button">2020.10.25</small>
-      </li>
-    </ul>
+    <div class="wrap_chatList">
+      <ul class="list_searchUser">
+        <li class="item_searchUser">
+          <a href="" class="btn_searchUser on">
+            <img src="../img/Ellipse 6.png" alt="" class="img_searchUser">
+            <div class="wrap_txtUser">
+              <strong class="txt_userName">애월읍 위니브 감귤농장</strong>
+              <p class="txt_userId">이번에 정정 언제하맨마씸?</p>
+            </div>
+            <small class="txt_date">2022.02.22</small>
+          </a>
+        </li>
+        <li class="item_searchUser">
+          <a href="" class="btn_searchUser">
+            <img src="../img/Ellipse 6.png" alt="" class="img_searchUser">
+            <div class="wrap_txtUser">
+              <strong class="txt_userName">애월읍 위니브 감귤농장</strong>
+              <p class="txt_userId">이번에 정정 언제하맨마씸?</p>
+            </div>
+            <small class="txt_date">2022.02.22</small>
+          </a>
+        </li>
+        <li class="item_searchUser">
+          <a href="" class="btn_searchUser">
+            <img src="../img/Ellipse 6.png" alt="" class="img_searchUser">
+            <div class="wrap_txtUser">
+              <strong class="txt_userName">애월읍 위니브 감귤농장</strong>
+              <p class="txt_userId">이번에 정정 언제하맨마씸?</p>
+            </div>
+            <small class="txt_date">2022.02.22</small>
+          </a>
+        </li>
+      </ul>
+    </div>
   </main>
-  <footer>
-    <h2>메뉴 선택</h2>
-    <ul>
+  <footer class="sec_footerNav">
+    <h2 class="txt_hide">메뉴 선택</h2>
+    <ul class="list_menu">
       <li>
-        <a href="">
-          <img src="" alt="">홈
+        <a href="home.html" class="btn_menu">
+          <img src="../img/icon/icon-home.png" alt="" class="img_menu">홈
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">채팅
+        <a href="chatList.html" class="btn_menu">
+          <img src="../img/icon/icon-message-circle-fill.png" alt="" class="img_menu">채팅
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">게시물 작성
+        <a href="createPost.html" class="btn_menu">
+          <img src="../img/icon/icon-edit.png" alt="" class="img_menu">게시물 작성
         </a>
       </li>
       <li>
-        <a href="">
-          <img src="" alt="">프로필
+        <a href="myProfile.html" class="btn_menu">
+          <img src="../img/icon/icon-user.png" alt="" class="img_menu">프로필
         </a>
       </li>
     </ul>

@@ -5,71 +5,86 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>감귤마켓 | 게시글 상세보기</title>
+  <link rel="stylesheet" href="../style/post.css">
 </head>
 <body>
-  <header>
-    <h1 class="txt_hide">프로필 정보</h1>
-    <button type="button">
-      <img src="" alt="뒤로 가기">
+  <header class="sec_postHeader">
+    <h1 class="txt_hide">게시글 상세보기</h1>
+    <button type="button" class="btn_backPage">
+      <img src="../img/icon/icon-arrow-left.png" alt="뒤로 가기">
     </button>
-    <button type="button">
-      <img src="" alt="메뉴 더보기">
+    <button type="button" class="btn_moreMenu">
+      <img src="../img/icon/icon-more-vertical.png" alt="메뉴 더보기">
     </button>
   </header>
   <main>
-    <section>
-      <h2>유저 게시글</h2>
-      <article>
-        <h3>게시글</h3>
-        <div>
-          <img src="" alt="">
-          <p>
-            <strong>주은 농장</strong>
-            <small>@EveFarm</small>
-          </p>
-          <button type="button"></button>
+    <section class="sec_postDetail">
+      <h2 class="txt_hide">게시글 상세보기</h2>
+      <img src="../img/basic-profile-img.png" alt="" class="img_profile">
+      <div class="wrap_contents">
+        <div class="wrap_profile">
+          <a href="" class="txt_profile">
+            <strong class="txt_profileName">주은 농장</strong>
+            <small class="txt_profileId">@EveFarm</small>
+          </a>
+          <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
         </div>
-        <p>옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.</p>
+        <p class="txt_feedText">옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게 뛰노는 인생의 힘있다.</p>
         <ul>
-          <li><img src="" alt=""></li>
+          <li><img src="../img/post-img-example.png" alt="" class="img_feedImg"></li>
         </ul>
-        <dl>
-          <div>
-            <dt><button type="button"><img src="" alt="좋아요"></button></dt>
+        <dl class="list_likeComment">
+          <div class="wrap_likeComment">
+            <dt><button type="button"><img src="../img/icon/icon-heart.png" alt="좋아요" class="img_icon"></button></dt>
             <dd>77</dd>
           </div>
-          <div>
-            <dt><button type="button"><img src="" alt="댓글 개수 및 댓글 보러가기"></button></dt>
+          <div class="wrap_likeComment">
+            <dt><button type="button"><img src="../img/icon/icon-message-circle.png" alt="댓글 개수 및 댓글 보러가기" class="img_icon"></button></dt>
             <dd>77</dd>
           </div>
         </dl>
-        <small>2022년 02월 22일</small>
-      </article>
+        <small class="txt_postDate">2022년 02월 22일</small>
+      </div>
     </section>
-    <section>
-      <h2>댓글 목록</h2>
+    <section class="sec_postComment">
+      <h2 class="txt_hide">댓글 목록</h2>
       <ul>
-        <li>
-          <div class="wrap_txtUser">
-            <img src="" alt="">
-            <strong>애월읍 위니브 감귤농장</strong>
-            <small>15분 전</small>
-            <button type="button">
-              <img src="" alt="메뉴 보기">
-            </button>
+        <li class="item_comment">
+          <img src="../img/basic-profile-img.png" alt="" class="img_comment">
+          <div class="wrap_user">
+            <div class="wrap_txtUser">
+              <strong class="txt_userName">애월읍 위니브 감귤농장</strong>
+              <small class="txt_uploadTime">15분 전</small>
+              <button type="button">
+                <img src="../img/icon/s-icon-more-vertical.png" alt="메뉴 보기">
+              </button>
+            </div>
+            <p class="txt_comment">안녕하세요. 사진이 너무 멋있어요. 한라봉 언제 먹을 수 있나요? 기다리기 지쳤어요 땡뻘땡뻘...</p>
           </div>
-          <p>안녕하세요. 사진이 너무 멋있어요. 한라봉 언제 먹을 수 있나요? 기다리기 지쳤어요 땡뻘땡뻘...</p>
+        </li>
+        <li class="item_comment">
+          <img src="../img/basic-profile-img.png" alt="" class="img_comment">
+          <div class="wrap_user">
+            <div class="wrap_txtUser">
+              <strong class="txt_userName">애월읍 위니브 감귤농장</strong>
+              <small class="txt_uploadTime">15분 전</small>
+              <button type="button">
+                <img src="../img/icon/s-icon-more-vertical.png" alt="메뉴 보기">
+              </button>
+            </div>
+            <p class="txt_comment">안녕하세요. 사진이 너무 멋있어요. 한라봉 언제 먹을 수 있나요? 기다리기 지쳤어요 땡뻘땡뻘...</p>
+          </div>
         </li>
       </ul>
     </section>
   </main>
-  <footer>
-    <img src="" alt="">
-    <form action="">
+  <footer class="sec_postFooter">
+    <h2 class="txt_hide">댓글 입력</h2>
+    <img src="../img/basic-profile-img.png" alt="" class="img_comment">
+    <form action="" class="form_comment">
       <label for="inp_comment" class="txt_hide">댓글 입력창</label>
-      <input type="text" name="" id="inp_comment" placeholder="댓글 입력하기...">
-      <label for="btn_comment" class="txt_hide">게시</label>
-      <input type="submit" name="" id="btn_comment" value="게시">
+      <input type="text" name="" id="inp_comment" placeholder="댓글 입력하기..." class="inp_comment">
+      <button type="submit" class="btn_pushComment">게시</button>
     </form>
   </footer>
 </body>

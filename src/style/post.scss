@@ -1,0 +1,148 @@
+@import 'util';
+@import 'navigation';
+
+.sec_postHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 13px 16px;
+  background-color: white;
+  z-index: 500;
+}
+
+.sec_postDetail {
+  display: flex;
+  padding: 80px 16px 40px;
+  .img_profile {
+    border-radius: 100%;
+    width: 42px;
+    height: 42px;
+    margin-right: 12px;
+  }
+  .wrap_profile {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 4px 0;
+  }
+  .txt_profile {
+    display: flex;
+    flex-direction: column;
+  }
+  .txt_profileName {
+    font-size: 14px;
+  }
+  .txt_profileId {
+    font-size: 12px;
+    color: $c-txt;
+  }
+  .txt_feedText {
+    margin: 16px 0;
+  }
+  .img_feedImg {
+    border-radius: 10px;
+    width: 304px;
+    height: 228px;
+    margin-bottom: 14px;
+  }
+  .list_likeComment {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  .wrap_likeComment {
+    display: flex;
+    align-items: center;
+    margin-right: 18px;
+  }
+  .img_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  .txt_postDate {
+    color: $c-txt;
+  }
+}
+
+.sec_postComment {
+  border-top: 3px solid #dbdbdb;
+  padding: 20px 16px;
+  .item_comment {
+    display: flex;
+    margin-bottom: 16px;
+  }
+  .wrap_user {
+    width: 100%;
+  }
+  .wrap_txtUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .img_comment {
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+  }
+  .txt_userName {
+    font-size: 14px;
+  }
+  .txt_uploadTime {
+    margin: 0 auto 0 6px;
+    font-size: 10px;
+    color: $c-txt;
+  }
+  .txt_comment {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+}
+
+.sec_postFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid #dbdbdb;
+  padding: 12px 16px;
+  background-color: white;
+  z-index: 500;
+  .img_comment {
+    width: 36px;
+    height: 36px;
+    margin-right: 15px;
+  }
+  .form_comment {
+    display: flex;
+    width: 100%;
+  }
+  .inp_comment {
+    border: none;
+    border-bottom: 2px solid #dbdbdb;
+    width: 100%;
+    padding: 5px 3px;
+    font-size: 14px;
+  }
+  .inp_comment:focus {
+    outline: none;
+    border-bottom: 2px solid $c-main;
+  }
+  .btn_pushComment.on {
+    color: $c-main;
+  }
+  .btn_pushComment {
+    width: 26px;
+    margin-left: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: $c-txt;
+  }
+}

@@ -1,0 +1,111 @@
+@import 'util';
+@import 'navigation';
+
+.sec_addProductHeader {
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 13px 16px;
+  background-color: white;
+  z-index: 500;
+}
+
+.sec_newProfile {
+  width: fit-content;
+  margin: auto;
+  padding: 60px 0;
+  label,
+  input {
+    display: block;
+  }
+  label {
+    font-size: 16px;
+    color: $c-txt;
+  }
+  .inp_login {
+    border: none;
+    border-bottom: 2px solid #dbdbdb;
+    width: 322px;
+    padding: 5px 2px;
+    font-size: 18px;
+    color: black;
+    &::placeholder {
+      font-size: 16px;
+      color: #dbdbdb;
+    }
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $c-main;
+    }
+  }
+  .inp_profileImg {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    &:focus ~ .label_profileImg {
+      outline: 2px solid black;
+    }
+  }
+  .txt_profileImg {
+    margin-bottom: 6px;
+    color: $c-txt;
+  }
+  .label_profileImg {
+    display: block;
+    position: relative;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    width: 322px;
+    height: 204px;
+    margin: auto;
+    background-color: #dbdbdb;
+    cursor: pointer;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 36px;
+      height: 36px;
+      background-image: url(../img/img-button.png);
+      background-size: contain;
+    }
+  }
+  .img_profile {
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+  }
+  .wrap_userName {
+    margin-top: 30px;
+  }
+  .wrap_userId,
+  .wrap_intro {
+    margin-top: 15px;
+  }
+  .txt_err {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: red;
+  }
+  .btn_save.on {
+    background-color: $c-main;
+  }
+  .btn_save {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    border-radius: 32px;
+    width: 90px;
+    height: 32px;
+    color: white;
+    background-color: #FFC7A7;
+    z-index: 500;
+  }
+}

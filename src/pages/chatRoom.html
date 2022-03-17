@@ -5,42 +5,47 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>감귤마켓 | 채팅방</title>
+  <link rel="stylesheet" href="../style/chatRoom.css">
 </head>
 <body>
-  <header>
+  <header class="sec_chatRoomHeader">
     <h1 class="txt_hide">채팅방</h1>
-    <button type="button">
-      <img src="" alt="뒤로 가기">
+    <button type="button" class="btn_backPage">
+      <img src="../img/icon/icon-arrow-left.png" alt="뒤로 가기" class="img_backPage">
     </button>
-    <p>애월읍 위니브 감귤농장</p>
-    <button type="button">
-      <img src="" alt="메뉴 더보기">
+    <strong class="txt_title">애월읍 위니브 감귤농장</strong>
+    <button type="button" class="btn_moreMenu">
+      <img src="../img/icon/icon-more-vertical.png" alt="메뉴 더보기" class="img_moreMenu">
     </button>
   </header>
-  <main>
-    <article>
-      <h2>상대 메세지</h2>
-      <img src="" alt="">
-      <p>안녕하세요. 감귤 사고싶어요요요요요</p>
-    </article>
-    <article>
-      <h2>나의 메세지</h2>
-      <p>네, 미구현입니다.</p>
-    </article>
-    <article>
-      <h2>나의 메세지</h2>
-      <img src="" alt="">
-    </article>
+  <main class="sec_chatRoomMain">
+    <div class="wrap_chat">
+      <article class="artic_userChat">
+        <h2 class="txt_hide">상대 메세지</h2>
+        <img src="../img/basic-profile-img.png" alt="" class="img_profile">
+        <p class="txt_chat">채팅 기능은 미구현 인가요?</p>
+        <small class="txt_time">12:21</small>
+      </article>
+      <article class="artic_myChat">
+        <h2 class="txt_hide">나의 메세지</h2>
+        <p class="txt_chat">네, 미구현입니다.</p>
+        <small class="txt_time">12:22</small>
+      </article>
+      <article class="artic_myChat">
+        <h2 class="txt_hide">나의 메세지</h2>
+        <img src="../img/chat-exapmle.png" alt="" class="img_chat">
+        <small class="txt_time">12:23</small>
+      </article>
+    </div>
   </main>
-  <footer>
-    <h2>메세지 입력</h2>
-    <form action="">
-      <label for="inp_imgMessage"><img src="" alt=""></label>
-      <input type="file" name="" id="inp_imgMessage">
-      <label for="inp_massage" class="txt_hide">메세지 입력창</label>
-      <input type="text" name="" id="inp_massage" placeholder="메세지 입력하기...">
-      <label for="btn_message" class="txt_hide">전송</label>
-      <input type="submit" name="" id="btn_message" value="전송">
+  <footer class="sec_chatRoomFooter">
+    <h2 class="txt_hide">메세지 입력</h2>
+      <input type="file" id="inp_imgSelect" accept="image/*" class="inp_imgSelect">
+      <label for="inp_imgSelect" class="label_imgSelect"><img src="../img/img-button.png" alt="전송할 이미지 선택하기" class="img_comment"></label>
+    <form action="" class="form_comment">
+      <label for="inp_comment" class="txt_hide">메세지 입력창</label>
+      <input type="text" name="" id="inp_comment" placeholder="메세지 입력하기..." class="inp_comment">
+      <button type="submit" class="btn_pushComment">전송</button>
     </form>
   </footer>
 </body>

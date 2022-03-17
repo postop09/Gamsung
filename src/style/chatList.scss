@@ -1,0 +1,67 @@
+@import 'util';
+@import 'navigation';
+
+.sec_chatListHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 13px 16px;
+  background-color: white;
+  z-index: 500;
+}
+
+.wrap_chatList {
+  padding: 60px 0;
+  .list_searchUser {
+    padding: 10px 16px;
+  }
+  .btn_searchUser.on::after {
+    content: '';
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 0;
+      border-radius: 100%;
+      width: 12px;
+      height: 12px;
+      background-color: $c-main;
+  }
+  .btn_searchUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px 0;
+    transition: all .2s;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+  .img_searchUser {
+    border-radius: 100%;
+    width: 44px;
+    height: 44px;
+    margin-right: 12px;
+  }
+  .wrap_txtUser {
+    margin-right: auto;
+  }
+  .txt_userName {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  .txt_userId {
+    font-size: 12px;
+    color: $c-txt;
+  }
+  .txt_date {
+    margin: auto 0 3px;
+    font-size: 10px;
+    color: $c-txt;
+  }
+}
