@@ -22,14 +22,14 @@
     }
     .inp_login {
       border: none;
-      border-bottom: 2px solid #dbdbdb;
+      border-bottom: 2px solid $c-layout;
       width: 322px;
       padding: 5px 2px;
       font-size: 18px;
       color: black;
       &::placeholder {
         font-size: 16px;
-        color: #dbdbdb;
+        color: $c-layout;
       }
       &:focus {
         outline: none;

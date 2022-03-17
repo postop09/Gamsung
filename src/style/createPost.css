@@ -141,6 +141,8 @@ button {
   position: fixed;
   right: 16px;
   bottom: 16px;
+  -webkit-box-shadow: 1px 1px 3px 1px #00000060;
+          box-shadow: 1px 1px 3px 1px #00000060;
   border-radius: 100%;
   width: 50px;
   height: 50px;

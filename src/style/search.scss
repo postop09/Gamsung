@@ -2,16 +2,8 @@
 @import 'navigation';
 
 .sec_searchHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  border-bottom: 1px solid #dbdbdb;
-  width: 100%;
+  @include headerBase;
   padding: 10px 19px;
-  background-color: white;
-  z-index: 500;
   .inp_search {
     width: 100%;
     min-width: 316px;

@@ -1,4 +1,43 @@
 // 프로젝트 컬러
 $c-disable: #FFC7A7;
 $c-main: #EA7F42;
+$c-layout: #dbdbdb;
 $c-txt: #767676;
+
+// mixin
+@mixin center($position) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin hide {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+@mixin headerBase {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  background-color: white;
+  z-index: 500;
+}
+
+@mixin headerCompact {
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  padding: 13px 16px;
+  background-color: white;
+  z-index: 500;
+}

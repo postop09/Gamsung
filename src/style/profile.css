@@ -92,9 +92,9 @@ button {
   top: 0;
   border-bottom: 1px solid #dbdbdb;
   width: 100%;
-  padding: 13px 16px;
   background-color: white;
   z-index: 500;
+  padding: 13px 16px;
 }
 
 .sec_profileMain {

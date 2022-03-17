@@ -90,8 +90,6 @@ button {
   border-bottom: 1px solid #dbdbdb;
   width: 100%;
   padding: 13px 16px;
-  background-color: white;
-  z-index: 500;
 }
 
 .sec_followersHeader .img_backPage {
@@ -122,12 +120,6 @@ button {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px 0;
-  -webkit-transition: all .2s;
-  transition: all .2s;
-}
-
-.list_searchUser .btn_searchUser:hover {
-  background-color: #f2f2f2;
 }
 
 .list_searchUser .img_searchUser {

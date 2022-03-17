@@ -92,9 +92,9 @@ button {
   top: 0;
   border-bottom: 1px solid #dbdbdb;
   width: 100%;
-  padding: 10px 19px;
   background-color: white;
   z-index: 500;
+  padding: 10px 19px;
 }
 
 .sec_searchHeader .inp_search {

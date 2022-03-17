@@ -6,11 +6,9 @@
   align-items: center;
   position: fixed;
   top: 0;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid $c-layout;
   width: 100%;
   padding: 13px 16px;
-  background-color: white;
-  z-index: 500;
   .img_backPage {
     margin-right: 8px;
   }
@@ -27,10 +25,6 @@
     display: flex;
     align-items: center;
     padding: 10px 0;
-    transition: all .2s;
-    &:hover {
-      background-color: #f2f2f2;
-    }
   }
   .img_searchUser {
     border-radius: 100%;
@@ -47,7 +41,7 @@
   }
   .btn_follow.on {
     color: black;
-    background-color: #dbdbdb;
+    background-color: $c-layout;
   }
   .btn_follow {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);

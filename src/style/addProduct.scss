@@ -2,13 +2,7 @@
 @import 'navigation';
 
 .sec_addProductHeader {
-  position: fixed;
-  top: 0;
-  border-bottom: 1px solid #dbdbdb;
-  width: 100%;
-  padding: 13px 16px;
-  background-color: white;
-  z-index: 500;
+  @include headerCompact;
 }
 
 .sec_newProfile {
@@ -25,7 +19,7 @@
   }
   .inp_login {
     border: none;
-    border-bottom: 2px solid #dbdbdb;
+    border-bottom: 2px solid $c-layout;
     width: 322px;
     padding: 5px 2px;
     font-size: 18px;
@@ -57,12 +51,12 @@
   .label_profileImg {
     display: block;
     position: relative;
-    border: 1px solid #dbdbdb;
+    border: 1px solid $c-layout;
     border-radius: 10px;
     width: 322px;
     height: 204px;
     margin: auto;
-    background-color: #dbdbdb;
+    background-color: $c-layout;
     cursor: pointer;
     &::after {
       content: '';
@@ -105,7 +99,7 @@
     width: 90px;
     height: 32px;
     color: white;
-    background-color: #FFC7A7;
+    background-color: $c-disable;
     z-index: 500;
   }
 }

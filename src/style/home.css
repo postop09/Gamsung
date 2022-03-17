@@ -97,13 +97,13 @@ button {
   top: 0;
   border-bottom: 1px solid #dbdbdb;
   width: 100%;
-  padding: 13px 10px;
   background-color: white;
   z-index: 500;
+  padding: 13px 10px;
 }
 
 .sec_homeHeader .txt_title {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .sec_noneFeed.on {

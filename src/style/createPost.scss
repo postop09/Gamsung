@@ -2,13 +2,7 @@
 @import 'navigation';
 
 .sec_createPostHeader {
-  position: fixed;
-  top: 0;
-  border-bottom: 1px solid #dbdbdb;
-  width: 100%;
-  padding: 13px 16px;
-  background-color: white;
-  z-index: 500;
+  @include headerCompact;
 }
 
 .wrap_createPost {
@@ -51,6 +45,7 @@
     position: fixed;
     right: 16px;
     bottom: 16px;
+    box-shadow: 1px 1px 3px 1px #00000060;
     border-radius: 100%;
     width: 50px;
     height: 50px;
@@ -78,7 +73,7 @@
     padding: 7px 25px;
     font-size: 14px;
     color: white;
-    background-color: #FFC7A7;
+    background-color: $c-disable;
     z-index: 500;
   }
 }

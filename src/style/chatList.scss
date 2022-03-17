@@ -2,16 +2,8 @@
 @import 'navigation';
 
 .sec_chatListHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  border-bottom: 1px solid #dbdbdb;
-  width: 100%;
+  @include headerBase;
   padding: 13px 16px;
-  background-color: white;
-  z-index: 500;
 }
 
 .wrap_chatList {
