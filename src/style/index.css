@@ -29,9 +29,41 @@ button {
   overflow: hidden;
 }
 
+@-webkit-keyframes splash {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes splash {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .sec_splash {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
   height: 100vh;
+  background-color: white;
+  -webkit-animation: splash 1.9s ease-in-out forwards;
+          animation: splash 1.9s ease-in-out forwards;
 }
 
 .sec_splash .img_splash {

@@ -170,6 +170,10 @@ button {
   margin-right: 12px;
 }
 
+.sec_feed .artic_feed .wrap_contents {
+  width: 100%;
+}
+
 .sec_feed .artic_feed .wrap_profile {
   display: -webkit-box;
   display: -ms-flexbox;

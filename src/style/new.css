@@ -76,12 +76,25 @@ button {
   border-bottom: 2px solid #EA7F42;
 }
 
-.form_login .txt_err {
+.form_login .txt_err.on {
   display: block;
+}
+
+.form_login .txt_err,
+.form_login .txt_ok {
+  display: none;
   margin-top: 5px;
   font-size: 14px;
   font-weight: 400;
   color: red;
+}
+
+.form_login .txt_ok.on {
+  display: block;
+}
+
+.form_login .txt_ok {
+  color: #00a000;
 }
 
 .form_login .btn_newNext.on {
@@ -117,6 +130,7 @@ button {
 }
 
 .sec_newProfile {
+  display: block;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -163,9 +177,8 @@ button {
   display: block;
   position: relative;
   border-radius: 100%;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 110px;
+  height: 110px;
   margin: auto;
   cursor: pointer;
 }
@@ -183,5 +196,7 @@ button {
 
 .sec_newProfile .img_profile {
   border-radius: 100%;
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=new.css.map */

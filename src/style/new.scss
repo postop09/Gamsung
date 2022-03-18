@@ -27,12 +27,22 @@
       border-bottom: 2px solid $c-main;
     }
   }
-  .txt_err {
+  .txt_err.on {
     display: block;
+  }
+  .txt_err,
+  .txt_ok {
+    display: none;
     margin-top: 5px;
     font-size: 14px;
     font-weight: 400;
     color: red;
+  }
+  .txt_ok.on {
+    display: block;
+  }
+  .txt_ok {
+    color: rgb(0, 160, 0);
   }
   .btn_newNext.on {
     background-color: $c-main;
@@ -62,6 +72,7 @@
 }
 
 .sec_newProfile {
+  display: block;
   width: fit-content;
   margin: auto;
   .txt_title {
@@ -96,7 +107,8 @@
     display: block;
     position: relative;
     border-radius: 100%;
-    width: fit-content;
+    width: 110px;
+    height: 110px;
     margin: auto;
     cursor: pointer;
     &::after {
@@ -112,5 +124,7 @@
   }
   .img_profile {
     border-radius: 100%;
+    width: 100%;
+    height: 100%;
   }
 }

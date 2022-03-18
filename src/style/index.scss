@@ -1,9 +1,27 @@
 @import 'util';
 
+@keyframes splash {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 // 스플래쉬 이미지
 .sec_splash {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
   height: 100vh;
+  background-color: white;
+  animation: splash 1.9s ease-in-out forwards;
   .img_splash {
     @include center(relative);
     transition: all 1s;

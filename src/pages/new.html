@@ -12,18 +12,19 @@
     <h1 class="txt_hide">감귤마켓 회원가입 창</h1>
     <section class="sec_newEmail">
       <h2 class="txt_title">이메일로 회원가입</h2>
-      <form action="" class="form_login">
+      <form class="form_login">
         <div class="wrap_loginId">
           <label for="inp_loginId">이메일</label>
-          <input type="text" name="" id="inp_loginId" placeholder="이메일 주소를 입력해 주세요." class="inp_login">
+          <input type="text" id="inp_loginId" placeholder="이메일 주소를 입력해 주세요." class="inp_login inp_newEmail">
         </div>
-        <strong class="txt_err">*이미 가입된 이메일 주소입니다.</strong>
+        <strong class="txt_err"></strong>
+        <strong class="txt_ok"></strong>
         <div class="wrap_loginPw">
           <label for="inp_loginPw">비밀번호</label>
-          <input type="password" name="" id="inp_loginPw" placeholder="비밀번호를 설정해 주세요." class="inp_login">
+          <input type="password" minlength="6" id="inp_loginPw" placeholder="비밀번호를 설정해 주세요."  autocomplete="off" class="inp_login inp_newPw">
         </div>
         <strong class="txt_err">*비밀번호는 6자 이상이어야 합니다.</strong>
-        <button type="submit" class="btn_newNext">다음</button>
+        <button type="submit" class="btn_newNext" disabled>다음</button>
       </form>
     </section>
     <section class="sec_newProfile">
@@ -36,20 +37,21 @@
         </div>
         <div class="wrap_userName">
           <label for="inp_userName">사용자 이름</label>
-          <input type="text" name="" id="inp_userName" placeholder="2 ~ 10자 이내여야 합니다." class="inp_login">
+          <input type="text" minlength="2" maxlength="9" id="inp_userName" placeholder="2 ~ 10자 이내여야 합니다." class="inp_login">
         </div>
         <div class="wrap_userId">
           <label for="inp_userId">계정 ID</label>
-          <input type="password" name="" id="inp_userId" placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다." class="inp_login">
+          <input type="text" maxlength="12" id="inp_userId" placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다." class="inp_login">
         </div>
         <strong class="txt_err">*이미 사용 중인 ID입니다.</strong>
         <div class="wrap_intro">
           <label for="inp_intro">소개</label>
-          <input type="password" name="" id="inp_intro" placeholder="자신과 판매할 상품에 대해 소개해 주세요!" class="inp_login">
+          <input type="text" maxlength="60" id="inp_intro" placeholder="자신과 판매할 상품에 대해 소개해 주세요!" class="inp_login">
         </div>
-        <button type="submit" class="btn_newNext">감귤마켓 시작하기</button>
+        <button type="submit" class="btn_newNext" disabled>감귤마켓 시작하기</button>
       </form>
     </section>
   </main>
+  <script src="../js/new.js"></script>
 </body>
 </html>

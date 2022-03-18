@@ -111,6 +111,10 @@ button {
   margin-right: 12px;
 }
 
+.sec_postDetail .wrap_contents {
+  width: 100%;
+}
+
 .sec_postDetail .wrap_profile {
   display: -webkit-box;
   display: -ms-flexbox;
