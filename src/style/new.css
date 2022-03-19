@@ -130,7 +130,7 @@ button {
 }
 
 .sec_newProfile {
-  display: block;
+  display: none;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
