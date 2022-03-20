@@ -180,7 +180,7 @@ async function fetchCreateData() {
   if (json.message == '회원가입 성공') {
     localStorage.removeItem('newData');
     localStorage.removeItem('imgUrl');
-    location.href = 'home.html';
+    window.history.back();
   } else {
     alert('다시 시도해주세요.');
   }

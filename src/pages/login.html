@@ -13,16 +13,17 @@
     <form action="" class="form_login">
       <div class="wrap_loginId">
         <label for="inp_loginId">이메일</label>
-        <input type="text" name="" id="inp_loginId" placeholder="이메일 주소를 입력해 주세요." class="inp_login">
+        <input type="text" id="inp_loginId" autofocus placeholder="이메일 주소를 입력해 주세요." class="inp_login">
       </div>
       <div class="wrap_loginPw">
         <label for="inp_loginPw">비밀번호</label>
-        <input type="password" name="" id="inp_loginPw" placeholder="비밀번호를 설정해 주세요." class="inp_login">
+        <input type="password" id="inp_loginPw" autocomplete="none" placeholder="비밀번호를 설정해 주세요." class="inp_login">
       </div>
-      <strong class="txt_err">*이메일  또는 비밀번호가 일치하지 않습니다.</strong>
-      <button type="submit" class="btn_login">로그인</button>
+      <strong class="txt_err"></strong>
+      <button type="submit" class="btn_login" disabled>로그인</button>
     </form>
-    <a href="" class="btn_newEmail">이메일로 회원가입</a>
+    <a href="new.html" class="btn_newEmail">이메일로 회원가입</a>
   </main>
+  <script src="../js/login.js"></script>
 </body>
 </html>

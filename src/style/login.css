@@ -92,12 +92,20 @@ button {
   border-bottom: 2px solid #EA7F42;
 }
 
-.sec_loginMain .form_login .txt_err {
+.sec_loginMain .form_login .txt_err.on {
   display: block;
+}
+
+.sec_loginMain .form_login .txt_err {
+  display: none;
   margin-top: 5px;
   font-size: 14px;
   font-weight: 400;
   color: red;
+}
+
+.sec_loginMain .form_login .btn_login.on {
+  background-color: #EA7F42;
 }
 
 .sec_loginMain .form_login .btn_login {

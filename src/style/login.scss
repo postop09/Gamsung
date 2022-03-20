@@ -36,12 +36,18 @@
         border-bottom: 2px solid $c-main;
       }
     }
-    .txt_err {
+    .txt_err.on {
       display: block;
+    }
+    .txt_err {
+      display: none;
       margin-top: 5px;
       font-size: 14px;
       font-weight: 400;
       color: red;
+    }
+    .btn_login.on {
+      background-color: $c-main;
     }
     .btn_login {
       border: none;
