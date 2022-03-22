@@ -113,7 +113,13 @@ button {
 }
 
 .sec_searchMain {
-  padding: 60px 0;
+  height: 100vh;
+  padding: 50px 0 60px;
+  overflow-y: scroll;
+}
+
+.sec_searchMain::-webkit-scrollbar {
+  display: none;
 }
 
 .sec_searchMain .list_searchUser {

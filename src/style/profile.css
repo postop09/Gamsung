@@ -97,8 +97,19 @@ button {
   padding: 13px 16px;
 }
 
+body {
+  overflow: hidden;
+}
+
 .sec_profileMain {
+  height: 100vh;
   padding: 60px 0;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.sec_profileMain::-webkit-scrollbar {
+  display: none;
 }
 
 .sec_profile {
@@ -183,7 +194,9 @@ button {
 }
 
 .sec_profile .list_btnFollow {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -224,9 +237,7 @@ button {
 }
 
 .sec_profile .list_myProfileBtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

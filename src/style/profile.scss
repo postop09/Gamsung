@@ -6,8 +6,17 @@
   padding: 13px 16px;
 }
 
+body {
+  overflow: hidden;
+}
 .sec_profileMain {
+  height: 100vh;
   padding: 60px 0;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .sec_profile {
   position: relative;
@@ -64,7 +73,7 @@
     }
   }
   .list_btnFollow {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     .btn_side {
@@ -94,7 +103,7 @@
     }
   }
   .list_myProfileBtn {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     .btn_myProfile {
