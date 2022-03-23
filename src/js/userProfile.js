@@ -1,9 +1,16 @@
 const $secProfile = document.querySelector('.sec_profile');
 const $followers = $secProfile.querySelector('.txt_followrs');
 const $btnFollow = $secProfile.querySelector('.btn_follow');
+const $wrapFollow = $secProfile.querySelectorAll('.wrap_follow');
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 const accountname = localStorage.getItem('accountname');
+
+// 뒤로가기
+const $btnBack = document.querySelector('.btn_backPage');
+$btnBack.addEventListener('click', () => {
+  window.history.back();
+})
 
 // 프로필 정보
 async function fetchProfileData() {
@@ -15,8 +22,7 @@ async function fetchProfileData() {
     }
   });
   const json = await res.json();
-  // console.log(res);
-  console.log(json);
+  // console.log(json);
   console.log(json.profile);
   const image = json.profile.image;
   const username = json.profile.username;
@@ -25,7 +31,7 @@ async function fetchProfileData() {
   const followers = json.profile.followerCount;
   const following = json.profile.followingCount;
   const isfollow = json.profile.isfollow;
-
+  localStorage.setItem('searchData', JSON.stringify(json.profile));
   userProfile(image, username, userId, intro, followers, following, isfollow);
 }
 fetchProfileData();
@@ -83,11 +89,17 @@ $btnFollow.addEventListener('click', () => {
     fetchUnfollowData();
     $btnFollow.classList.remove('on');
     $btnFollow.textContent = '팔로우';
-    $followers.textContent = followers - 1
+    $followers.textContent = followers - 1;
   } else {
     fetchFollowData();
     $btnFollow.classList.add('on');
     $btnFollow.textContent = '팔로우 취소';
-    $followers.textContent = followers + 1
+    $followers.textContent = followers + 1;
   }
 });
+$wrapFollow[0].addEventListener('click', () => {
+  localStorage.setItem('clickData', 'Followers');
+})
+$wrapFollow[1].addEventListener('click', () => {
+  localStorage.setItem('clickData', 'Followings');
+})

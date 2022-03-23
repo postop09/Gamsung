@@ -90,6 +90,7 @@ button {
   border-bottom: 1px solid #dbdbdb;
   width: 100%;
   padding: 13px 16px;
+  background-color: white;
 }
 
 .sec_followersHeader .img_backPage {
@@ -97,7 +98,13 @@ button {
 }
 
 .list_searchUser {
-  padding: 60px 16px;
+  height: 100vh;
+  padding: 50px 16px 70px;
+  overflow-y: scroll;
+}
+
+.list_searchUser::-webkit-scrollbar {
+  display: none;
 }
 
 .list_searchUser .item_searchUser {

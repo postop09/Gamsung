@@ -9,13 +9,19 @@
   border-bottom: 1px solid $c-layout;
   width: 100%;
   padding: 13px 16px;
+  background-color: white;
   .img_backPage {
     margin-right: 8px;
   }
 }
 
 .list_searchUser {
-  padding: 60px 16px;
+  height: 100vh;
+  padding: 50px 16px 70px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .item_searchUser {
     display: flex;
     align-items: center;

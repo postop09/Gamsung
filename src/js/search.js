@@ -3,6 +3,12 @@ const listUser = document.querySelector('.list_searchUser')
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 
+// 뒤로가기
+const $btnBack = document.querySelector('.btn_backPage');
+$btnBack.addEventListener('click', () => {
+  window.history.back();
+})
+
 // 일치하는 유저 데이터
 async function fetchsearchData() {
   const res = await fetch(`${url}/user/searchuser/?keyword=${inpSearch.value}`, {
