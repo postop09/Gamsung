@@ -117,7 +117,11 @@ body {
   }
 }
 
+.sec_products.on {
+  display: block;
+}
 .sec_products {
+  display: none;
   border-bottom: 5px solid $c-layout;
   padding: 20px 0 20px 21px;
   .txt_title {
@@ -149,7 +153,11 @@ body {
   }
 }
 
+.sec_userFeed.on {
+  display: block;
+}
 .sec_userFeed {
+  display: none;
   .list_contentsType {
     display: flex;
     justify-content: flex-end;

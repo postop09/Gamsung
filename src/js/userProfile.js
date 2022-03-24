@@ -1,4 +1,6 @@
 const $secProfile = document.querySelector('.sec_profile');
+const $secProducts = document.querySelector('.sec_products');
+const $secPost = document.querySelector('.sec_userFeed');
 const $followers = $secProfile.querySelector('.txt_followrs');
 const $btnFollow = $secProfile.querySelector('.btn_follow');
 const $wrapFollow = $secProfile.querySelectorAll('.wrap_follow');
@@ -103,3 +105,107 @@ $wrapFollow[0].addEventListener('click', () => {
 $wrapFollow[1].addEventListener('click', () => {
   localStorage.setItem('clickData', 'Followings');
 })
+
+// 상품 목록
+async function fetchProduct() {
+  const res = await fetch(`${url}/product/${accountname}`, {
+    method: 'GET',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : 'application/json'
+    }
+  });
+  const json = await res.json();
+  const $listProducts = $secProducts.querySelector('.list_products');
+
+  console.log(json);
+  if (json.data === 0) {
+    $secProducts.classList.remove('on');
+  } else {
+    $secProducts.classList.add('on');
+    json.product.map((item) => {
+      console.log(item);
+      $listProducts.innerHTML += `
+        <li class="item_product">
+          <button type="button">
+            <img src="${item.itemImage}" alt="" class="img_product">
+          </button>
+          <p class="txt_name">${item.itemName}</p>
+          <strong class="txt_price">${item.price}원</strong>
+        </li>
+      `
+
+    })
+  }
+}
+fetchProduct();
+
+// 게시글 목록
+async function fetchPost() {
+  const res = await fetch(`${url}/post/${accountname}/userpost`, {
+    method: 'GET',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : 'application/json'
+    }
+  });
+  const json = await res.json();
+  const $listPosts = $secPost.querySelector('.sec_feed');
+  console.log(json.post.length);
+
+  if (json.post.length === 0) {
+    $secPost.classList.remove('on');
+  } else {
+    $secPost.classList.add('on');
+    json.post.map((postItem) => {
+      console.log(postItem);
+      const authorImg = postItem.author.image;
+      const authorName = postItem.author.username;
+      const authorId = postItem.author.accountname;
+      const postContent = postItem.content;
+      const postImg = postItem.image;
+      const postImgs = postImg.split(',');
+      const postHeartCount = postItem.heartCount;
+      const postCommentCount = postItem.commentCount;
+      const postCreatedAt = postItem.createdAt;
+      const postHearted = postItem.hearted;
+      const createYear = postCreatedAt.substr(0, 4);
+      const createMonth = postCreatedAt.substr(5, 2);
+      const createDay = postCreatedAt.substr(8, 2);
+      console.log(postImgs=='');
+      $listPosts.innerHTML += `
+        <article class="artic_feed">
+          <h3 class="txt_hide">게시글</h3>
+          <img src="${authorImg}" alt="" class="img_profile">
+          <div class="wrap_contents">
+            <div class="wrap_profile">
+              <a href="" class="txt_profile">
+                <strong class="txt_profileName">${authorName}</strong>
+                <small class="txt_profileId">@ ${authorId}</small>
+              </a>
+              <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
+            </div>
+            <p class="txt_feedText">${postContent}</p>
+            ${postImgs=='' ? '' : `
+              <ul>
+              <li><img src="${postImgs[0]}" alt="" class="img_feedImg"></li>
+              </ul>
+            `}
+            <dl class="list_likeComment">
+              <div class="wrap_likeComment">
+                <dt><button type="button"><img src="../img/icon/icon-heart.png" alt="좋아요" class="img_icon"></button></dt>
+                <dd>${postHeartCount}</dd>
+              </div>
+              <div class="wrap_likeComment">
+                <dt><button type="button"><img src="../img/icon/icon-message-circle.png" alt="댓글 개수 및 댓글 보러가기" class="img_icon"></button></dt>
+                <dd>${postCommentCount}</dd>
+              </div>
+            </dl>
+            <small class="txt_postDate">${createYear}년 ${createMonth}월 ${createDay}일</small>
+          </div>
+        </article>
+      `
+    })
+  }
+}
+fetchPost();

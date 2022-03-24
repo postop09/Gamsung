@@ -256,7 +256,12 @@ body {
   margin-right: 11px;
 }
 
+.sec_products.on {
+  display: block;
+}
+
 .sec_products {
+  display: none;
   border-bottom: 5px solid #dbdbdb;
   padding: 20px 0 20px 21px;
 }
@@ -295,6 +300,14 @@ body {
 .sec_products .txt_price {
   font-size: 12px;
   color: #EA7F42;
+}
+
+.sec_userFeed.on {
+  display: block;
+}
+
+.sec_userFeed {
+  display: none;
 }
 
 .sec_userFeed .list_contentsType {

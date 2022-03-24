@@ -6,8 +6,6 @@ const searchData = JSON.parse(localStorage.getItem('searchData'));
 const userData = JSON.parse(localStorage.getItem('userData'));
 const token = JSON.parse(localStorage.getItem('token'));
 const followData = localStorage.getItem('clickData');
-const followers = searchData.follower;
-const followings = searchData.following;
 
 // 뒤로가기
 $btnBack.addEventListener('click', () => {
@@ -21,7 +19,9 @@ async function fetchUserData() {
     method: 'GET'
   })
   const json = await res.json();
-  console.log(followData);
+  const followers = searchData.follower;
+  const followings = searchData.following;
+
   $title.textContent = followData;
   if (followData === 'Followers') {
     followers.map((follower) => {
