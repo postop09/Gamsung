@@ -237,7 +237,9 @@ body {
 }
 
 .sec_profile .list_myProfileBtn {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -247,9 +249,12 @@ body {
 }
 
 .sec_profile .list_myProfileBtn .btn_myProfile {
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   border: 1px solid #dbdbdb;
   border-radius: 30px;
   padding: 8px 26px;
+  font-size: 14px;
 }
 
 .sec_profile .list_myProfileBtn .btn_editProfile {
