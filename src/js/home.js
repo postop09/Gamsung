@@ -161,5 +161,5 @@ $secFeed.addEventListener('click', (e) => {
 // 나의 프로필
 $btnMyProfile.addEventListener('click', () => {
   const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
-  localStorage.setItem('accountname', myAccountname);
+  localStorage.setItem('myAccountname', myAccountname);
 })

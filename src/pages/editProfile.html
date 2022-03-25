@@ -19,25 +19,27 @@
       <h2 class="txt_hide">프로필 수정</h2>
       <form action="" class="form_login">
         <div class="wrap_profileImg">
-          <input type="file" name="" id="inp_profile" class="inp_profileImg" accept="image/*">
+          <input type="file" id="inp_profile" accept="image/*" class="inp_profileImg">
           <label for="inp_profile" class="label_profileImg"><img src="../img/Ellipse-1.png" alt="프로필 이미지 선택" class="img_profile"></label>
         </div>
         <div class="wrap_userName">
           <label for="inp_userName">사용자 이름</label>
-          <input type="text" name="" id="inp_userName" placeholder="2 ~ 10자 이내여야 합니다." class="inp_login">
+          <input type="text" id="inp_userName" minlength="2" maxlength="10" placeholder="2 ~ 10자 이내여야 합니다." class="inp_login">
         </div>
         <div class="wrap_userId">
           <label for="inp_userId">계정 ID</label>
-          <input type="password" name="" id="inp_userId" placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다." class="inp_login">
+          <input type="text" id="inp_userId" placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다." class="inp_login">
         </div>
-        <strong class="txt_err">*이미 사용 중인 ID입니다.</strong>
+        <strong class="txt_err"></strong>
+        <strong class="txt_ok"></strong>
         <div class="wrap_intro">
           <label for="inp_intro">소개</label>
-          <input type="password" name="" id="inp_intro" placeholder="자신과 판매할 상품에 대해 소개해 주세요!" class="inp_login">
+          <input type="text" id="inp_intro" placeholder="자신과 판매할 상품에 대해 소개해 주세요!" class="inp_login">
         </div>
-        <button type="submit" class="btn_save">저장</button>
+        <button type="submit" class="btn_save" disabled>저장</button>
       </form>
     </section>
   </main>
+  <script src="../js/editProfile.js"></script>
 </body>
 </html>

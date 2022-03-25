@@ -29,8 +29,8 @@ async function fetchUserData() {
         if (follower === user._id && user.follower.includes(userData._id)) {
           $listFollower.innerHTML += `
             <li class="item_searchUser">
-              <a href="" class="btn_searchUser">
-                <img src="${user.image}" alt="" class="img_searchUser">
+            <img src="${user.image}" alt="" class="img_searchUser">
+              <a href="userProfile.html" class="btn_searchUser">
                 <div class="wrap_txtUser">
                   <strong class="txt_userName">${user.username}</strong>
                   <small class="txt_userId">@ ${user.accountname}</small>
@@ -42,8 +42,8 @@ async function fetchUserData() {
         } else if (follower === user._id) {
           $listFollower.innerHTML += `
             <li class="item_searchUser">
-              <a href="" class="btn_searchUser">
-                <img src="${user.image}" alt="" class="img_searchUser">
+            <img src="${user.image}" alt="" class="img_searchUser">
+              <a href="userProfile.html" class="btn_searchUser">
                 <div class="wrap_txtUser">
                   <strong class="txt_userName">${user.username}</strong>
                   <small class="txt_userId">@ ${user.accountname}</small>
@@ -61,8 +61,8 @@ async function fetchUserData() {
         if (following === user._id && user.following.includes(userData._id)) {
           $listFollower.innerHTML += `
             <li class="item_searchUser">
-              <a href="" class="btn_searchUser">
-                <img src="${user.image}" alt="" class="img_searchUser">
+            <img src="${user.image}" alt="" class="img_searchUser">
+              <a href="userProfile.html" class="btn_searchUser">
                 <div class="wrap_txtUser">
                   <strong class="txt_userName">${user.username}</strong>
                   <small class="txt_userId">@ ${user.accountname}</small>
@@ -74,8 +74,8 @@ async function fetchUserData() {
         } else if (following === user._id) {
           $listFollower.innerHTML += `
             <li class="item_searchUser">
-              <a href="" class="btn_searchUser">
-                <img src="${user.image}" alt="" class="img_searchUser">
+            <img src="${user.image}" alt="" class="img_searchUser">
+              <a href="userProfile.html" class="btn_searchUser">
                 <div class="wrap_txtUser">
                   <strong class="txt_userName">${user.username}</strong>
                   <small class="txt_userId">@ ${user.accountname}</small>
@@ -91,10 +91,13 @@ async function fetchUserData() {
 }
 fetchUserData();
 
-// 팔로우 버튼
+// 팔로우 버튼 및 유저 프로필 이동
 $listFollower.addEventListener('click', (e) => {
   const followAccountname = e.target.parentNode.querySelector('.txt_userId').textContent.substr(2);
-  if (e.target.className === 'btn_follow') {
+  
+  if (e.target.parentNode.className === 'wrap_txtUser') {
+    localStorage.setItem('accountname', followAccountname);
+  } else if (e.target.className === 'btn_follow') {
     fetchFollowData(followAccountname);
     e.target.classList.add('on');
     e.target.textContent = '취소';

@@ -1,9 +1,11 @@
 const $secProfile = document.querySelector('.sec_profile');
 const $secProducts = document.querySelector('.sec_products');
 const $secPost = document.querySelector('.sec_userFeed');
+const $secFeed = $secPost.querySelector('.sec_feed');
 const $followers = $secProfile.querySelector('.txt_followrs');
 const $btnFollow = $secProfile.querySelector('.btn_follow');
 const $wrapFollow = $secProfile.querySelectorAll('.wrap_follow');
+const $btnMyProfile = document.querySelector('.btn_myProfile');
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 const accountname = localStorage.getItem('accountname');
@@ -25,7 +27,7 @@ async function fetchProfileData() {
   });
   const json = await res.json();
   // console.log(json);
-  console.log(json.profile);
+  // console.log(json.profile);
   const image = json.profile.image;
   const username = json.profile.username;
   const userId = json.profile.accountname;
@@ -71,7 +73,7 @@ async function fetchFollowData() {
     }
   });
   const json = await res.json();
-  console.log(json);
+  // console.log(json);
 }
 // 팔로우 취소
 async function fetchUnfollowData() {
@@ -83,7 +85,7 @@ async function fetchUnfollowData() {
     }
   });
   const json = await res.json();
-  console.log(json);
+  // console.log(json);
 }
 $btnFollow.addEventListener('click', () => {
   const followers = parseInt($followers.textContent);
@@ -117,8 +119,8 @@ async function fetchProduct() {
   });
   const json = await res.json();
   const $listProducts = $secProducts.querySelector('.list_products');
+  // console.log(json);
 
-  console.log(json);
   if (json.data === 0) {
     $secProducts.classList.remove('on');
   } else {
@@ -151,7 +153,6 @@ async function fetchPost() {
   });
   const json = await res.json();
   const $listPosts = $secPost.querySelector('.sec_feed');
-  console.log(json.post.length);
 
   if (json.post.length === 0) {
     $secPost.classList.remove('on');
@@ -162,6 +163,7 @@ async function fetchPost() {
       const authorImg = postItem.author.image;
       const authorName = postItem.author.username;
       const authorId = postItem.author.accountname;
+      const postItemId = postItem.id;
       const postContent = postItem.content;
       const postImg = postItem.image;
       const postImgs = postImg.split(',');
@@ -172,9 +174,9 @@ async function fetchPost() {
       const createYear = postCreatedAt.substr(0, 4);
       const createMonth = postCreatedAt.substr(5, 2);
       const createDay = postCreatedAt.substr(8, 2);
-      console.log(postImgs=='');
+      
       $listPosts.innerHTML += `
-        <article class="artic_feed">
+        <article class="artic_feed" key="${postItemId}">
           <h3 class="txt_hide">게시글</h3>
           <img src="${authorImg}" alt="" class="img_profile">
           <div class="wrap_contents">
@@ -193,11 +195,11 @@ async function fetchPost() {
             `}
             <dl class="list_likeComment">
               <div class="wrap_likeComment">
-                <dt><button type="button"><img src="../img/icon/icon-heart.png" alt="좋아요" class="img_icon"></button></dt>
+                <dt><button type="button"><img src="${postHearted ? '../img/icon/icon-heart-active.png' : '../img/icon/icon-heart.png'}" alt="좋아요" class="${postHearted ? 'img_icon img_like on' : 'img_icon img_like'}"></button></dt>
                 <dd>${postHeartCount}</dd>
               </div>
               <div class="wrap_likeComment">
-                <dt><button type="button"><img src="../img/icon/icon-message-circle.png" alt="댓글 개수 및 댓글 보러가기" class="img_icon"></button></dt>
+                <dt><button type="button"><img src="../img/icon/icon-message-circle.png" alt="댓글 개수 및 댓글 보러가기" class="img_icon img_chat"></button></dt>
                 <dd>${postCommentCount}</dd>
               </div>
             </dl>
@@ -209,3 +211,59 @@ async function fetchPost() {
   }
 }
 fetchPost();
+
+// 좋아요
+async function fetchLikeData(postId) {
+  const res = await fetch(`${url}/post/${postId}/heart`, {
+    method: 'POST',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : "application/json"
+    }
+  });
+  const json = await res.json();
+  // console.log(json);
+}
+// 좋아요 취소
+async function fetchUnLikeData(postId) {
+  const res = await fetch(`${url}/post/${postId}/unheart`, {
+    method: 'DELETE',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : "application/json"
+    }
+  });
+  const json = await res.json();
+  // console.log(json);
+}
+$secFeed.addEventListener('click', (e) => {
+  if (e.target.className === 'img_icon img_like') {
+    const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
+    const heartCount = e.target.parentNode.parentNode.parentNode.querySelector('dd')
+    fetchLikeData(postId);
+    e.target.classList.add('on');
+    e.target.src = '../img/icon/icon-heart-active.png';
+    heartCount.textContent = Number(heartCount.textContent) + 1;
+  } else if (e.target.className === 'img_icon img_like on') {
+    const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
+    const heartCount = e.target.parentNode.parentNode.parentNode.querySelector('dd')
+    fetchUnLikeData(postId);
+    e.target.classList.remove('on');
+    e.target.src = '../img/icon/icon-heart.png';
+    heartCount.textContent = Number(heartCount.textContent) - 1;
+  } else if (e.target.parentNode.className === 'txt_profile') {
+    const accountname = e.target.parentNode.querySelector('.txt_profileId').textContent.substr(2);
+    console.log(accountname);
+    localStorage.setItem('accountname', accountname);
+  } else if (e.target.className === 'img_icon img_chat') {
+    const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
+    localStorage.setItem('postId', postId);
+    location.href = 'post.html';
+  }
+})
+
+// 나의 프로필
+$btnMyProfile.addEventListener('click', () => {
+  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
+  localStorage.setItem('myAccountname', myAccountname);
+})

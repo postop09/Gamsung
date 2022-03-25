@@ -1,9 +1,17 @@
 const $secDetail = document.querySelector('.sec_postDetail');
 const $secComment = document.querySelector('.sec_postComment');
 const $secFooter = document.querySelector('.sec_postFooter');
+const $inpComment = $secFooter.querySelector('.inp_comment');
+const $btnComment = $secFooter.querySelector('.btn_pushComment');
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 const postId = localStorage.getItem('postId');
+
+// 뒤로가기
+const $btnBack = document.querySelector('.btn_backPage');
+$btnBack.addEventListener('click', () => {
+  window.history.back();
+})
 
 // 게시글 상세보기
 async function fetchPostData() {
@@ -15,8 +23,6 @@ async function fetchPostData() {
     }
   });
   const json = await res.json();
-  console.log(json);
-
   const authorImg = json.post.author.image;
   const authorName = json.post.author.username;
   const authorId = json.post.author.accountname;
@@ -30,7 +36,8 @@ async function fetchPostData() {
   const createYear = postCreatedAt.substr(0, 4);
   const createMonth = postCreatedAt.substr(5, 2);
   const createDay = postCreatedAt.substr(8, 2);
-
+  // console.log(json);
+  
   $secDetail.innerHTML = `
     <img src="${authorImg}" alt="" class="img_profile">
     <div class="wrap_contents">
@@ -62,46 +69,6 @@ async function fetchPostData() {
   `
 }
 fetchPostData();
-
-// 댓글 목록
-async function fetchCommentData() {
-  const res = await fetch(`${url}/post/${postId}/comments`, {
-    method: 'GET',
-    headers: {
-      "Authorization" : `Bearer ${token}`,
-      "Content-type" : 'application/json'
-    }
-  });
-  const json = await res.json();
-  console.log(json);
-  json.comments.map((comment) => {
-    const $listComment = $secComment.querySelector('.list_comment');
-    const commentImg = comment.author.image;
-    const commentName = comment.author.username;
-    const commentCreatedAt = comment.createdAt;
-    const createYear = commentCreatedAt.substr(0, 4);
-    const createMonth = commentCreatedAt.substr(5, 2);
-    const createDay = commentCreatedAt.substr(8, 2);
-    const commentContent = comment.content;
-
-    $listComment.innerHTML += `
-      <li class="item_comment">
-        <img src="${commentImg}" alt="" class="img_comment">
-        <div class="wrap_user">
-          <div class="wrap_txtUser">
-            <strong class="txt_userName">${commentName}</strong>
-            <small class="txt_uploadTime">${createYear}년 ${createMonth}월 ${createDay}일</small>
-            <button type="button">
-              <img src="../img/icon/s-icon-more-vertical.png" alt="메뉴 보기">
-            </button>
-          </div>
-          <p class="txt_comment">${commentContent}</p>
-        </div>
-      </li>
-    `
-  })
-}
-fetchCommentData();
 
 // 좋아요
 async function fetchLikeData() {
@@ -145,7 +112,83 @@ $secDetail.addEventListener('click', (e) => {
     console.log(accountname);
     localStorage.setItem('accountname', accountname);
   } else if (e.target.className === 'img_icon img_chat') {
-    const $inpComment = $secFooter.querySelector('.inp_comment');
     $inpComment.focus();
   }
 })
+
+// 댓글 목록
+async function fetchCommentData() {
+  const res = await fetch(`${url}/post/${postId}/comments`, {
+    method: 'GET',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : 'application/json'
+    }
+  });
+  const json = await res.json();
+  // console.log(json);
+  json.comments.map((comment) => {
+    const $listComment = $secComment.querySelector('.list_comment');
+    const $imgMyProfile = $secFooter.querySelector('.img_myProfile');
+    const imgMyProfile = JSON.parse(localStorage.getItem('userData'));
+    const commentImg = comment.author.image;
+    const commentName = comment.author.username;
+    const commentCreatedAt = comment.createdAt;
+    const createYear = commentCreatedAt.substr(0, 4);
+    const createMonth = commentCreatedAt.substr(5, 2);
+    const createDay = commentCreatedAt.substr(8, 2);
+    const commentContent = comment.content;
+
+    $imgMyProfile.src = imgMyProfile.image;
+    $listComment.innerHTML += `
+      <li class="item_comment">
+        <img src="${commentImg}" alt="" class="img_comment">
+        <div class="wrap_user">
+          <div class="wrap_txtUser">
+            <strong class="txt_userName">${commentName}</strong>
+            <small class="txt_uploadTime">${createYear}년 ${createMonth}월 ${createDay}일</small>
+            <button type="button">
+              <img src="../img/icon/s-icon-more-vertical.png" alt="메뉴 보기">
+            </button>
+          </div>
+          <p class="txt_comment">${commentContent}</p>
+        </div>
+      </li>
+    `
+  })
+}
+fetchCommentData();
+
+// 댓글 작성
+async function fetchPushCommentData() {
+  const res = await fetch(`${url}/post/${postId}/comments`, {
+    method: 'POST',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : "application/json"
+    },
+    body: JSON.stringify({
+      "comment": {
+        "content": $inpComment.value,
+      }
+    })
+  });
+  // const json = await res.json();
+  // console.log(json);
+}
+$btnComment.addEventListener('click', () => {
+  fetchPushCommentData();
+  window.location.reload();
+});
+
+// 댓글 입력 버튼 활성화
+function inpCommentForBtn() {
+  if ($inpComment.value === '') {
+    $btnComment.classList.remove('on');
+    $btnComment.setAttribute('disabled', 'disabled');
+  } else {
+    $btnComment.classList.add('on');
+    $btnComment.removeAttribute('disabled');
+  }
+}
+$inpComment.addEventListener('keyup', inpCommentForBtn);
