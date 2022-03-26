@@ -73,9 +73,6 @@ $userId.addEventListener('blur', fetchProfileIdData);
     }
   })
 })
-$btnSave.addEventListener('click', (e) => {
-  e.preventDefault();
-});
 
 // 이미지 업로드
 async function profileImage(e) {
@@ -122,7 +119,8 @@ async function fetchEditProfileData() {
   const json = await res.json();
   localStorage.setItem('userData', JSON.stringify(json.user));
 }
-$btnSave.addEventListener('click', () => {
+$btnSave.addEventListener('click', (e) => {
+  e.preventDefault();
   fetchEditProfileData();
   setTimeout(location.href = 'home.html', 800);
 })

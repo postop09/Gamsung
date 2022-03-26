@@ -1,9 +1,11 @@
 const $secProfile = document.querySelector('.sec_profile');
 const $secProducts = document.querySelector('.sec_products');
 const $secPost = document.querySelector('.sec_userFeed');
+const $secFeed = $secPost.querySelector('.sec_feed');
 const $followers = $secProfile.querySelector('.txt_followrs');
 const $btnFollow = $secProfile.querySelector('.btn_follow');
 const $wrapFollow = $secProfile.querySelectorAll('.wrap_follow');
+const $btnMyProfile = document.querySelector('.btn_myProfile');
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 const myAccountname = localStorage.getItem('myAccountname');
@@ -71,21 +73,21 @@ async function fetchProduct() {
   });
   const json = await res.json();
   const $listProducts = $secProducts.querySelector('.list_products');
-
-  console.log(json);
+  
   if (json.data === 0) {
     $secProducts.classList.remove('on');
   } else {
     $secProducts.classList.add('on');
     json.product.map((item) => {
-      console.log(item);
+      const price = +item.price;
+      // console.log(item);
       $listProducts.innerHTML += `
         <li class="item_product">
           <button type="button">
             <img src="${item.itemImage}" alt="" class="img_product">
           </button>
           <p class="txt_name">${item.itemName}</p>
-          <strong class="txt_price">${item.price}원</strong>
+          <strong class="txt_price">${price.toLocaleString()}원</strong>
         </li>
       `
 
@@ -105,7 +107,6 @@ async function fetchPost() {
   });
   const json = await res.json();
   const $listPosts = $secPost.querySelector('.sec_feed');
-  console.log(json.post.length);
 
   if (json.post.length === 0) {
     $secPost.classList.remove('on');

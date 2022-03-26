@@ -17,27 +17,28 @@
   <main>
     <section class="sec_newProfile">
       <h2 class="txt_hide">상품 정보 작성</h2>
-      <form action="" class="form_login">
+      <form class="form_login">
         <p class="txt_profileImg">이미지 등록</p>
         <div class="wrap_profileImg">
-          <input type="file" name="" id="inp_profile" class="inp_profileImg" accept="image/*">
+          <input type="file" id="inp_profile" class="inp_profileImg" accept="image/*">
           <label for="inp_profile" class="label_profileImg"><span class="txt_hide">프로필 이미지 선택</span></label>
         </div>
         <div class="wrap_userName">
           <label for="inp_userName">상품명</label>
-          <input type="text" name="" id="inp_userName" placeholder="2 ~ 15자 이내여야 합니다." class="inp_login">
+          <input type="text" minlength="2" maxlength="15" id="inp_userName" placeholder="2 ~ 15자 이내여야 합니다." class="inp_login">
         </div>
         <div class="wrap_userId">
           <label for="inp_userId">가격</label>
-          <input type="password" name="" id="inp_userId" placeholder="숫자만 입력 가능합니다." class="inp_login">
+          <input type="text" id="inp_userId" placeholder="숫자만 입력 가능합니다." class="inp_login inp_price">
         </div>
         <div class="wrap_intro">
           <label for="inp_intro">판매 링크</label>
-          <input type="password" name="" id="inp_intro" placeholder="URL을 입력해 주세요." class="inp_login">
+          <input type="text" id="inp_intro" placeholder="URL을 입력해 주세요." class="inp_login">
         </div>
-        <button type="submit" class="btn_save">저장</button>
+        <button type="submit" class="btn_save" disabled>저장</button>
       </form>
     </section>
   </main>
+  <script src="../js/addProduct.js"></script>
 </body>
 </html>

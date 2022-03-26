@@ -58,7 +58,7 @@ async function fetchUserData() {
   } else if (followData === 'Followings') {
     followings.map((following) => {
       json.map((user) => {
-        if (following === user._id && user.following.includes(userData._id)) {
+        if (following === user._id && user.follower.includes(userData._id)) {
           $listFollower.innerHTML += `
             <li class="item_searchUser">
             <img src="${user.image}" alt="" class="img_searchUser">
