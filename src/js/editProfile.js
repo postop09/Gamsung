@@ -61,19 +61,6 @@ async function fetchProfileIdData() {
 }
 $userId.addEventListener('blur', fetchProfileIdData);
 
-// 버튼 활성화 유효성 검사
-[...$inpEditText].map((input) => {
-  input.addEventListener('keyup', () => {
-    if ($userName.value == '' || $userId.value == '' || $txtError.className == 'txt_err on') {
-      $btnSave.classList.remove('on');
-      $btnSave.setAttribute('disabled', 'disabled');
-    } else {
-      $btnSave.classList.add('on');
-      $btnSave.removeAttribute('disabled');
-    }
-  })
-})
-
 // 이미지 업로드
 async function profileImage(e) {
   const labelPreview = $formEdit.querySelector('.label_profileImg');
@@ -88,7 +75,7 @@ async function profileImage(e) {
 async function imageUpload(files) {
   const formData = new FormData();
   formData.append('image', files[0]);
-  const res = await fetch(`http://146.56.183.55:5050/image/uploadfile`, {
+  const res = await fetch(`${url}/image/uploadfile`, {
       method: 'POST',
       body: formData,
   });
@@ -97,6 +84,19 @@ async function imageUpload(files) {
   return imgFileName;
 }
 $imgEditProfile.addEventListener('change', profileImage);
+
+// 버튼 활성화 유효성 검사
+[...$inpEditText].map((input) => {
+  input.addEventListener('keyup', () => {
+    if ($userName.value == '' || $userId.value == '' || $txtError.className == 'txt_err on') {
+      $btnSave.classList.remove('on');
+      $btnSave.setAttribute('disabled', 'disabled');
+    } else {
+      $btnSave.classList.add('on');
+      $btnSave.removeAttribute('disabled');
+    }
+  })
+})
 
 // 프로필 수정 저장
 async function fetchEditProfileData() {

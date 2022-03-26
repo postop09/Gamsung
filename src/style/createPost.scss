@@ -9,10 +9,13 @@
   display: flex;
   padding: 80px 16px;
   .img_writer {
+    border: 1px solid $c-layout;
     border-radius: 100%;
     width: 42px;
     height: 42px;
     margin-right: 10px;
+    object-fit: cover;
+    object-position: center center;
   }
   .form_createPost {
     width: 100%;
@@ -21,6 +24,7 @@
   .inp_textarea {
     border: none;
     width: 100%;
+    min-height: 20px;
     padding: 3px;
     font-size: 14px;
     overflow-y: hidden;
@@ -36,9 +40,12 @@
       margin-right: 10px;
     }
     .img_preview {
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       width: 304px;
       height: 228px;
+      object-fit: contain;
+      background-color: whitesmoke
     }
   }
   .label_upload {

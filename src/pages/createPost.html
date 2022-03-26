@@ -20,23 +20,15 @@
       <img src="../img/basic-profile-img.png" alt="" class="img_writer">
       <form action="" class="form_createPost">
         <label for="inp_textarea" class="txt_hide">게시글 입력란</label>
-        <textarea name="" id="inp_textarea" cols="30" rows="10" placeholder="게시글 입력하기..." class="inp_textarea"></textarea>
+        <textarea name="" id="inp_textarea" placeholder="게시글 입력하기..." class="inp_textarea"></textarea>
         <ul class="list_previewImg">
-          <li class="item_previewImg">
-            <img src="../img/post-img-example.png" alt="" class="img_preview">
-          </li>
-          <li class="item_previewImg">
-            <img src="../img/post-img-example.png" alt="" class="img_preview">
-          </li>
-          <li class="item_previewImg">
-            <img src="../img/post-img-example.png" alt="" class="img_preview">
-          </li>
         </ul>
-        <input type="file" id="inp_imgUpload" class="inp_postImg" accept="image/*" multiple>
+        <input type="file" id="inp_imgUpload" class="inp_postImg" accept="image/*" multiple maxlength="3">
         <label for="inp_imgUpload" class="label_upload"><img src="../img/upload-file.png" alt="업로드할 사진 선택" class="img_select"></label>
-        <button type="submit" class="btn_upload">업로드</button>
+        <button type="submit" class="btn_upload" disabled>업로드</button>
       </form>
     </div>
   </main>
+  <script src="../js/createPost.js"></script>
 </body>
 </html>

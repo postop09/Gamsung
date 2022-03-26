@@ -77,7 +77,10 @@ $price.addEventListener('blur', () => {
   })
 })
 $btnSave.addEventListener('click', (e) => {
+  function move() {
+    location.href = 'myProfile.html'
+  }
   e.preventDefault();
   fetchPushProductData();
-  setTimeout(location.href = 'myProfile.html', 800);
+  setTimeout(move, 800);
 })

@@ -164,10 +164,15 @@ button {
 }
 
 .sec_feed .artic_feed .img_profile {
+  border: 1px solid #dbdbdb;
   border-radius: 100%;
   width: 42px;
   height: 42px;
   margin-right: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
 }
 
 .sec_feed .artic_feed .wrap_contents {

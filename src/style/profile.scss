@@ -187,10 +187,13 @@ body {
       display: flex;
       margin-bottom: 25px;
       .img_profile {
+        border: 1px solid $c-layout;
         border-radius: 100%;
         width: 42px;
         height: 42px;
         margin-right: 12px;
+        object-fit: cover;
+        object-position: center center;
       }
       .wrap_profile {
         display: flex;
