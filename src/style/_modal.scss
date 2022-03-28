@@ -1,0 +1,88 @@
+@import 'util';
+
+.modal_confirm.on {
+  display: block;
+}
+.modal_confirm {
+  display: none;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  .wrap_confirm {
+    @include center(absolute);
+    border-radius: 10px;
+    background-color: white;
+  }
+  .txt_confirm {
+    padding: 22px 61px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .list_btnConfirm {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid $c-layout;
+  }
+  .btn_confirm {
+    padding: 14px 50px;
+    font-size: 14px;
+  }
+  .btn_delete {
+    border-left: 1px solid $c-layout;
+    white-space: nowrap;
+    color: $c-main;
+  }
+}
+
+.modal_profile.on,
+.modal_post.on,
+.modal_product.on,
+.modal_report.on,
+.modal_delete.on {
+  display: block;
+}
+.modal_profile,
+.modal_post,
+.modal_product,
+.modal_report,
+.modal_delete {
+  display: none;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  .wrap_profile {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: white;
+  }
+  li {
+    width: 100%;
+  }
+  .btn_profile {
+    width: 100%;
+    padding: 14px 0 14px 26px;
+    text-align: left;
+    transition: all .2s;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  .btn_setting {
+    margin-top: 36px;
+  }
+  .btn_close {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    width: 50px;
+    height: 4px;
+    background-color: $c-layout;
+  }
+}
