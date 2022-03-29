@@ -1,5 +1,7 @@
-const $secFeed = document.querySelector('.sec_feed');
-const $secNoneFeed = document.querySelector('.sec_noneFeed');
+const $secMain = document.querySelector('.sec_homeMain');
+const $secFeed = $secMain.querySelector('.sec_feed');
+const $secNoneFeed = $secMain.querySelector('.sec_noneFeed');
+const $secModal = $secMain.querySelector('.sec_modal');
 const $btnMyProfile = document.querySelector('.btn_myProfile');
 const url = `http://146.56.183.55:5050`;
 const userData = JSON.parse(localStorage.getItem('userData'));
@@ -163,3 +165,37 @@ $btnMyProfile.addEventListener('click', () => {
   const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
   localStorage.setItem('myAccountname', myAccountname);
 })
+
+// 모달창
+function modalReportOpen(e) {
+  if (e.target.parentNode.className === 'btn_profileMore') {
+    $secModal.innerHTML += `
+      <article class="modal_report">
+        <h3 class="txt_hide">신고 모달창</h3>
+        <div class="wrap_profile">
+          <ul class="list_btnProfile">
+            <li><button type="button" class="btn_profile btn_setting">신고하기</button></li>
+          </ul>
+          <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
+        </div>
+      </article>
+    `
+  }
+}
+function modalReportClose(e) {
+  if (e.target.className === 'btn_close') {
+    $secModal.innerHTML = ''
+  } else if (e.target.className === 'modal_report') {
+    $secModal.innerHTML = ''
+  }
+}
+function report(e) {
+  if (e.target.className === 'btn_profile btn_setting') {
+    console.log('신고');
+  }
+}
+$secMain.addEventListener('click', (e) => {
+  modalReportOpen(e);
+  modalReportClose(e);
+  report(e);
+});

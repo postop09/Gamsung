@@ -1,11 +1,14 @@
-const $secProfile = document.querySelector('.sec_profile');
-const $secProducts = document.querySelector('.sec_products');
-const $secPost = document.querySelector('.sec_userFeed');
+const $secMain = document.querySelector('.sec_profileMain')
+const $secProfile = $secMain.querySelector('.sec_profile');
+const $secProducts = $secMain.querySelector('.sec_products');
+const $secPost = $secMain.querySelector('.sec_userFeed');
 const $secFeed = $secPost.querySelector('.sec_feed');
 const $followers = $secProfile.querySelector('.txt_followrs');
 const $btnFollow = $secProfile.querySelector('.btn_follow');
 const $wrapFollow = $secProfile.querySelectorAll('.wrap_follow');
 const $btnMyProfile = document.querySelector('.btn_myProfile');
+const $btnMore = document.querySelector('.btn_moreMenu');
+const $secModal = document.querySelector('.sec_modal');
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 const accountname = localStorage.getItem('accountname');
@@ -160,7 +163,7 @@ async function fetchPost() {
   } else {
     $secPost.classList.add('on');
     json.post.map((postItem) => {
-      console.log(postItem);
+      // console.log(postItem);
       const authorImg = postItem.author.image;
       const authorName = postItem.author.username;
       const authorId = postItem.author.accountname;
@@ -254,7 +257,7 @@ $secFeed.addEventListener('click', (e) => {
     heartCount.textContent = Number(heartCount.textContent) - 1;
   } else if (e.target.parentNode.className === 'txt_profile') {
     const accountname = e.target.parentNode.querySelector('.txt_profileId').textContent.substr(2);
-    console.log(accountname);
+    // console.log(accountname);
     localStorage.setItem('accountname', accountname);
   } else if (e.target.className === 'img_icon img_chat') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
@@ -268,3 +271,121 @@ $btnMyProfile.addEventListener('click', () => {
   const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
   localStorage.setItem('myAccountname', myAccountname);
 })
+
+// 모달창
+function modalProfile() {
+  $secModal.innerHTML += `
+    <article class="modal_profile">
+      <h3 class="txt_hide">개인 프로필 모달창</h3>
+      <div class="wrap_profile">
+        <ul class="list_btnProfile">
+          <li><button type="button" class="btn_profile btn_profile">설정 및 개인정보</button></li>
+          <li><button type="button" class="btn_profile btn_logout">로그아웃</button></li>
+        </ul>
+        <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
+      </div>
+    </article>
+    `
+}
+$btnMore.addEventListener('click', () => {
+  modalProfile();
+})
+
+function modalProfileRole(e) {
+  if (e.target.className === 'btn_profile btn_profile') {
+    console.log('설정 및 개인정보');
+  } else if (e.target.className === 'btn_profile btn_logout') {
+    console.log('로그아웃');
+    $secModal.innerHTML += `
+      <article class="modal_confirm">
+        <h3 class="txt_hide">선택 재확인 모달창</h3>
+        <div class="wrap_confirm">
+          <p class="txt_confirm">로그아웃 하시겠어요?</p>
+          <ul class="list_btnConfirm">
+            <li><button type="button" class="btn_confirm btn_cancel">취소</button></li>
+            <li><button type="button" class="btn_confirm btn_delete btn_logout">로그아웃</button></li>
+          </ul>
+        </div>
+      </article>
+    `
+  }
+}
+
+function modalProduct(e) {
+  if (e.target.className === 'img_product') {
+    console.log('상품');
+    $secModal.innerHTML += `
+      <article class="modal_product">
+        <h3 class="txt_hide">상품 수정 및 삭제 모달창</h3>
+        <div class="wrap_profile">
+          <ul class="list_btnProfile">
+            <li><button type="button" class="btn_profile btn_delete">삭제</button></li>
+            <li><button type="button" class="btn_profile btn_setting">수정</button></li>
+            <li><button type="button" class="btn_profile btn_website">웹사이트에서 상품 보기</button></li>
+          </ul>
+          <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
+        </div>
+      </article>
+    `
+  }
+}
+$secProducts.addEventListener('click', (e) => {
+  modalProduct(e);
+})
+
+function modalReport(e) {
+  if (e.target.parentNode.className === 'btn_profileMore') {
+    $secModal.innerHTML += `
+      <article class="modal_post">
+        <h3 class="txt_hide">게시글 수정 및 삭제 모달창</h3>
+        <div class="wrap_profile">
+          <ul class="list_btnProfile">
+            <li><button type="button" class="btn_profile btn_delete">삭제</button></li>
+            <li><button type="button" class="btn_profile btn_setting">수정</button></li>
+          </ul>
+          <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
+        </div>
+      </article>
+    `
+  } else if (e.target.className === 'btn_close') {
+    $secModal.innerHTML = '';
+  } else if (e.target.className === 'modal_post' || e.target.className === 'modal_profile' || e.target.className === 'modal_product') {
+    $secModal.innerHTML = '';
+  }
+}
+
+function modalConfirm(e) {
+  if (e.target.className === 'btn_profile btn_delete') {
+    console.log('삭제');
+    $secModal.innerHTML += `
+      <article class="modal_confirm">
+        <h3 class="txt_hide">선택 재확인 모달창</h3>
+        <div class="wrap_confirm">
+          <p class="txt_confirm">게시글을 삭제할까요?</p>
+          <ul class="list_btnConfirm">
+            <li><button type="button" class="btn_confirm btn_cancel">취소</button></li>
+            <li><button type="button" class="btn_confirm btn_delete">삭제</button></li>
+          </ul>
+        </div>
+      </article>
+    `
+  } else if (e.target.className === 'btn_profile btn_setting') {
+    console.log('수정');
+  } else if (e.target.className === 'btn_confirm btn_cancel') {
+    console.log('취소');
+    $secModal.innerHTML = '';
+  } else if (e.target.className === 'btn_confirm btn_delete') {
+    console.log('삭제 확인');
+  } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
+    console.log('로그아웃 확인');
+  } else if (e.target.className === 'btn_profile btn_website') {
+    console.log('페이지 이동');
+  } else if (e.target.className === 'modal_confirm') {
+    $secModal.innerHTML = '';
+  }
+}
+$secMain.addEventListener('click', (e) => {
+  modalProfileRole(e);
+  modalReport(e);
+  modalConfirm(e);
+});

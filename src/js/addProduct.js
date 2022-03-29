@@ -6,6 +6,12 @@ const $btnSave = $secProduct.querySelector('.btn_save');
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 
+// 뒤로가기
+const $btnBack = document.querySelector('.btn_backPage');
+$btnBack.addEventListener('click', () => {
+  window.history.back();
+})
+
 // 상품 등록
 async function fetchPushProductData() {
   const imgUrl = localStorage.getItem('imgUrl');

@@ -1,5 +1,6 @@
 @import 'util';
 @import 'navigation';
+@import 'modal';
 
 .sec_profileHeader {
   @include headerBase;
@@ -194,6 +195,9 @@ body {
         margin-right: 12px;
         object-fit: cover;
         object-position: center center;
+      }
+      .wrap_contents {
+        width: 100%;
       }
       .wrap_profile {
         display: flex;
