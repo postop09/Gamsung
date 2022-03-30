@@ -72,16 +72,17 @@ async function fetchPostData() {
   if (postImgs.length > 1) {
     postImgs.map((imgUrl) => {
       $listImg.innerHTML += `
-          <li><img src="${imgUrl}" alt="" class="img_feedImg"></li>
+        <li><button type="button" class="btn_postImg"><img src="${imgUrl}" alt="이미지 크게 보기" class="img_feedImg"></button></li>
       `
     })
   } else if (postImgs.length = 1) {
     $listImg.innerHTML += `
-        <li><img src="${postImgs[0]}" alt="" class="img_feedImg"></li>
+        <li><button type="button" class="btn_postImg"><img src="${postImgs[0]}" alt="이미지 크게 보기" class="img_feedImg"></button></li>
       `
   }
 }
 fetchPostData();
+
 // 좋아요
 async function fetchLikeData() {
   const res = await fetch(`${url}/post/${postId}/heart`, {
@@ -244,6 +245,20 @@ function modalLogoutCheck(e) {
   }
 }
 
+function modalImg(e) {
+  if (e.target.className === 'img_feedImg') {
+    $secModal.innerHTML += `
+      <article class="modal_postImg">
+        <h3 class="txt_hide">이미지 보기 모달창</h3>
+        <div class="wrap_postImg">
+          <img src="${e.target.src}" alt="" class="img_postImg">
+        </div>
+        <button type="button" class="btn_close">X<span class="txt_hide">모달창 닫기</span></button>
+      </article>
+    `
+  }
+}
+
 function modalReport(e) {
   if (e.target.parentNode.className === 'btn_profileMore') {
     $secModal.innerHTML += `
@@ -300,7 +315,7 @@ function modalComment(e) {
     `
   } else if (e.target.className === 'btn_close') {
     $secModal.innerHTML = '';
-  } else if (e.target.className === 'modal_post' || e.target.className === 'modal_report' || e.target.className === 'modal_profile') {
+  } else if (e.target.className === 'modal_post' || e.target.className === 'modal_postImg' || e.target.className === 'modal_report' || e.target.className === 'modal_profile') {
     $secModal.innerHTML = '';
   }
 }
@@ -337,6 +352,7 @@ function modalConfirm(e) {
 }
 $secMain.addEventListener('click', (e) => {
   modalLogoutCheck(e);
+  modalImg(e);
   modalReport(e);
   modalComment(e);
   modalConfirm(e);

@@ -149,7 +149,7 @@ async function fetchPost() {
             <p class="txt_feedText">${postContent}</p>
             ${postImgs=='' ? '' : `
               <ul>
-              <li><img src="${postImgs[0]}" alt="" class="img_feedImg"></li>
+                <li><button type="button"><img src="${postImgs[0]}" alt="해당 게시물로 이동" class="img_feedImg"></button></li>
               </ul>
             `}
             <dl class="list_likeComment">
@@ -244,6 +244,37 @@ async function fetchUnLikeData(postId) {
   const json = await res.json();
   // console.log(json);
 }
+
+// 상품 삭제
+async function fetchDeleteProduct(productId) {
+  const res = await fetch(`${url}/product/${productId}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : "application/json"
+    }
+  });
+  const json = await res.json();
+  console.log(json);
+}
+$secProducts.addEventListener('click', (e) => {
+  if (e.target.className === 'img_product') {
+    const productId = e.target.parentNode.parentNode.getAttribute('key');
+    localStorage.setItem('productId', productId);
+  }
+})
+
+// 게시글 삭제
+async function fetchDeletePost(postId) {
+  const res = await fetch(`${url}/post/${postId}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : "application/json"
+    }
+  });
+}
+
 $secFeed.addEventListener('click', (e) => {
   if (e.target.className === 'img_icon img_like') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
@@ -267,6 +298,13 @@ $secFeed.addEventListener('click', (e) => {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
     localStorage.setItem('postId', postId);
     location.href = 'post.html';
+  } else if (e.target.className === 'img_feedImg') {
+    const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
+    localStorage.setItem('postId', postId);
+    location.href = 'post.html';
+  } else if (e.target.className === 'img_profileMore') {
+    const postId = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
+    localStorage.setItem('postId', postId);
   }
 })
 
@@ -275,7 +313,7 @@ $btnMyProfile.addEventListener('click', () => {
   location.reload();
 })
 
-// 모달창
+// 프로필 모달창
 function modalProfile() {
   $secModal.innerHTML += `
     <article class="modal_profile">
@@ -293,7 +331,7 @@ function modalProfile() {
 $btnMore.addEventListener('click', () => {
   modalProfile();
 })
-
+// 로그아웃 재확인 모달창
 function modalLogoutCheck(e) {
   if (e.target.className === 'btn_profile btn_info') {
     console.log('설정 및 개인정보');
@@ -314,6 +352,7 @@ function modalLogoutCheck(e) {
   }
 }
 
+// 상품 모달창
 function modalProduct(e) {
   if (e.target.className === 'img_product') {
     console.log('상품');
@@ -322,7 +361,7 @@ function modalProduct(e) {
         <h3 class="txt_hide">상품 수정 및 삭제 모달창</h3>
         <div class="wrap_profile">
           <ul class="list_btnProfile">
-            <li><button type="button" class="btn_profile btn_delete">삭제</button></li>
+            <li><button type="button" class="btn_profile btn_delete btn_product">삭제</button></li>
             <li><button type="button" class="btn_profile btn_setting">수정</button></li>
             <li><button type="button" class="btn_profile btn_website">웹사이트에서 상품 보기</button></li>
           </ul>
@@ -335,8 +374,34 @@ function modalProduct(e) {
 $secProducts.addEventListener('click', (e) => {
   modalProduct(e);
 })
+// 상품 삭제 재확인
+function modalProductConfirm(e) {
+  if (e.target.className === 'btn_profile btn_delete btn_product') {
+    console.log('삭제');
+    $secModal.innerHTML += `
+      <article class="modal_confirm">
+        <h3 class="txt_hide">선택 재확인 모달창</h3>
+        <div class="wrap_confirm">
+          <p class="txt_confirm">상품을 삭제할까요?</p>
+          <ul class="list_btnConfirm">
+            <li><button type="button" class="btn_confirm btn_cancel">취소</button></li>
+            <li><button type="button" class="btn_confirm btn_delete btn_product">삭제</button></li>
+          </ul>
+        </div>
+      </article>
+    `
+  } else if (e.target.className === 'btn_confirm btn_delete btn_product') {
+    const productId = localStorage.getItem('productId');
+    fetchDeleteProduct(productId);
+    location.reload();
+    alert('삭제되었습니다.');
+  } else if (e.target.className === 'btn_profile btn_setting') {
+    console.log('수정');
+  }
+}
 
-function modalReport(e) {
+// 게시글 모달창
+function modalPost(e) {
   if (e.target.parentNode.className === 'btn_profileMore') {
     $secModal.innerHTML += `
       <article class="modal_post">
@@ -356,8 +421,8 @@ function modalReport(e) {
     $secModal.innerHTML = '';
   }
 }
-
-function modalConfirm(e) {
+// 게시글 삭제 재확인
+function modalPostConfirm(e) {
   if (e.target.className === 'btn_profile btn_delete') {
     console.log('삭제');
     $secModal.innerHTML += `
@@ -378,17 +443,24 @@ function modalConfirm(e) {
     console.log('취소');
     $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_delete') {
-    console.log('삭제 확인');
+    const postId = localStorage.getItem('postId');
+    fetchDeletePost(postId);
+    location.reload();
+    alert('삭제되었습니다.')
   } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
-    console.log('로그아웃 확인');
+    localStorage.clear();
+    location.href = 'index.html';
+    alert('로그아웃 되었습니다.')
   } else if (e.target.className === 'btn_profile btn_website') {
     console.log('페이지 이동');
   } else if (e.target.className === 'modal_confirm') {
     $secModal.innerHTML = '';
   }
 }
+
 $secMain.addEventListener('click', (e) => {
   modalLogoutCheck(e);
-  modalReport(e);
-  modalConfirm(e);
+  modalPost(e);
+  modalPostConfirm(e);
+  modalProductConfirm(e);
 });

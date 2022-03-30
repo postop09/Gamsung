@@ -197,7 +197,7 @@ async function fetchPost() {
             <p class="txt_feedText">${postContent}</p>
             ${postImgs=='' ? '' : `
               <ul>
-              <li><img src="${postImgs[0]}" alt="" class="img_feedImg"></li>
+                <li><button type="button"><img src="${postImgs[0]}" alt="해당 게시물로 이동" class="img_feedImg"></button></li>
               </ul>
             `}
             <dl class="list_likeComment">
@@ -313,6 +313,10 @@ $secFeed.addEventListener('click', (e) => {
     localStorage.setItem('accountname', accountname);
   } else if (e.target.className === 'img_icon img_chat') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
+    localStorage.setItem('postId', postId);
+    location.href = 'post.html';
+  } else if (e.target.className === 'img_feedImg') {
+    const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
     localStorage.setItem('postId', postId);
     location.href = 'post.html';
   }

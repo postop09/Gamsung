@@ -176,6 +176,41 @@ button {
   color: #EA7F42;
 }
 
+.modal_postImg {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 500;
+}
+
+.modal_postImg .wrap_postImg {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.modal_postImg .img_postImg {
+  -webkit-box-shadow: 0px 0px 30px 1px black;
+          box-shadow: 0px 0px 30px 1px black;
+  max-width: 90vw;
+  max-height: 45vh;
+}
+
+.modal_postImg .btn_close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
 .modal_profile,
 .modal_post,
 .modal_product,
