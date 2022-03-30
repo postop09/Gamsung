@@ -39,8 +39,7 @@ async function fetchPostData() {
   const createYear = postCreatedAt.substr(0, 4);
   const createMonth = postCreatedAt.substr(5, 2);
   const createDay = postCreatedAt.substr(8, 2);
-  // console.log(json);
-  
+  // console.log(postImgs);
   $secDetail.innerHTML = `
     <img src="${authorImg}" alt="" class="img_profile">
     <div class="wrap_contents">
@@ -53,9 +52,7 @@ async function fetchPostData() {
       </div>
       <p class="txt_feedText">${postContent}</p>
       ${postImgs=='' ? '' : `
-        <ul>
-        <li><img src="${postImgs[0]}" alt="" class="img_feedImg"></li>
-        </ul>
+        <ul class="list_postImg"></ul>
       `}
       <dl class="list_likeComment">
         <div class="wrap_likeComment">
@@ -70,9 +67,21 @@ async function fetchPostData() {
       <small class="txt_postDate">${createYear}년 ${createMonth}월 ${createDay}일</small>
     </div>
   `
+
+  const $listImg = document.querySelector('.list_postImg');
+  if (postImgs.length > 1) {
+    postImgs.map((imgUrl) => {
+      $listImg.innerHTML += `
+          <li><img src="${imgUrl}" alt="" class="img_feedImg"></li>
+      `
+    })
+  } else if (postImgs.length = 1) {
+    $listImg.innerHTML += `
+        <li><img src="${postImgs[0]}" alt="" class="img_feedImg"></li>
+      `
+  }
 }
 fetchPostData();
-
 // 좋아요
 async function fetchLikeData() {
   const res = await fetch(`${url}/post/${postId}/heart`, {

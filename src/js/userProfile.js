@@ -3,12 +3,15 @@ const $secProfile = $secMain.querySelector('.sec_profile');
 const $secProducts = $secMain.querySelector('.sec_products');
 const $secPost = $secMain.querySelector('.sec_userFeed');
 const $secFeed = $secPost.querySelector('.sec_feed');
+const $secAlbum = $secPost.querySelector('.sec_album');
 const $followers = $secProfile.querySelector('.txt_followrs');
 const $btnFollow = $secProfile.querySelector('.btn_follow');
 const $wrapFollow = $secProfile.querySelectorAll('.wrap_follow');
 const $btnMyProfile = document.querySelector('.btn_myProfile');
 const $btnMore = document.querySelector('.btn_moreMenu');
 const $secModal = document.querySelector('.sec_modal');
+const $btnListType = $secPost.querySelector('.btn_listType');
+const $btnAlbumType = $secPost.querySelector('.btn_albumType');
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 const accountname = localStorage.getItem('accountname');
@@ -216,6 +219,55 @@ async function fetchPost() {
 }
 fetchPost();
 
+// 게시글 앨범
+async function fetchPostAlbum() {
+  const res = await fetch(`${url}/post/${accountname}/userpost`, {
+    method: 'GET',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : 'application/json'
+    }
+  });
+  const json = await res.json();
+  const $listAlbum = $secAlbum.querySelector('.list_albumImg');
+    
+  json.post.map((postItem) => {
+    if (postItem.image !== '') {
+      const postImg = postItem.image;
+      const postImgs = postImg.split(',');
+
+      $listAlbum.innerHTML += `
+        <li key="${postItem.id}">
+          <button type="button" class="btn_albumImg">
+            <img src="${postImgs[0]}" alt="" class="img_album">
+          </button>
+        </li>
+      `
+    }
+  })
+}
+fetchPostAlbum ();
+
+$btnAlbumType.addEventListener('click', () => {
+  $secFeed.classList.remove('on');
+  $secAlbum.classList.add('on');
+  $btnListType.querySelector('.img_listType').src = '../img/icon/icon-post-list-off.png'
+  $btnAlbumType.querySelector('.img_albumType').src = '../img/icon/icon-post-album-on.png'
+});
+$btnListType.addEventListener('click', () => {
+  $secFeed.classList.add('on');
+  $secAlbum.classList.remove('on');
+  $btnListType.querySelector('.img_listType').src = '../img/icon/icon-post-list-on.png'
+  $btnAlbumType.querySelector('.img_albumType').src = '../img/icon/icon-post-album-off.png'
+})
+$secAlbum.addEventListener('click', (e) => {
+  if (e.target.className === 'img_album') {
+    const postId = e.target.parentNode.parentNode.getAttribute('key')
+    localStorage.setItem('postId', postId)
+    location.href = 'post.html';
+  }
+})
+
 // 좋아요
 async function fetchLikeData(postId) {
   const res = await fetch(`${url}/post/${postId}/heart`, {
@@ -316,11 +368,10 @@ function modalProduct(e) {
     console.log('상품');
     $secModal.innerHTML += `
       <article class="modal_product">
-        <h3 class="txt_hide">상품 수정 및 삭제 모달창</h3>
+        <h3 class="txt_hide">상품 신고 모달창</h3>
         <div class="wrap_profile">
           <ul class="list_btnProfile">
-            <li><button type="button" class="btn_profile btn_delete">삭제</button></li>
-            <li><button type="button" class="btn_profile btn_setting">수정</button></li>
+            <li><button type="button" class="btn_profile btn_report">신고하기</button></li>
             <li><button type="button" class="btn_profile btn_website">웹사이트에서 상품 보기</button></li>
           </ul>
           <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
@@ -336,12 +387,11 @@ $secProducts.addEventListener('click', (e) => {
 function modalReport(e) {
   if (e.target.parentNode.className === 'btn_profileMore') {
     $secModal.innerHTML += `
-      <article class="modal_post">
-        <h3 class="txt_hide">게시글 수정 및 삭제 모달창</h3>
+      <article class="modal_report">
+        <h3 class="txt_hide">신고 모달창</h3>
         <div class="wrap_profile">
           <ul class="list_btnProfile">
-            <li><button type="button" class="btn_profile btn_delete">삭제</button></li>
-            <li><button type="button" class="btn_profile btn_setting">수정</button></li>
+            <li><button type="button" class="btn_profile btn_report">신고하기</button></li>
           </ul>
           <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
         </div>
@@ -349,33 +399,17 @@ function modalReport(e) {
     `
   } else if (e.target.className === 'btn_close') {
     $secModal.innerHTML = '';
-  } else if (e.target.className === 'modal_post' || e.target.className === 'modal_profile' || e.target.className === 'modal_product') {
+  } else if (e.target.className === 'modal_report' || e.target.className === 'modal_profile' || e.target.className === 'modal_product') {
     $secModal.innerHTML = '';
   }
 }
 
 function modalConfirm(e) {
-  if (e.target.className === 'btn_profile btn_delete') {
-    console.log('삭제');
-    $secModal.innerHTML += `
-      <article class="modal_confirm">
-        <h3 class="txt_hide">선택 재확인 모달창</h3>
-        <div class="wrap_confirm">
-          <p class="txt_confirm">게시글을 삭제할까요?</p>
-          <ul class="list_btnConfirm">
-            <li><button type="button" class="btn_confirm btn_cancel">취소</button></li>
-            <li><button type="button" class="btn_confirm btn_delete">삭제</button></li>
-          </ul>
-        </div>
-      </article>
-    `
-  } else if (e.target.className === 'btn_profile btn_setting') {
-    console.log('수정');
+  if (e.target.className === 'btn_profile btn_report') {
+    console.log('신고하기');
   } else if (e.target.className === 'btn_confirm btn_cancel') {
     console.log('취소');
     $secModal.innerHTML = '';
-  } else if (e.target.className === 'btn_confirm btn_delete') {
-    console.log('삭제 확인');
   } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
     console.log('로그아웃 확인');
   } else if (e.target.className === 'btn_profile btn_website') {

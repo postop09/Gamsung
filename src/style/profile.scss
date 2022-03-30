@@ -247,7 +247,6 @@ body {
       }
     }
   }
-
   .sec_album.on {
     display: block;
   }
@@ -260,14 +259,49 @@ body {
       padding: 16px;
     }
     .img_album {
+      box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
       width: 114px;
       height: 114px;
+      object-fit: cover;
+      object-position: center center;
     }
     .list_albumImg:after {
       content: '';
       display: block;
       width: 114px;
       height: 114px;
+    }
+  }
+}
+
+@media screen and (min-width: 490px) {
+  .sec_userFeed {
+    .sec_album {
+      .list_albumImg {
+        row-gap: 10px;
+      }
+      .img_album {
+        width: 150px;
+        height: 150px;
+      }
+      .list_albumImg:after {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 378px) {
+  .sec_userFeed {
+    .sec_album {
+      .img_album {
+        width: 100px;
+        height: 100px;
+      }
+      .list_albumImg:after {
+        width: 100px;
+        height: 100px;
+      }
     }
   }
 }

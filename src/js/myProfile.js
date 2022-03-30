@@ -3,12 +3,15 @@ const $secProfile = $secMain.querySelector('.sec_profile');
 const $secProducts = $secMain.querySelector('.sec_products');
 const $secPost = $secMain.querySelector('.sec_userFeed');
 const $secFeed = $secPost.querySelector('.sec_feed');
+const $secAlbum = $secPost.querySelector('.sec_album');
 const $followers = $secProfile.querySelector('.txt_followrs');
 const $btnFollow = $secProfile.querySelector('.btn_follow');
 const $wrapFollow = $secProfile.querySelectorAll('.wrap_follow');
 const $btnMyProfile = document.querySelector('.btn_myProfile');
 const $btnMore = document.querySelector('.btn_moreMenu');
 const $secModal = document.querySelector('.sec_modal');
+const $btnListType = $secPost.querySelector('.btn_listType');
+const $btnAlbumType = $secPost.querySelector('.btn_albumType');
 const url = `http://146.56.183.55:5050`;
 const token = JSON.parse(localStorage.getItem('token'));
 const myAccountname = localStorage.getItem('myAccountname');
@@ -83,7 +86,7 @@ async function fetchProduct() {
     $secProducts.classList.add('on');
     json.product.map((item) => {
       const price = +item.price;
-      console.log(item);
+      // console.log(item);
       $listProducts.innerHTML += `
         <li class="item_product" key=${item.id}>
           <button type="button">
@@ -93,7 +96,6 @@ async function fetchProduct() {
           <strong class="txt_price">${price.toLocaleString()}원</strong>
         </li>
       `
-
     })
   }
 }
@@ -168,6 +170,55 @@ async function fetchPost() {
   }
 }
 fetchPost();
+
+// 게시글 앨범
+async function fetchPostAlbum() {
+  const res = await fetch(`${url}/post/${myAccountname}/userpost`, {
+    method: 'GET',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : 'application/json'
+    }
+  });
+  const json = await res.json();
+  const $listAlbum = $secAlbum.querySelector('.list_albumImg');
+    
+  json.post.map((postItem) => {
+    if (postItem.image !== '') {
+      const postImg = postItem.image;
+      const postImgs = postImg.split(',');
+
+      $listAlbum.innerHTML += `
+        <li key="${postItem.id}">
+          <button type="button" class="btn_albumImg">
+            <img src="${postImgs[0]}" alt="" class="img_album">
+          </button>
+        </li>
+      `
+    }
+  })
+}
+fetchPostAlbum ();
+
+$btnAlbumType.addEventListener('click', () => {
+  $secFeed.classList.remove('on');
+  $secAlbum.classList.add('on');
+  $btnListType.querySelector('.img_listType').src = '../img/icon/icon-post-list-off.png'
+  $btnAlbumType.querySelector('.img_albumType').src = '../img/icon/icon-post-album-on.png'
+});
+$btnListType.addEventListener('click', () => {
+  $secFeed.classList.add('on');
+  $secAlbum.classList.remove('on');
+  $btnListType.querySelector('.img_listType').src = '../img/icon/icon-post-list-on.png'
+  $btnAlbumType.querySelector('.img_albumType').src = '../img/icon/icon-post-album-off.png'
+})
+$secAlbum.addEventListener('click', (e) => {
+  if (e.target.className === 'img_album') {
+    const postId = e.target.parentNode.parentNode.getAttribute('key')
+    localStorage.setItem('postId', postId)
+    location.href = 'post.html';
+  }
+})
 
 // 좋아요
 async function fetchLikeData(postId) {
