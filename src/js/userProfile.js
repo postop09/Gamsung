@@ -328,7 +328,7 @@ $btnMyProfile.addEventListener('click', () => {
   localStorage.setItem('myAccountname', myAccountname);
 })
 
-// 모달창
+// 프로필 모달창
 function modalProfile() {
   $secModal.innerHTML += `
     <article class="modal_profile">
@@ -346,7 +346,7 @@ function modalProfile() {
 $btnMore.addEventListener('click', () => {
   modalProfile();
 })
-
+// 로그아웃 재확인 모달창
 function modalProfileRole(e) {
   if (e.target.className === 'btn_profile btn_profile') {
     console.log('설정 및 개인정보');
@@ -366,7 +366,7 @@ function modalProfileRole(e) {
     `
   }
 }
-
+// 상품 신고 모달창
 function modalProduct(e) {
   if (e.target.className === 'img_product') {
     console.log('상품');
@@ -388,6 +388,7 @@ $secProducts.addEventListener('click', (e) => {
   modalProduct(e);
 })
 
+// 게시글 신고 모달창
 function modalReport(e) {
   if (e.target.parentNode.className === 'btn_profileMore') {
     $secModal.innerHTML += `
@@ -415,6 +416,8 @@ function modalConfirm(e) {
     console.log('취소');
     $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
+    localStorage.clear();
+    location.href = 'index.html';
     console.log('로그아웃 확인');
   } else if (e.target.className === 'btn_profile btn_website') {
     console.log('페이지 이동');

@@ -206,7 +206,7 @@ function inpCommentForBtn() {
 }
 $inpComment.addEventListener('keyup', inpCommentForBtn);
 
-// 모달창
+// 프로필 모달창
 function modalProfile() {
   $secModal.innerHTML += `
     <article class="modal_profile">
@@ -224,7 +224,7 @@ function modalProfile() {
 $btnMore.addEventListener('click', () => {
   modalProfile();
 });
-
+// 로그아웃 재확인 모달창
 function modalLogoutCheck(e) {
   if (e.target.className === 'btn_profile btn_info') {
     console.log('설정 및 개인정보');
@@ -244,7 +244,7 @@ function modalLogoutCheck(e) {
     `
   }
 }
-
+// 이미지 모달창
 function modalImg(e) {
   if (e.target.className === 'img_feedImg') {
     $secModal.innerHTML += `
@@ -258,7 +258,7 @@ function modalImg(e) {
     `
   }
 }
-
+// 게시글 신고/수정/삭제 모달창
 function modalReport(e) {
   if (e.target.parentNode.className === 'btn_profileMore') {
     $secModal.innerHTML += `
@@ -287,7 +287,7 @@ function modalReport(e) {
     `
   }
 }
-
+// 댓글 신고/삭제/수정 모달창
 function modalComment(e) {
   if (e.target.parentNode.className === 'btn_commentMore') {
     $secModal.innerHTML += `
@@ -319,7 +319,7 @@ function modalComment(e) {
     $secModal.innerHTML = '';
   }
 }
-
+// 재확인 모달창
 function modalConfirm(e) {
   if (e.target.className === 'btn_profile btn_delete') {
     console.log('삭제');
@@ -343,6 +343,8 @@ function modalConfirm(e) {
   } else if (e.target.className === 'btn_confirm btn_delete') {
     console.log('삭제 확인');
   } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
+    localStorage.clear();
+    location.href = 'index.html';
     console.log('로그아웃');
   } else if (e.target.className === 'btn_profile btn_website') {
     console.log('페이지 이동');

@@ -170,7 +170,7 @@ $btnMyProfile.addEventListener('click', () => {
   localStorage.setItem('myAccountname', myAccountname);
 })
 
-// 모달창
+// 신고 모달창
 function modalReportOpen(e) {
   if (e.target.parentNode.className === 'btn_profileMore') {
     $secModal.innerHTML += `
@@ -203,3 +203,8 @@ $secMain.addEventListener('click', (e) => {
   modalReportClose(e);
   report(e);
 });
+
+// 로컬 스토리지 초기화
+window.addEventListener('unload', () => {
+  localStorage.clear();
+})
