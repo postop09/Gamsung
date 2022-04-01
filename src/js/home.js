@@ -161,6 +161,9 @@ $secFeed.addEventListener('click', (e) => {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
     localStorage.setItem('postId', postId);
     location.href = 'post.html';
+  } else if (e.target.className === 'img_profileMore') {
+    const postId = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
+    localStorage.setItem('postId', postId);
   }
 })
 
@@ -170,6 +173,20 @@ $btnMyProfile.addEventListener('click', () => {
   localStorage.setItem('myAccountname', myAccountname);
 })
 
+// 신고하기
+async function fetchReportData() {
+  const postId = localStorage.getItem('postId');
+  const res = await fetch(`${url}/post/${postId}/report`, {
+    method: 'POST',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : "application/json"
+    }
+  });
+  const json = await res.json();
+  console.log(json);
+}
+
 // 신고 모달창
 function modalReportOpen(e) {
   if (e.target.parentNode.className === 'btn_profileMore') {
@@ -178,7 +195,7 @@ function modalReportOpen(e) {
         <h3 class="txt_hide">신고 모달창</h3>
         <div class="wrap_profile">
           <ul class="list_btnProfile">
-            <li><button type="button" class="btn_profile btn_setting">신고하기</button></li>
+            <li><button type="button" class="btn_profile btn_report">신고하기</button></li>
           </ul>
           <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
         </div>
@@ -194,8 +211,10 @@ function modalReportClose(e) {
   }
 }
 function report(e) {
-  if (e.target.className === 'btn_profile btn_setting') {
-    console.log('신고');
+  if (e.target.className === 'btn_profile btn_report') {
+    fetchReportData();
+    alert('신고가 정상 접수되었습니다.');
+    $secModal.innerHTML = '';
   }
 }
 $secMain.addEventListener('click', (e) => {
@@ -205,6 +224,6 @@ $secMain.addEventListener('click', (e) => {
 });
 
 // 로컬 스토리지 초기화
-window.addEventListener('unload', () => {
-  localStorage.clear();
-})
+// window.addEventListener('unload', () => {
+//   localStorage.clear();
+// })

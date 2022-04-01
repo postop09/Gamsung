@@ -135,7 +135,7 @@ async function fetchProduct() {
       const price = +item.price;
       // console.log(item);
       $listProducts.innerHTML += `
-        <li class="item_product">
+        <li class="item_product" key=${item.id}>
           <button type="button">
             <img src="${item.itemImage}" alt="" class="img_product">
           </button>
@@ -319,6 +319,9 @@ $secFeed.addEventListener('click', (e) => {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
     localStorage.setItem('postId', postId);
     location.href = 'post.html';
+  } else if (e.target.className === 'img_profileMore') {
+    const postId = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
+    localStorage.setItem('postId', postId);
   }
 })
 
@@ -366,16 +369,30 @@ function modalProfileRole(e) {
     `
   }
 }
-// 상품 신고 모달창
+
+// 신고하기
+async function fetchReportData() {
+  const postId = localStorage.getItem('postId');
+  const res = await fetch(`${url}/post/${postId}/report`, {
+    method: 'POST',
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type" : "application/json"
+    }
+  });
+  const json = await res.json();
+  console.log(json);
+}
+
+// 상품 모달창
 function modalProduct(e) {
   if (e.target.className === 'img_product') {
     console.log('상품');
     $secModal.innerHTML += `
       <article class="modal_product">
-        <h3 class="txt_hide">상품 신고 모달창</h3>
+        <h3 class="txt_hide">상품 모달창</h3>
         <div class="wrap_profile">
           <ul class="list_btnProfile">
-            <li><button type="button" class="btn_profile btn_report">신고하기</button></li>
             <li><button type="button" class="btn_profile btn_website">웹사이트에서 상품 보기</button></li>
           </ul>
           <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
@@ -411,14 +428,15 @@ function modalReport(e) {
 
 function modalConfirm(e) {
   if (e.target.className === 'btn_profile btn_report') {
-    console.log('신고하기');
+    fetchReportData();
+    alert('신고가 정상 접수되었습니다.');
+    $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_cancel') {
     console.log('취소');
     $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
     localStorage.clear();
     location.href = 'index.html';
-    console.log('로그아웃 확인');
   } else if (e.target.className === 'btn_profile btn_website') {
     console.log('페이지 이동');
   } else if (e.target.className === 'modal_confirm') {
