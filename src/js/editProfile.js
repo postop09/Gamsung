@@ -120,7 +120,10 @@ async function fetchEditProfileData() {
   localStorage.setItem('userData', JSON.stringify(json.user));
 }
 $btnSave.addEventListener('click', (e) => {
+  function move() {
+    location.href = 'home.html'
+  }
   e.preventDefault();
   fetchEditProfileData();
-  setTimeout(location.href = 'home.html', 800);
+  setTimeout(move, 300);
 })
