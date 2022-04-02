@@ -434,9 +434,12 @@ function modalCommentConfirm(e) {
     alert('신고가 정상 접수되었습니다.');
     $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_delete btn_post') {
-    console.log('게시글 삭제 확인');
+    function move() {
+      location.href = 'home.html';
+    }
     fetchPostDelete();
     $secModal.innerHTML = '';
+    setTimeout(move, 300);
   } else if (e.target.className === 'btn_profile btn_report btn_comment') {
     console.log('댓글 신고하기');
     fetchCommentReport();

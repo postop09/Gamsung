@@ -86,7 +86,7 @@ async function fetchProduct() {
     $secProducts.classList.add('on');
     json.product.map((item) => {
       const price = +item.price;
-      console.log(item);
+      // console.log(item);
       $listProducts.innerHTML += `
         <li class="item_product" key=${item.id} address="${item.link}">
           <button type="button">

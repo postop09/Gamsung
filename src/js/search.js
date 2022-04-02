@@ -1,5 +1,5 @@
-const inpSearch = document.querySelector('.inp_search');
-const listUser = document.querySelector('.list_searchUser')
+const $inpSearch = document.querySelector('.inp_search');
+const $listUser = document.querySelector('.list_searchUser')
 const url = `https://api.mandarin.cf/`;
 const token = JSON.parse(localStorage.getItem('token'));
 
@@ -11,7 +11,7 @@ $btnBack.addEventListener('click', () => {
 
 // 일치하는 유저 데이터
 async function fetchsearchData() {
-  const res = await fetch(`${url}/user/searchuser/?keyword=${inpSearch.value}`, {
+  const res = await fetch(`${url}/user/searchuser/?keyword=${$inpSearch.value}`, {
     method: "GET",
     headers: {
       "Authorization" : `Bearer ${token}`,
@@ -19,10 +19,10 @@ async function fetchsearchData() {
     }
   });
   const json = await res.json();
-  console.log(res);
-  console.log(json);
+  // console.log(res);
+  // console.log(json);
   [...json].map((data) => {
-    listUser.innerHTML += `
+    $listUser.innerHTML += `
       <li class="item_searchUser">
         <a href="userProfile.html" class="btn_searchUser">
           <img src="${data.image}" alt="" class="img_searchUser">
@@ -34,19 +34,17 @@ async function fetchsearchData() {
       </li>
     `
   })
-  listUser.addEventListener('click', (e) => {
+  $listUser.addEventListener('click', (e) => {
     if (e.target !== e.currentTarget) {
       const accountname = e.target.parentNode.querySelector('.txt_userId').textContent.substr(2);
       localStorage.setItem('accountname', accountname);
+      $inpSearch.value = '';
     }
   })
 }
-inpSearch.addEventListener('keyup', () => {
-  listUser.innerHTML = '';
-  if (inpSearch.value !== '') {
+$inpSearch.addEventListener('keyup', () => {
+  $listUser.innerHTML = '';
+  if ($inpSearch.value !== '') {
     fetchsearchData();
   };
 });
-
-// 적절하지 않은 프로필 이미지 경로 검사
-// 검색 프로세스 개선(즉시 반응 x 타이핑 시간 고려 o)
