@@ -455,7 +455,7 @@ function modalPostConfirm(e) {
     alert('로그아웃 되었습니다.')
   } else if (e.target.className === 'btn_profile btn_website') {
     const productLink = localStorage.getItem('productLink');
-    window.location.href = 'www.naver.com';
+    window.location.href = productLink;
     console.log('페이지 이동');
   } else if (e.target.className === 'modal_confirm') {
     $secModal.innerHTML = '';
