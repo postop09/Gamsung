@@ -12,7 +12,7 @@ const $btnMore = document.querySelector('.btn_moreMenu');
 const $secModal = document.querySelector('.sec_modal');
 const $btnListType = $secPost.querySelector('.btn_listType');
 const $btnAlbumType = $secPost.querySelector('.btn_albumType');
-const url = `http://146.56.183.55:5050`;
+const url = `https://api.mandarin.cf/`;
 const token = JSON.parse(localStorage.getItem('token'));
 const myAccountname = localStorage.getItem('myAccountname');
 
@@ -86,9 +86,9 @@ async function fetchProduct() {
     $secProducts.classList.add('on');
     json.product.map((item) => {
       const price = +item.price;
-      // console.log(item);
+      console.log(item);
       $listProducts.innerHTML += `
-        <li class="item_product" key=${item.id}>
+        <li class="item_product" key=${item.id} address="${item.link}">
           <button type="button">
             <img src="${item.itemImage}" alt="" class="img_product">
           </button>
@@ -355,7 +355,9 @@ function modalLogoutCheck(e) {
 // 상품 모달창
 function modalProduct(e) {
   if (e.target.className === 'img_product') {
-    console.log('상품');
+    // console.log('상품');
+    const productLink = e.target.parentNode.parentNode.getAttribute('address');
+    localStorage.setItem('productLink', productLink);
     $secModal.innerHTML += `
       <article class="modal_product">
         <h3 class="txt_hide">상품 수정 및 삭제 모달창</h3>
@@ -452,6 +454,8 @@ function modalPostConfirm(e) {
     location.href = 'index.html';
     alert('로그아웃 되었습니다.')
   } else if (e.target.className === 'btn_profile btn_website') {
+    const productLink = localStorage.getItem('productLink');
+    window.location.href = 'www.naver.com';
     console.log('페이지 이동');
   } else if (e.target.className === 'modal_confirm') {
     $secModal.innerHTML = '';

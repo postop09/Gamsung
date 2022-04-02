@@ -1,6 +1,6 @@
 const inpSearch = document.querySelector('.inp_search');
 const listUser = document.querySelector('.list_searchUser')
-const url = `http://146.56.183.55:5050`;
+const url = `https://api.mandarin.cf/`;
 const token = JSON.parse(localStorage.getItem('token'));
 
 // 뒤로가기

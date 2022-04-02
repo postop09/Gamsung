@@ -10,7 +10,7 @@ const [btnNext, btnAccess] = [...btns];
 const newProfile = document.querySelector('.sec_newProfile');
 const imgProfile = newProfile.querySelector('.inp_profileImg');
 const inputProfile = newProfile.querySelectorAll('.inp_login');
-const url = `http://146.56.183.55:5050`;
+const url = `https://api.mandarin.cf/`;
 
 // 회원가입
 async function fetchIdPwData() {
@@ -146,7 +146,7 @@ async function profileImage(e) {
 async function imageUpload(files) {
   const formData = new FormData();
   formData.append('image', files[0]);
-  const res = await fetch(`http://146.56.183.55:5050/image/uploadfile`, {
+  const res = await fetch(`${url}/image/uploadfile`, {
       method: 'POST',
       body: formData,
   });

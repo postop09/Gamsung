@@ -12,7 +12,7 @@ const $btnMore = document.querySelector('.btn_moreMenu');
 const $secModal = document.querySelector('.sec_modal');
 const $btnListType = $secPost.querySelector('.btn_listType');
 const $btnAlbumType = $secPost.querySelector('.btn_albumType');
-const url = `http://146.56.183.55:5050`;
+const url = `https://api.mandarin.cf/`;
 const token = JSON.parse(localStorage.getItem('token'));
 const accountname = localStorage.getItem('accountname');
 
