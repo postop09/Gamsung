@@ -12,7 +12,7 @@ const $btnMore = document.querySelector('.btn_moreMenu');
 const $secModal = document.querySelector('.sec_modal');
 const $btnListType = $secPost.querySelector('.btn_listType');
 const $btnAlbumType = $secPost.querySelector('.btn_albumType');
-const url = `http://146.56.183.55:5050`;
+const url = `https://api.mandarin.cf/`;
 const token = JSON.parse(localStorage.getItem('token'));
 const accountname = localStorage.getItem('accountname');
 
@@ -135,7 +135,7 @@ async function fetchProduct() {
       const price = +item.price;
       // console.log(item);
       $listProducts.innerHTML += `
-        <li class="item_product" key=${item.id}>
+        <li class="item_product" key=${item.id} address="${item.link}">
           <button type="button">
             <img src="${item.itemImage}" alt="" class="img_product">
           </button>
@@ -387,6 +387,8 @@ async function fetchReportData() {
 // 상품 모달창
 function modalProduct(e) {
   if (e.target.className === 'img_product') {
+    const productLink = e.target.parentNode.parentNode.getAttribute('address');
+    localStorage.setItem('productLink', productLink);
     console.log('상품');
     $secModal.innerHTML += `
       <article class="modal_product">
@@ -438,6 +440,8 @@ function modalConfirm(e) {
     localStorage.clear();
     location.href = 'index.html';
   } else if (e.target.className === 'btn_profile btn_website') {
+    const productLink = localStorage.getItem('productLink');
+    window.location.href = productLink;
     console.log('페이지 이동');
   } else if (e.target.className === 'modal_confirm') {
     $secModal.innerHTML = '';

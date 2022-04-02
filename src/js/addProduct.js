@@ -3,7 +3,7 @@ const $inpProduct = $secProduct.querySelectorAll('.inp_login');
 const $imgProduct = $secProduct.querySelector('.inp_profileImg');
 const [$productName,$price,$address] = [...$inpProduct];
 const $btnSave = $secProduct.querySelector('.btn_save');
-const url = `http://146.56.183.55:5050`;
+const url = `https://api.mandarin.cf/`;
 const token = JSON.parse(localStorage.getItem('token'));
 
 // 뒤로가기
@@ -49,7 +49,7 @@ async function profileImage(e) {
 async function imageUpload(files) {
   const formData = new FormData();
   formData.append('image', files[0]);
-  const res = await fetch(`http://146.56.183.55:5050/image/uploadfile`, {
+  const res = await fetch(`${url}/image/uploadfile`, {
       method: 'POST',
       body: formData,
   });

@@ -8,6 +8,12 @@ $btnBack.addEventListener('click', () => {
   window.history.back();
 })
 
+// 나의 프로필
+$btnMyProfile.addEventListener('click', () => {
+  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
+  localStorage.setItem('myAccountname', myAccountname);
+})
+
 // 모달창
 function modalProfile() {
   $secModal.innerHTML += `
