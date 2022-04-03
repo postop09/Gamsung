@@ -13,6 +13,7 @@ body {
 .sec_profileMain {
   height: 100vh;
   padding: 60px 0;
+  background-color: $c-layout;
   overflow-y: scroll;
   scroll-behavior: smooth;
   &::-webkit-scrollbar {
@@ -23,6 +24,7 @@ body {
   position: relative;
   border-bottom: 5px solid $c-layout;
   padding: 30px 0;
+  background-color: white;
   text-align: center;
   .wrap_profile {
     display: flex;
@@ -130,6 +132,7 @@ body {
   display: none;
   border-bottom: 5px solid $c-layout;
   padding: 20px 0 20px 21px;
+  background-color: white;
   .txt_title {
     margin-bottom: 16px;
     font-size: 16px;
@@ -164,6 +167,7 @@ body {
 }
 .sec_userFeed {
   display: none;
+  background-color: white;
   .list_contentsType {
     display: flex;
     justify-content: flex-end;

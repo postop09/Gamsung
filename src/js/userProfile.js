@@ -22,6 +22,12 @@ $btnBack.addEventListener('click', () => {
   window.history.back();
 })
 
+// 나의 프로필
+$btnMyProfile.addEventListener('click', () => {
+  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
+  localStorage.setItem('myAccountname', myAccountname);
+})
+
 // 프로필 정보
 async function fetchProfileData() {
   const res = await fetch(`${url}/profile/${accountname}`, {

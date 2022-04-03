@@ -7,6 +7,12 @@ const url = `https://api.mandarin.cf/`;
 const userData = JSON.parse(localStorage.getItem('userData'));
 const token = JSON.parse(localStorage.getItem('token'));
 
+// 나의 프로필
+$btnMyProfile.addEventListener('click', () => {
+  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
+  localStorage.setItem('myAccountname', myAccountname);
+})
+
 // 토큰 검증
 async function fetchTokenData() {
   const res = await fetch(`${url}/user/checktoken`, {
@@ -72,7 +78,6 @@ async function fetchFeedData() {
       const createMonth = postCreatedAt.substr(5, 2);
       const createDay = postCreatedAt.substr(8, 2);
 
-      // CORB 문제
       $secFeed.innerHTML += `
         <article class="artic_feed" key="${postId}">
           <h3 class="txt_hide">게시글</h3>
@@ -165,12 +170,6 @@ $secFeed.addEventListener('click', (e) => {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
     localStorage.setItem('postId', postId);
   }
-})
-
-// 나의 프로필
-$btnMyProfile.addEventListener('click', () => {
-  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
-  localStorage.setItem('myAccountname', myAccountname);
 })
 
 // 신고하기
