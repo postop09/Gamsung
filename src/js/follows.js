@@ -1,6 +1,7 @@
 const $listFollower = document.querySelector('.list_searchUser');
 const $btnBack = document.querySelector('.btn_backPage');
 const $title = document.querySelector('.txt_title');
+const $btnMyProfile = document.querySelector('.btn_myProfile');
 const url = `https://api.mandarin.cf/`;
 const searchData = JSON.parse(localStorage.getItem('searchData'));
 const userData = JSON.parse(localStorage.getItem('userData'));
@@ -10,6 +11,12 @@ const followData = localStorage.getItem('clickData');
 // 뒤로가기
 $btnBack.addEventListener('click', () => {
   window.history.back();
+})
+
+// 나의 프로필
+$btnMyProfile.addEventListener('click', () => {
+  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
+  localStorage.setItem('myAccountname', myAccountname);
 })
 
 // 전체 유저 목록 중 일치하는 유저 목록
