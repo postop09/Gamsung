@@ -310,6 +310,19 @@ button {
   padding: 13px 16px;
 }
 
+html {
+  overflow: hidden;
+}
+
+.sec_postMain {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.sec_postMain::-webkit-scrollbar {
+  display: none;
+}
+
 .sec_postDetail {
   display: -webkit-box;
   display: -ms-flexbox;

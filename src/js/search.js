@@ -1,5 +1,6 @@
 const $inpSearch = document.querySelector('.inp_search');
 const $listUser = document.querySelector('.list_searchUser')
+const $btnMyProfile = document.querySelector('.btn_myProfile');
 const url = `https://api.mandarin.cf/`;
 const token = JSON.parse(localStorage.getItem('token'));
 
@@ -7,6 +8,12 @@ const token = JSON.parse(localStorage.getItem('token'));
 const $btnBack = document.querySelector('.btn_backPage');
 $btnBack.addEventListener('click', () => {
   window.history.back();
+})
+
+// 나의 프로필
+$btnMyProfile.addEventListener('click', () => {
+  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
+  localStorage.setItem('myAccountname', myAccountname);
 })
 
 // 일치하는 유저 데이터

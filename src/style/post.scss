@@ -7,6 +7,16 @@
   padding: 13px 16px;
 }
 
+html {
+  overflow: hidden;
+}
+.sec_postMain {
+  height: 100vh;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 .sec_postDetail {
   display: flex;
   padding: 80px 16px 40px;
