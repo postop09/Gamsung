@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>감귤마켓 | 게시글 등록</title>
+  <link rel="stylesheet" href="../style/createPost.css">
+</head>
+<body>
+  <header class="sec_createPostHeader">
+    <h1 class="txt_hide">내 프로필 수정</h1>
+    <button type="button" class="btn_backPage">
+      <img src="../img/icon/icon-arrow-left.png" alt="뒤로 가기">
+    </button>
+  </header>
+  <main>
+    <div class="wrap_createPost">
+      <h2 class="txt_hide">게시글 내용 입력</h2>
+      <img src="../img/basic-profile-img.png" alt="" class="img_writer">
+      <form action="" class="form_createPost">
+        <label for="inp_textarea" class="txt_hide">게시글 입력란</label>
+        <textarea name="" id="inp_textarea" placeholder="게시글 입력하기..." class="inp_textarea"></textarea>
+        <ul class="list_previewImg">
+        </ul>
+        <input type="file" id="inp_imgUpload" class="inp_postImg" accept="image/*" multiple maxlength="3">
+        <label for="inp_imgUpload" class="label_upload"><img src="../img/upload-file.png" alt="업로드할 사진 선택" class="img_select"></label>
+        <button type="submit" class="btn_upload" disabled>업로드</button>
+      </form>
+    </div>
+  </main>
+  <script src="../js/editPost.js"></script>
+</body>
+</html>

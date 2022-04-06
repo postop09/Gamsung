@@ -364,7 +364,7 @@ function modalProduct(e) {
         <div class="wrap_profile">
           <ul class="list_btnProfile">
             <li><button type="button" class="btn_profile btn_delete btn_product">삭제</button></li>
-            <li><button type="button" class="btn_profile btn_setting">수정</button></li>
+            <li><button type="button" class="btn_profile btn_setting btn_product">수정</button></li>
             <li><button type="button" class="btn_profile btn_website">웹사이트에서 상품 보기</button></li>
           </ul>
           <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
@@ -397,7 +397,7 @@ function modalProductConfirm(e) {
     fetchDeleteProduct(productId);
     location.reload();
     alert('삭제되었습니다.');
-  } else if (e.target.className === 'btn_profile btn_setting') {
+  } else if (e.target.className === 'btn_profile btn_setting btn_product') {
     console.log('수정');
   }
 }
@@ -411,7 +411,7 @@ function modalPost(e) {
         <div class="wrap_profile">
           <ul class="list_btnProfile">
             <li><button type="button" class="btn_profile btn_delete">삭제</button></li>
-            <li><button type="button" class="btn_profile btn_setting">수정</button></li>
+            <li><button type="button" class="btn_profile btn_setting btn_post">수정</button></li>
           </ul>
           <button type="button" class="btn_close"><span class="txt_hide">모달창 닫기</span></button>
         </div>
@@ -439,8 +439,10 @@ function modalPostConfirm(e) {
         </div>
       </article>
     `
-  } else if (e.target.className === 'btn_profile btn_setting') {
+  } else if (e.target.className === 'btn_profile btn_setting btn_post') {
     console.log('수정');
+    location.href = 'editPost.html';
+    $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_cancel') {
     console.log('취소');
     $secModal.innerHTML = '';

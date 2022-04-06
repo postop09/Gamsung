@@ -5,8 +5,12 @@ const $imgProfile = document.querySelector('.img_writer');
 const $listPreview = document.querySelector('.list_previewImg');
 const $labelImgUpload = document.querySelector('.label_upload');
 const url = `https://api.mandarin.cf/`;
+const postId = localStorage.getItem('postId');
 const token = JSON.parse(localStorage.getItem('token'));
 const userData = JSON.parse(localStorage.getItem('userData'));
+
+// 작성자 프로필 이미지
+$imgProfile.src = userData.image;
 
 // 뒤로가기
 const $btnBack = document.querySelector('.btn_backPage');
@@ -14,8 +18,30 @@ $btnBack.addEventListener('click', () => {
   window.history.back();
 })
 
-// 작성자 프로필 이미지
-$imgProfile.src = userData.image;
+// 게시글 정보
+async function fetchPostData() {
+  const res = await fetch(`${url}/post/${postId}`, {
+    method: "GET",
+    headers: {
+      "Authorization" : `Bearer ${token}`,
+      "Content-type": "application/json",
+    }
+  })
+  const json = await res.json();
+  const content = json.post.content;
+  const imgUrl = json.post.image.split(',');
+
+  localStorage.setItem('imgUrl', imgUrl);
+  $inpText.textContent = content;
+  imgUrl.map((img) => {
+    $listPreview.innerHTML += `
+        <li class="item_previewImg">
+          <img src="${img}" alt="" class="img_preview">
+        </li>
+        `
+  })
+}
+fetchPostData();
 
 // 텍스트박스 크기 조절
 $inpText.addEventListener('keyup', () => {
@@ -64,14 +90,15 @@ async function fetchImgData(files, index){
 async function createPost() {
   const imageUrls = [];
   const files = $imgPosts.files;
-
+  const imgUrl = localStorage.getItem('imgUrl');
+  
   if (files.length<=3) {
     for (let index = 0; index < files.length; index++) {
       const imgUrl = await fetchImgData(files,index);
       imageUrls.push(`${url}/${imgUrl}`);
     }
-    const res = await fetch(`${url}/post`, {
-      method: "POST",
+    const res = await fetch(`${url}/post/${postId}`, {
+      method: "PUT",
       headers: {
         "Authorization" : `Bearer ${token}`,
         "Content-type": "application/json",
@@ -79,7 +106,7 @@ async function createPost() {
       body: JSON.stringify({
         "post": {
           "content": $inpText.value,
-          "image": imageUrls + '',
+          "image": imageUrls.length === 0 ? imgUrl + '' : imageUrls + '',
         }
       })
     });

@@ -451,6 +451,8 @@ function modalCommentConfirm(e) {
     $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_profile btn_setting') {
     console.log('수정');
+    location.href = 'editPost.html';
+    $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_cancel') {
     console.log('취소');
     $secModal.innerHTML = '';
