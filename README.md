@@ -19,7 +19,7 @@
 - **비밀번호** : 123123
 
 ### 2.2 감귤마켓 실행
-[🍊감귤 마켓으로 이동](https://postop09.github.io/Gamsung/src/pages/index.html)
+[🍊감귤 마켓으로 이동](https://postop09.github.io/mandarine_market_ver2/src/pages/index.html)
 
 ## 🟠 3 개발 환경
 - 1인 개발
