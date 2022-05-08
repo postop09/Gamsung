@@ -2,7 +2,7 @@ const $inputBox = document.querySelectorAll('.inp_login');
 const [inpEmail, inpPw] = [...$inputBox];
 const $btnLogin = document.querySelector('.btn_login');
 const $txtError = document.querySelector('.txt_err');
-const url = `https://api.mandarin.cf/`;
+const url = `https://mandarin.api.weniv.co.kr`;
 
 // 버튼 활성화 조건
 [...$inputBox].map((input) => {

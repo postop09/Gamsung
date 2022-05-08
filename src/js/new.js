@@ -10,7 +10,7 @@ const [btnNext, btnAccess] = [...$btns];
 const $newProfile = document.querySelector('.sec_newProfile');
 const $imgProfile = $newProfile.querySelector('.inp_profileImg');
 const $inputProfile = $newProfile.querySelectorAll('.inp_login');
-const url = `https://api.mandarin.cf/`;
+const url = `https://mandarin.api.weniv.co.kr`;
 
 // 회원가입
 async function fetchIdPwData() {

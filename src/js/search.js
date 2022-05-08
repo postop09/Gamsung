@@ -1,7 +1,7 @@
 const $inpSearch = document.querySelector('.inp_search');
 const $listUser = document.querySelector('.list_searchUser')
 const $btnMyProfile = document.querySelector('.btn_myProfile');
-const url = `https://api.mandarin.cf/`;
+const url = `https://mandarin.api.weniv.co.kr`;
 const token = JSON.parse(localStorage.getItem('token'));
 
 // 뒤로가기

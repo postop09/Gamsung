@@ -3,7 +3,7 @@ const $secFeed = $secMain.querySelector('.sec_feed');
 const $secNoneFeed = $secMain.querySelector('.sec_noneFeed');
 const $secModal = $secMain.querySelector('.sec_modal');
 const $btnMyProfile = document.querySelector('.btn_myProfile');
-const url = `https://api.mandarin.cf/`;
+const url = `https://mandarin.api.weniv.co.kr`;
 const userData = JSON.parse(localStorage.getItem('userData'));
 const token = JSON.parse(localStorage.getItem('token'));
 

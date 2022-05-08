@@ -5,7 +5,7 @@ const [$userName,$userId,$intro] = [...$inpEditText];
 const $txtError = $formEdit.querySelector('.txt_err');
 const $txtOk = $formEdit.querySelector('.txt_ok');
 const $btnSave = $formEdit.querySelector('.btn_save');
-const url = `https://api.mandarin.cf/`;
+const url = `https://mandarin.api.weniv.co.kr`;
 const token = JSON.parse(localStorage.getItem('token'));
 const userData = JSON.parse(localStorage.getItem('userData'));
 

@@ -4,7 +4,7 @@ const $btnUpload = document.querySelector('.btn_upload');
 const $imgProfile = document.querySelector('.img_writer');
 const $listPreview = document.querySelector('.list_previewImg');
 const $labelImgUpload = document.querySelector('.label_upload');
-const url = `https://api.mandarin.cf/`;
+const url = `https://mandarin.api.weniv.co.kr`;
 const token = JSON.parse(localStorage.getItem('token'));
 const userData = JSON.parse(localStorage.getItem('userData'));
 

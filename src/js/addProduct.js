@@ -3,7 +3,7 @@ const $inpProduct = $secProduct.querySelectorAll('.inp_login');
 const $imgProduct = $secProduct.querySelector('.inp_profileImg');
 const [$productName,$price,$address] = [...$inpProduct];
 const $btnSave = $secProduct.querySelector('.btn_save');
-const url = `https://api.mandarin.cf/`;
+const url = `https://mandarin.api.weniv.co.kr`;
 const token = JSON.parse(localStorage.getItem('token'));
 
 // 뒤로가기
