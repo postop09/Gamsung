@@ -14,12 +14,8 @@
 - Mobile first Design
 
 ## 🟠 2 빌드 및 실행방법
-### 2.1 테스트 계정
-- **아이디** : postop09@naver.com
-- **비밀번호** : 123123
-
-### 2.2 감귤마켓 실행
-[🍊감귤 마켓으로 이동](https://postop09.github.io/mandarine_market_ver2/src/pages/index.html)
+### 2.1 서버 폐쇄
+- 서버 변경 후 오류
 
 ## 🟠 3 개발 환경
 - 1인 개발
@@ -194,3 +190,4 @@ http용 데이터 호출 주소에서 https용 데이터 호출 주소로 변경
 
 ## 🟠 7 추가 목표
 - 게시글 수정(04.06 완료)
+- 이미지 서버는 http/ 베이스 서버는 https?? CORS와 Mixed Contents...(05.08 확인)
