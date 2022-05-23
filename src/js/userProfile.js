@@ -143,7 +143,7 @@ async function fetchProduct() {
       $listProducts.innerHTML += `
         <li class="item_product" key=${item.id} address="${item.link}">
           <button type="button">
-            <img src="${item.itemImage}" alt="" class="img_product">
+            <img src="${item.itemImage.startsWith(url) ? item.itemImage : '../img/icon-404.png'}" alt="" class="img_product">
           </button>
           <p class="txt_name">${item.itemName}</p>
           <strong class="txt_price">${price.toLocaleString()}원</strong>
