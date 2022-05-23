@@ -27,7 +27,8 @@ async function fetchsearchData() {
   });
   const json = await res.json();
   // console.log(res);
-  // console.log(json);
+  console.log(json);
+  console.log($inpSearch.value);
   [...json].map((data) => {
     $listUser.innerHTML += `
       <li class="item_searchUser">
@@ -49,9 +50,21 @@ async function fetchsearchData() {
     }
   })
 }
-$inpSearch.addEventListener('keyup', () => {
-  $listUser.innerHTML = '';
-  if ($inpSearch.value !== '') {
-    fetchsearchData();
-  };
-});
+// 검색 디바운스
+function debounce() {
+  let timer;
+  $inpSearch.addEventListener('keyup', (e) => {
+    if ($inpSearch.value.length >= 1) {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        $listUser.innerHTML = '';
+        if ($inpSearch.value !== '') {
+          fetchsearchData();
+        }
+      }, 300);
+    }
+  });
+}
+debounce();
