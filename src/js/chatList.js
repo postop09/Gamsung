@@ -10,8 +10,8 @@ $btnBack.addEventListener('click', () => {
 
 // 나의 프로필
 $btnMyProfile.addEventListener('click', () => {
-  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
-  localStorage.setItem('myAccountname', myAccountname);
+  const myAccountname = JSON.parse(sessionStorage.getItem('userData')).accountname;
+  sessionStorage.setItem('myAccountname', myAccountname);
 })
 
 // 모달창

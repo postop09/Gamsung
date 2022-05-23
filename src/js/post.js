@@ -7,9 +7,9 @@ const $inpComment = $secFooter.querySelector('.inp_comment');
 const $btnComment = $secFooter.querySelector('.btn_pushComment');
 const $btnMore = document.querySelector('.btn_moreMenu');
 const url = `https://mandarin.api.weniv.co.kr`;
-const token = JSON.parse(localStorage.getItem('token'));
-const postId = localStorage.getItem('postId');
-const userData = JSON.parse(localStorage.getItem('userData'));
+const token = JSON.parse(sessionStorage.getItem('token'));
+const postId = sessionStorage.getItem('postId');
+const userData = JSON.parse(sessionStorage.getItem('userData'));
 
 // 뒤로가기
 const $btnBack = document.querySelector('.btn_backPage');
@@ -27,7 +27,7 @@ async function fetchPostData() {
     }
   });
   const json = await res.json();
-  const authorImg = json.post.author.image;
+  const authorImg = json.post.author.image.startsWith(url) ? json.post.author.image : '../img/basic-profile-img.png';
   const authorName = json.post.author.username;
   const authorId = json.post.author.accountname;
   const postContent = json.post.content;
@@ -41,10 +41,10 @@ async function fetchPostData() {
   const createMonth = postCreatedAt.substr(5, 2);
   const createDay = postCreatedAt.substr(8, 2);
   const $imgMyProfile = $secFooter.querySelector('.img_myProfile');
-  const imgMyProfile = JSON.parse(localStorage.getItem('userData'));
+  const imgMyProfile = JSON.parse(sessionStorage.getItem('userData'));
   // console.log(json);
 
-  localStorage.setItem('authorId', authorId);
+  sessionStorage.setItem('authorId', authorId);
   $imgMyProfile.src = imgMyProfile.image;
   $secDetail.innerHTML = `
     <img src="${authorImg}" alt="" class="img_profile">
@@ -57,7 +57,7 @@ async function fetchPostData() {
         <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
       </div>
       <p class="txt_feedText">${postContent}</p>
-      ${postImgs=='' ? '' : `
+      ${postImgs === '' ? '' : `
         <ul class="list_postImg"></ul>
       `}
       <dl class="list_likeComment">
@@ -83,7 +83,7 @@ async function fetchPostData() {
     })
   } else if (postImgs.length = 1) {
     $listImg.innerHTML += `
-        <li><button type="button" class="btn_postImg"><img src="${postImgs[0]}" alt="이미지 크게 보기" class="img_feedImg"></button></li>
+        <li><button type="button" class="btn_postImg"><img src="${postImgs[0].startsWith(url) ? postImgs[0] : '../img/icon-404.png'}" alt="이미지 크게 보기" class="img_feedImg"></button></li>
       `
   }
 }
@@ -129,7 +129,7 @@ $secDetail.addEventListener('click', (e) => {
   } else if (e.target.parentNode.className === 'txt_profile') {
     const accountname = e.target.parentNode.querySelector('.txt_profileId').textContent.substr(2);
     console.log(accountname);
-    localStorage.setItem('accountname', accountname);
+    sessionStorage.setItem('accountname', accountname);
   } else if (e.target.className === 'img_icon img_chat') {
     $inpComment.focus();
   }
@@ -150,7 +150,7 @@ async function fetchCommentData() {
     const $listComment = $secComment.querySelector('.list_comment');
     const commentAccountname = comment.author.accountname;
     const commentId = comment.id;
-    const commentImg = comment.author.image;
+    const commentImg = comment.author.image.startsWith(url) ? comment.author.image : '../img/basic-profile-img.png';
     const commentName = comment.author.username;
     const commentCreatedAt = comment.createdAt;
     const createYear = commentCreatedAt.substr(0, 4);
@@ -270,7 +270,7 @@ function modalImg(e) {
 
 // 게시글 신고/수정/삭제 모달창
 function modalReport(e) {
-  const authorId = localStorage.getItem('authorId');
+  const authorId = sessionStorage.getItem('authorId');
 
   if (e.target.parentNode.className === 'btn_profileMore' && authorId !== userData.accountname) {
     $secModal.innerHTML += `
@@ -347,7 +347,7 @@ function modalComment(e) {
   const commentAccountname = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('name');
   if (e.target.parentNode.className === 'btn_commentMore') {
     const commentId = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('commentId', commentId);
+    sessionStorage.setItem('commentId', commentId);
   };
   
   if (e.target.parentNode.className === 'btn_commentMore' && commentAccountname !== userData.accountname) {
@@ -382,7 +382,7 @@ function modalComment(e) {
 }
 // 댓글 신고
 async function fetchCommentReport() {
-  const commentId = localStorage.getItem('commentId');
+  const commentId = sessionStorage.getItem('commentId');
   const res = await fetch(`${url}/post/${postId}/comments/${commentId}/report`, {
     method: 'POST',
     headers: {
@@ -395,7 +395,7 @@ async function fetchCommentReport() {
 }
 // 댓글 삭제
 async function fetchCommentDelete() {
-  const commentId = localStorage.getItem('commentId');
+  const commentId = sessionStorage.getItem('commentId');
   const res = await fetch(`${url}/post/${postId}/comments/${commentId}`, {
     method: 'DELETE',
     headers: {
@@ -425,7 +425,7 @@ function modalCommentConfirm(e) {
       </article>
     `
   } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
-    localStorage.clear();
+    sessionStorage.clear();
     location.href = 'index.html';
     console.log('로그아웃');
   } else if (e.target.className === 'btn_profile btn_report btn_post') {

@@ -6,8 +6,8 @@ const $txtError = $formEdit.querySelector('.txt_err');
 const $txtOk = $formEdit.querySelector('.txt_ok');
 const $btnSave = $formEdit.querySelector('.btn_save');
 const url = `https://mandarin.api.weniv.co.kr`;
-const token = JSON.parse(localStorage.getItem('token'));
-const userData = JSON.parse(localStorage.getItem('userData'));
+const token = JSON.parse(sessionStorage.getItem('token'));
+const userData = JSON.parse(sessionStorage.getItem('userData'));
 
 // 뒤로가기
 const $btnBack = document.querySelector('.btn_backPage');
@@ -67,7 +67,7 @@ async function profileImage(e) {
   const files = e.target.files;
   const result = await imageUpload(files);
   const imgUrl = `${url}/${result}`;
-  localStorage.setItem('imgUrl', imgUrl);
+  sessionStorage.setItem('imgUrl', imgUrl);
   labelPreview.innerHTML = `
   <img src="${imgUrl}" alt="프로필 이미지 선택" class="img_profile">
   `
@@ -100,7 +100,7 @@ $imgEditProfile.addEventListener('change', profileImage);
 
 // 프로필 수정 저장
 async function fetchEditProfileData() {
-  const imgUrl = localStorage.getItem('imgUrl');
+  const imgUrl = sessionStorage.getItem('imgUrl');
   const res = await fetch(`${url}/user`, {
     method: 'PUT',
     headers: {
@@ -117,7 +117,7 @@ async function fetchEditProfileData() {
     })
   });
   const json = await res.json();
-  localStorage.setItem('userData', JSON.stringify(json.user));
+  sessionStorage.setItem('userData', JSON.stringify(json.user));
 }
 $btnSave.addEventListener('click', (e) => {
   function move() {

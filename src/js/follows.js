@@ -3,10 +3,10 @@ const $btnBack = document.querySelector('.btn_backPage');
 const $title = document.querySelector('.txt_title');
 const $btnMyProfile = document.querySelector('.btn_myProfile');
 const url = `https://mandarin.api.weniv.co.kr`;
-const searchData = JSON.parse(localStorage.getItem('searchData'));
-const userData = JSON.parse(localStorage.getItem('userData'));
-const token = JSON.parse(localStorage.getItem('token'));
-const followData = localStorage.getItem('clickData');
+const searchData = JSON.parse(sessionStorage.getItem('searchData'));
+const userData = JSON.parse(sessionStorage.getItem('userData'));
+const token = JSON.parse(sessionStorage.getItem('token'));
+const followData = sessionStorage.getItem('clickData');
 
 // 뒤로가기
 $btnBack.addEventListener('click', () => {
@@ -15,8 +15,8 @@ $btnBack.addEventListener('click', () => {
 
 // 나의 프로필
 $btnMyProfile.addEventListener('click', () => {
-  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
-  localStorage.setItem('myAccountname', myAccountname);
+  const myAccountname = JSON.parse(sessionStorage.getItem('userData')).accountname;
+  sessionStorage.setItem('myAccountname', myAccountname);
 })
 
 // 전체 유저 목록 중 일치하는 유저 목록
@@ -35,21 +35,21 @@ async function fetchUserData() {
       json.map((user) => {
         if (follower === user._id && user.follower.includes(userData._id)) {
           $listFollower.innerHTML += `
-            <li class="item_searchUser">
-            <img src="${user.image}" alt="" class="img_searchUser">
-              <a href="userProfile.html" class="btn_searchUser">
-                <div class="wrap_txtUser">
-                  <strong class="txt_userName">${user.username}</strong>
-                  <small class="txt_userId">@ ${user.accountname}</small>
-                </div>
-              </a>
-              <button type="button" class="btn_follow on">취소</button>
-            </li>
+          <li class="item_searchUser">
+            <img src="${user.image.startsWith(url) ? user.image : '../img/basic-profile-img.png'}" alt="" class="img_searchUser">
+            <a href="userProfile.html" class="btn_searchUser">
+              <div class="wrap_txtUser">
+                <strong class="txt_userName">${user.username}</strong>
+                <small class="txt_userId">@ ${user.accountname}</small>
+              </div>
+            </a>
+            <button type="button" class="btn_follow on">취소</button>
+          </li>
           `
         } else if (follower === user._id) {
           $listFollower.innerHTML += `
             <li class="item_searchUser">
-            <img src="${user.image}" alt="" class="img_searchUser">
+              <img src="${user.image.startsWith(url) ? user.image : '../img/basic-profile-img.png'}" alt="" class="img_searchUser">
               <a href="userProfile.html" class="btn_searchUser">
                 <div class="wrap_txtUser">
                   <strong class="txt_userName">${user.username}</strong>
@@ -68,7 +68,7 @@ async function fetchUserData() {
         if (following === user._id && user.follower.includes(userData._id)) {
           $listFollower.innerHTML += `
             <li class="item_searchUser">
-            <img src="${user.image}" alt="" class="img_searchUser">
+              <img src="${user.image.startsWith(url) ? user.image : '../img/basic-profile-img.png'}" alt="" class="img_searchUser">
               <a href="userProfile.html" class="btn_searchUser">
                 <div class="wrap_txtUser">
                   <strong class="txt_userName">${user.username}</strong>
@@ -81,7 +81,7 @@ async function fetchUserData() {
         } else if (following === user._id) {
           $listFollower.innerHTML += `
             <li class="item_searchUser">
-            <img src="${user.image}" alt="" class="img_searchUser">
+              <img src="${user.image.startsWith(url) ? user.image : '../img/basic-profile-img.png'}" alt="" class="img_searchUser">
               <a href="userProfile.html" class="btn_searchUser">
                 <div class="wrap_txtUser">
                   <strong class="txt_userName">${user.username}</strong>
@@ -103,7 +103,7 @@ $listFollower.addEventListener('click', (e) => {
   const followAccountname = e.target.parentNode.querySelector('.txt_userId').textContent.substr(2);
   
   if (e.target.parentNode.className === 'wrap_txtUser') {
-    localStorage.setItem('accountname', followAccountname);
+    sessionStorage.setItem('accountname', followAccountname);
   } else if (e.target.className === 'btn_follow') {
     fetchFollowData(followAccountname);
     e.target.classList.add('on');

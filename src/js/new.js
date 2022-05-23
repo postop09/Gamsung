@@ -75,7 +75,7 @@ btnNext.addEventListener('click', (e) => {
         "password": pwData.value,
       }
     }
-    localStorage.setItem('newData', JSON.stringify(newData));
+    sessionStorage.setItem('newData', JSON.stringify(newData));
     $newEmail.style.display = 'none';
     $newProfile.style.display = 'block';
   }
@@ -138,7 +138,7 @@ async function profileImage(e) {
   const files = e.target.files;
   const result = await imageUpload(files);
   const imgUrl = `${url}/${result}`;
-  localStorage.setItem('imgUrl', imgUrl);
+  sessionStorage.setItem('imgUrl', imgUrl);
   labelPreview.innerHTML = `
   <img src="${imgUrl}" alt="프로필 이미지 선택" class="img_profile">
   `
@@ -158,8 +158,8 @@ $imgProfile.addEventListener('change', profileImage);
 
 // 회원가입
 async function fetchCreateData() {
-  const localData = JSON.parse(localStorage.getItem('newData'));
-  const imgUrl = localStorage.getItem('imgUrl');
+  const localData = JSON.parse(sessionStorage.getItem('newData'));
+  const imgUrl = sessionStorage.getItem('imgUrl');
   const res = await fetch(`${url}/user`, {
     method : "POST",
     headers: {
@@ -178,8 +178,8 @@ async function fetchCreateData() {
   })
   const json = await res.json();
   if (json.message == '회원가입 성공') {
-    localStorage.removeItem('newData');
-    localStorage.removeItem('imgUrl');
+    sessionStorage.removeItem('newData');
+    sessionStorage.removeItem('imgUrl');
     window.history.back();
   } else {
     alert('다시 시도해주세요.');

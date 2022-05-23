@@ -5,8 +5,8 @@ const $imgProfile = document.querySelector('.img_writer');
 const $listPreview = document.querySelector('.list_previewImg');
 const $labelImgUpload = document.querySelector('.label_upload');
 const url = `https://mandarin.api.weniv.co.kr`;
-const token = JSON.parse(localStorage.getItem('token'));
-const userData = JSON.parse(localStorage.getItem('userData'));
+const token = JSON.parse(sessionStorage.getItem('token'));
+const userData = JSON.parse(sessionStorage.getItem('userData'));
 
 // 뒤로가기
 const $btnBack = document.querySelector('.btn_backPage');

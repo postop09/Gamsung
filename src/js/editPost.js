@@ -5,9 +5,9 @@ const $imgProfile = document.querySelector('.img_writer');
 const $listPreview = document.querySelector('.list_previewImg');
 const $labelImgUpload = document.querySelector('.label_upload');
 const url = `https://mandarin.api.weniv.co.kr`;
-const postId = localStorage.getItem('postId');
-const token = JSON.parse(localStorage.getItem('token'));
-const userData = JSON.parse(localStorage.getItem('userData'));
+const postId = sessionStorage.getItem('postId');
+const token = JSON.parse(sessionStorage.getItem('token'));
+const userData = JSON.parse(sessionStorage.getItem('userData'));
 
 // 작성자 프로필 이미지
 $imgProfile.src = userData.image;
@@ -31,7 +31,7 @@ async function fetchPostData() {
   const content = json.post.content;
   const imgUrl = json.post.image.split(',');
 
-  localStorage.setItem('imgUrl', imgUrl);
+  sessionStorage.setItem('imgUrl', imgUrl);
   $inpText.textContent = content;
   imgUrl.map((img) => {
     $listPreview.innerHTML += `
@@ -90,7 +90,7 @@ async function fetchImgData(files, index){
 async function createPost() {
   const imageUrls = [];
   const files = $imgPosts.files;
-  const imgUrl = localStorage.getItem('imgUrl');
+  const imgUrl = sessionStorage.getItem('imgUrl');
   
   if (files.length<=3) {
     for (let index = 0; index < files.length; index++) {

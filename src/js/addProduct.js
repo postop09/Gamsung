@@ -4,7 +4,7 @@ const $imgProduct = $secProduct.querySelector('.inp_profileImg');
 const [$productName,$price,$address] = [...$inpProduct];
 const $btnSave = $secProduct.querySelector('.btn_save');
 const url = `https://mandarin.api.weniv.co.kr`;
-const token = JSON.parse(localStorage.getItem('token'));
+const token = JSON.parse(sessionStorage.getItem('token'));
 
 // 뒤로가기
 const $btnBack = document.querySelector('.btn_backPage');
@@ -14,7 +14,7 @@ $btnBack.addEventListener('click', () => {
 
 // 상품 등록
 async function fetchPushProductData() {
-  const imgUrl = localStorage.getItem('imgUrl');
+  const imgUrl = sessionStorage.getItem('imgUrl');
   const price = +$price.value
   const res = await fetch(`${url}/product`, {
     method: "POST",
@@ -41,7 +41,7 @@ async function profileImage(e) {
   const files = e.target.files;
   const result = await imageUpload(files);
   const imgUrl = `${url}/${result}`;
-  localStorage.setItem('imgUrl', imgUrl);
+  sessionStorage.setItem('imgUrl', imgUrl);
   labelPreview.innerHTML = `
   <img src="${imgUrl}" alt="프로필 이미지 선택" class="img_profile">
   `

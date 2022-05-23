@@ -38,8 +38,8 @@ async function fetchLoginData() {
     $txtError.textContent = `* ${json.message}`;
   } else {
     location.href = 'home.html';
-    localStorage.setItem('userData', JSON.stringify(json.user));
-    localStorage.setItem('token', JSON.stringify(json.user.token));
+    sessionStorage.setItem('userData', JSON.stringify(json.user));
+    sessionStorage.setItem('token', JSON.stringify(json.user.token));
   }
 }
 $btnLogin.addEventListener('click', (e) => {

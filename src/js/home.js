@@ -4,13 +4,13 @@ const $secNoneFeed = $secMain.querySelector('.sec_noneFeed');
 const $secModal = $secMain.querySelector('.sec_modal');
 const $btnMyProfile = document.querySelector('.btn_myProfile');
 const url = `https://mandarin.api.weniv.co.kr`;
-const userData = JSON.parse(localStorage.getItem('userData'));
-const token = JSON.parse(localStorage.getItem('token'));
+const userData = JSON.parse(sessionStorage.getItem('userData'));
+const token = JSON.parse(sessionStorage.getItem('token'));
 
 // 나의 프로필
 $btnMyProfile.addEventListener('click', () => {
-  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
-  localStorage.setItem('myAccountname', myAccountname);
+  const myAccountname = JSON.parse(sessionStorage.getItem('userData')).accountname;
+  sessionStorage.setItem('myAccountname', myAccountname);
 })
 
 // 토큰 검증
@@ -63,7 +63,7 @@ async function fetchFeedData() {
     $secFeed.classList.add('on');
     $secNoneFeed.classList.remove('on');
     posts.map((post) => {
-      const authorImg = post.author.image;
+      const authorImg = post.author.image.startsWith(url) ? post.author.image : '../img/basic-profile-img.png';
       const authorName = post.author.username;
       const authorId = post.author.accountname;
       const postId = post.id;
@@ -91,9 +91,9 @@ async function fetchFeedData() {
               <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
             </div>
             <p class="txt_feedText">${postContent}</p>
-            ${postImgs=='' ? '' : `
+            ${postImgs === '' ? '' : `
               <ul>
-                <li><button type="button"><img src="${postImgs[0]}" alt="해당 게시물로 이동" class="img_feedImg"></button></li>
+                <li><button type="button"><img src="${postImgs[0].startsWith(url) ? postImgs[0] : '../img/icon-404.png'}" alt="해당 게시물로 이동" class="img_feedImg"></button></li>
               </ul>
             `}
             <dl class="list_likeComment">
@@ -157,24 +157,24 @@ $secFeed.addEventListener('click', (e) => {
   } else if (e.target.parentNode.className === 'txt_profile') {
     const accountname = e.target.parentNode.querySelector('.txt_profileId').textContent.substr(2);
     console.log(accountname);
-    localStorage.setItem('accountname', accountname);
+    sessionStorage.setItem('accountname', accountname);
   } else if (e.target.className === 'img_icon img_chat') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
     location.href = 'post.html';
   } else if (e.target.className === 'img_feedImg') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
     location.href = 'post.html';
   } else if (e.target.className === 'img_profileMore') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
   }
 })
 
 // 신고하기
 async function fetchReportData() {
-  const postId = localStorage.getItem('postId');
+  const postId = sessionStorage.getItem('postId');
   const res = await fetch(`${url}/post/${postId}/report`, {
     method: 'POST',
     headers: {

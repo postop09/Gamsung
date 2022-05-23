@@ -13,8 +13,8 @@ const $secModal = document.querySelector('.sec_modal');
 const $btnListType = $secPost.querySelector('.btn_listType');
 const $btnAlbumType = $secPost.querySelector('.btn_albumType');
 const url = `https://mandarin.api.weniv.co.kr`;
-const token = JSON.parse(localStorage.getItem('token'));
-const accountname = localStorage.getItem('accountname');
+const token = JSON.parse(sessionStorage.getItem('token'));
+const accountname = sessionStorage.getItem('accountname');
 
 // 뒤로가기
 const $btnBack = document.querySelector('.btn_backPage');
@@ -24,8 +24,8 @@ $btnBack.addEventListener('click', () => {
 
 // 나의 프로필
 $btnMyProfile.addEventListener('click', () => {
-  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
-  localStorage.setItem('myAccountname', myAccountname);
+  const myAccountname = JSON.parse(sessionStorage.getItem('userData')).accountname;
+  sessionStorage.setItem('myAccountname', myAccountname);
 })
 
 // 프로필 정보
@@ -40,14 +40,14 @@ async function fetchProfileData() {
   const json = await res.json();
   // console.log(json);
   // console.log(json.profile);
-  const image = json.profile.image;
+  const image = json.profile.image.startsWith(url) ? json.profile.image : '../img/basic-profile-img.png';
   const username = json.profile.username;
   const userId = json.profile.accountname;
   const intro = json.profile.intro;
   const followers = json.profile.followerCount;
   const following = json.profile.followingCount;
   const isfollow = json.profile.isfollow;
-  localStorage.setItem('searchData', JSON.stringify(json.profile));
+  sessionStorage.setItem('searchData', JSON.stringify(json.profile));
   userProfile(image, username, userId, intro, followers, following, isfollow);
 }
 fetchProfileData();
@@ -114,10 +114,10 @@ $btnFollow.addEventListener('click', () => {
   }
 });
 $wrapFollow[0].addEventListener('click', () => {
-  localStorage.setItem('clickData', 'Followers');
+  sessionStorage.setItem('clickData', 'Followers');
 })
 $wrapFollow[1].addEventListener('click', () => {
-  localStorage.setItem('clickData', 'Followings');
+  sessionStorage.setItem('clickData', 'Followings');
 })
 
 // 상품 목록
@@ -173,7 +173,7 @@ async function fetchPost() {
     $secPost.classList.add('on');
     json.post.map((postItem) => {
       // console.log(postItem);
-      const authorImg = postItem.author.image;
+      const authorImg = postItem.author.image.startsWith(url) ? postItem.author.image : '../img/basic-profile-img.png';
       const authorName = postItem.author.username;
       const authorId = postItem.author.accountname;
       const postItemId = postItem.id;
@@ -201,9 +201,9 @@ async function fetchPost() {
               <button type="button" class="btn_profileMore"><img src="../img/icon/s-icon-more-vertical.png" alt="" class="img_profileMore"></button>
             </div>
             <p class="txt_feedText">${postContent}</p>
-            ${postImgs=='' ? '' : `
+            ${postImgs === '' ? '' : `
               <ul>
-                <li><button type="button"><img src="${postImgs[0]}" alt="해당 게시물로 이동" class="img_feedImg"></button></li>
+                <li><button type="button"><img src="${postImgs[0].startsWith(url) ? postImgs[0] : '../img/icon-404.png'}" alt="해당 게시물로 이동" class="img_feedImg"></button></li>
               </ul>
             `}
             <dl class="list_likeComment">
@@ -269,7 +269,7 @@ $btnListType.addEventListener('click', () => {
 $secAlbum.addEventListener('click', (e) => {
   if (e.target.className === 'img_album') {
     const postId = e.target.parentNode.parentNode.getAttribute('key')
-    localStorage.setItem('postId', postId)
+    sessionStorage.setItem('postId', postId)
     location.href = 'post.html';
   }
 })
@@ -316,25 +316,25 @@ $secFeed.addEventListener('click', (e) => {
   } else if (e.target.parentNode.className === 'txt_profile') {
     const accountname = e.target.parentNode.querySelector('.txt_profileId').textContent.substr(2);
     // console.log(accountname);
-    localStorage.setItem('accountname', accountname);
+    sessionStorage.setItem('accountname', accountname);
   } else if (e.target.className === 'img_icon img_chat') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
     location.href = 'post.html';
   } else if (e.target.className === 'img_feedImg') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
     location.href = 'post.html';
   } else if (e.target.className === 'img_profileMore') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
   }
 })
 
 // 나의 프로필
 $btnMyProfile.addEventListener('click', () => {
-  const myAccountname = JSON.parse(localStorage.getItem('userData')).accountname;
-  localStorage.setItem('myAccountname', myAccountname);
+  const myAccountname = JSON.parse(sessionStorage.getItem('userData')).accountname;
+  sessionStorage.setItem('myAccountname', myAccountname);
 })
 
 // 프로필 모달창
@@ -378,7 +378,7 @@ function modalProfileRole(e) {
 
 // 신고하기
 async function fetchReportData() {
-  const postId = localStorage.getItem('postId');
+  const postId = sessionStorage.getItem('postId');
   const res = await fetch(`${url}/post/${postId}/report`, {
     method: 'POST',
     headers: {
@@ -394,7 +394,7 @@ async function fetchReportData() {
 function modalProduct(e) {
   if (e.target.className === 'img_product') {
     const productLink = e.target.parentNode.parentNode.getAttribute('address');
-    localStorage.setItem('productLink', productLink);
+    sessionStorage.setItem('productLink', productLink);
     console.log('상품');
     $secModal.innerHTML += `
       <article class="modal_product">
@@ -443,10 +443,10 @@ function modalConfirm(e) {
     console.log('취소');
     $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
-    localStorage.clear();
+    sessionStorage.clear();
     location.href = 'index.html';
   } else if (e.target.className === 'btn_profile btn_website') {
-    const productLink = localStorage.getItem('productLink');
+    const productLink = sessionStorage.getItem('productLink');
     window.location.href = productLink;
     console.log('페이지 이동');
   } else if (e.target.className === 'modal_confirm') {

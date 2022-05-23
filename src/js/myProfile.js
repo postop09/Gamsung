@@ -13,8 +13,8 @@ const $secModal = document.querySelector('.sec_modal');
 const $btnListType = $secPost.querySelector('.btn_listType');
 const $btnAlbumType = $secPost.querySelector('.btn_albumType');
 const url = `https://mandarin.api.weniv.co.kr`;
-const token = JSON.parse(localStorage.getItem('token'));
-const myAccountname = localStorage.getItem('myAccountname');
+const token = JSON.parse(sessionStorage.getItem('token'));
+const myAccountname = sessionStorage.getItem('myAccountname');
 
 // 뒤로가기
 const $btnBack = document.querySelector('.btn_backPage');
@@ -41,7 +41,7 @@ async function fetchProfileData() {
   const followers = json.profile.followerCount;
   const following = json.profile.followingCount;
   const isfollow = json.profile.isfollow;
-  localStorage.setItem('searchData', JSON.stringify(json.profile));
+  sessionStorage.setItem('searchData', JSON.stringify(json.profile));
   userProfile(image, username, userId, intro, followers, following, isfollow);
 }
 fetchProfileData();
@@ -62,10 +62,10 @@ function userProfile(image, username, userId, intro, followers, following, isfol
 }
 // 팔로워/팔로잉 정보
 $wrapFollow[0].addEventListener('click', () => {
-  localStorage.setItem('clickData', 'Followers');
+  sessionStorage.setItem('clickData', 'Followers');
 })
 $wrapFollow[1].addEventListener('click', () => {
-  localStorage.setItem('clickData', 'Followings');
+  sessionStorage.setItem('clickData', 'Followings');
 })
 
 // 상품 목록
@@ -215,7 +215,7 @@ $btnListType.addEventListener('click', () => {
 $secAlbum.addEventListener('click', (e) => {
   if (e.target.className === 'img_album') {
     const postId = e.target.parentNode.parentNode.getAttribute('key')
-    localStorage.setItem('postId', postId)
+    sessionStorage.setItem('postId', postId)
     location.href = 'post.html';
   }
 })
@@ -260,7 +260,7 @@ async function fetchDeleteProduct(productId) {
 $secProducts.addEventListener('click', (e) => {
   if (e.target.className === 'img_product') {
     const productId = e.target.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('productId', productId);
+    sessionStorage.setItem('productId', productId);
   }
 })
 
@@ -293,18 +293,18 @@ $secFeed.addEventListener('click', (e) => {
   } else if (e.target.parentNode.className === 'txt_profile') {
     const accountname = e.target.parentNode.querySelector('.txt_profileId').textContent.substr(2);
     // console.log(accountname);
-    localStorage.setItem('accountname', accountname);
+    sessionStorage.setItem('accountname', accountname);
   } else if (e.target.className === 'img_icon img_chat') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
     location.href = 'post.html';
   } else if (e.target.className === 'img_feedImg') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
     location.href = 'post.html';
   } else if (e.target.className === 'img_profileMore') {
     const postId = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('key');
-    localStorage.setItem('postId', postId);
+    sessionStorage.setItem('postId', postId);
   }
 })
 
@@ -357,7 +357,7 @@ function modalProduct(e) {
   if (e.target.className === 'img_product') {
     // console.log('상품');
     const productLink = e.target.parentNode.parentNode.getAttribute('address');
-    localStorage.setItem('productLink', productLink);
+    sessionStorage.setItem('productLink', productLink);
     $secModal.innerHTML += `
       <article class="modal_product">
         <h3 class="txt_hide">상품 수정 및 삭제 모달창</h3>
@@ -393,7 +393,7 @@ function modalProductConfirm(e) {
       </article>
     `
   } else if (e.target.className === 'btn_confirm btn_delete btn_product') {
-    const productId = localStorage.getItem('productId');
+    const productId = sessionStorage.getItem('productId');
     fetchDeleteProduct(productId);
     location.reload();
     alert('삭제되었습니다.');
@@ -447,16 +447,16 @@ function modalPostConfirm(e) {
     console.log('취소');
     $secModal.innerHTML = '';
   } else if (e.target.className === 'btn_confirm btn_delete') {
-    const postId = localStorage.getItem('postId');
+    const postId = sessionStorage.getItem('postId');
     fetchDeletePost(postId);
     location.reload();
     alert('삭제되었습니다.')
   } else if (e.target.className === 'btn_confirm btn_delete btn_logout') {
-    localStorage.clear();
+    sessionStorage.clear();
     location.href = 'index.html';
     alert('로그아웃 되었습니다.')
   } else if (e.target.className === 'btn_profile btn_website') {
-    const productLink = localStorage.getItem('productLink');
+    const productLink = sessionStorage.getItem('productLink');
     window.location.href = productLink;
     console.log('페이지 이동');
   } else if (e.target.className === 'modal_confirm') {
