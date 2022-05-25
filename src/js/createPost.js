@@ -59,42 +59,51 @@ async function fetchImgData(files, index){
   })
   const json = await res.json();
   const productImgName = json.filename;
-  return productImgName
+  return productImgName;
 }
-async function createPost() {
-  const imageUrls = [];
-  const files = $imgPosts.files;
 
-  if (files.length<=3) {
-    for (let index = 0; index < files.length; index++) {
-      const imgUrl = await fetchImgData(files,index);
-      imageUrls.push(`${url}/${imgUrl}`);
+// 게시글 생성
+async function createPost() {
+  try {
+    const imageUrls = [];
+    const files = $imgPosts.files;
+    if (files.length<=3) {
+      for (let index = 0; index < files.length; index++) {
+        const imgUrl = await fetchImgData(files,index);
+        imageUrls.push(`${url}/${imgUrl}`);
+      }
+      const res = await fetch(`${url}/post`, {
+        method: "POST",
+        headers: {
+          "Authorization" : `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          "post": {
+            "content": $inpText.value,
+            "image": imageUrls + '',
+          }
+        })
+      });
+      setTimeout(() => {
+        location.href = 'myProfile.html'
+      }, 500);
+    } else {
+        alert("이미지가 3장을 초과했습니다.");
+        return false;
     }
-    const res = await fetch(`${url}/post`, {
-      method: "POST",
-      headers: {
-        "Authorization" : `Bearer ${token}`,
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        "post": {
-          "content": $inpText.value,
-          "image": imageUrls + '',
-        }
-      })
-    });
-  } else {
-      alert("이미지가 3장을 초과했습니다.");
-      return false;
+  } catch (err) {
+    alert('각 이미지의 크기가 1MB가 넘지 않게 해주세요!');
+    $listPreview.innerHTML = '';
+    throw {
+      message : err.message,
+      status : err.status
+    }
   }
 }
 $btnUpload.addEventListener('click', (e) => {
-  function move() {
-    location.href = 'myProfile.html'
-  }
   e.preventDefault();
   createPost();
-  setTimeout(move, 500);
 })
 
 // 버튼 활성화 유효성 검사

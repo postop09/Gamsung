@@ -517,6 +517,10 @@ body {
   border-radius: 8px;
   width: 140px;
   height: 90px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
 }
 
 .sec_products .txt_name {

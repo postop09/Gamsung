@@ -14,25 +14,32 @@ $btnBack.addEventListener('click', () => {
 
 // 상품 등록
 async function fetchPushProductData() {
-  const imgUrl = sessionStorage.getItem('imgUrl');
-  const price = +$price.value
-  const res = await fetch(`${url}/product`, {
-    method: "POST",
-    headers: {
-      "Authorization" : `Bearer ${token}`,
-      "Content-type" : "application/json"
-    },
-    body: JSON.stringify({
-      "product":{
-        "itemName": $productName.value,
-        "price": price,
-        "link": $address.value,
-        "itemImage": imgUrl
-      }
+  try {
+    const imgUrl = sessionStorage.getItem('imgUrl');
+    const price = +$price.value
+    const res = await fetch(`${url}/product`, {
+      method: "POST",
+      headers: {
+        "Authorization" : `Bearer ${token}`,
+        "Content-type" : "application/json"
+      },
+      body: JSON.stringify({
+        "product":{
+          "itemName": $productName.value,
+          "price": price,
+          "link": $address.value,
+          "itemImage": imgUrl
+        }
+      })
     })
-  })
-  const json = await res.json();
-  console.log(json);
+    const json = await res.json();
+    console.log(json);
+  } catch (err) {
+    throw {
+      message : err.message,
+      status : err.status
+    }
+  }
 }
 
 // 이미지 업로드
@@ -47,15 +54,24 @@ async function profileImage(e) {
   `
 }
 async function imageUpload(files) {
-  const formData = new FormData();
-  formData.append('image', files[0]);
-  const res = await fetch(`${url}/image/uploadfile`, {
-      method: 'POST',
-      body: formData,
-  });
-  const json = await res.json();
-  const imgFileName = json.filename;
-  return imgFileName;
+  try {
+    const formData = new FormData();
+    formData.append('image', files[0]);
+    const res = await fetch(`${url}/image/uploadfile`, {
+        method: 'POST',
+        body: formData,
+    });
+    const json = await res.json();
+    const imgFileName = json.filename;
+    return imgFileName;
+  } catch (err) {
+    alert('이미지의 크기가 1MB가 넘지 않게 해주세요!');
+    throw {
+      name : err.name,
+      message : err.message,
+      status : err.status
+    }
+  }
 }
 $imgProduct.addEventListener('change', profileImage);
 
@@ -83,10 +99,9 @@ $price.addEventListener('blur', () => {
   })
 })
 $btnSave.addEventListener('click', (e) => {
-  function move() {
-    location.href = 'myProfile.html'
-  }
   e.preventDefault();
   fetchPushProductData();
-  setTimeout(move, 800);
+  setTimeout(() => {
+    location.href = 'myProfile.html'
+  }, 800);
 })

@@ -198,7 +198,7 @@ async function fetchPostAlbum() {
     }
   })
 }
-fetchPostAlbum ();
+fetchPostAlbum();
 
 $btnAlbumType.addEventListener('click', () => {
   $secFeed.classList.remove('on');

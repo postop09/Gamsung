@@ -1,6 +1,7 @@
 const $secMain = document.querySelector('.sec_chatListMain');
 const $secModal = $secMain.querySelector('.sec_modal');
 const $btnMore = document.querySelector('.btn_moreMenu');
+const $btnMyProfile = document.querySelector('.btn_myProfile');
 
 // 뒤로가기
 const $btnBack = document.querySelector('.btn_backPage');
