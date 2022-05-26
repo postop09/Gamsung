@@ -73,15 +73,24 @@ async function profileImage(e) {
   `
 }
 async function imageUpload(files) {
-  const formData = new FormData();
-  formData.append('image', files[0]);
-  const res = await fetch(`${url}/image/uploadfile`, {
-      method: 'POST',
-      body: formData,
-  });
-  const json = await res.json();
-  const imgFileName = json.filename;
-  return imgFileName;
+  try {
+    const formData = new FormData();
+    formData.append('image', files[0]);
+    const res = await fetch(`${url}/image/uploadfile`, {
+        method: 'POST',
+        body: formData,
+    });
+    const json = await res.json();
+    const imgFileName = json.filename;
+    return imgFileName;
+  } catch (err) {
+    alert('이미지의 크기가 1MB가 넘지 않게 해주세요!');
+    throw {
+      name : err.name,
+      message : err.message,
+      status : err.status
+    }
+  }
 }
 $imgEditProfile.addEventListener('change', profileImage);
 
@@ -120,10 +129,9 @@ async function fetchEditProfileData() {
   sessionStorage.setItem('userData', JSON.stringify(json.user));
 }
 $btnSave.addEventListener('click', (e) => {
-  function move() {
-    location.href = 'home.html'
-  }
   e.preventDefault();
   fetchEditProfileData();
-  setTimeout(move, 300);
+  setTimeout(() => {
+    location.href = 'home.html'
+  }, 300);
 })
