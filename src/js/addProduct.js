@@ -3,6 +3,7 @@ const $inpProduct = $secProduct.querySelectorAll('.inp_login');
 const $imgProduct = $secProduct.querySelector('.inp_profileImg');
 const [$productName,$price,$address] = [...$inpProduct];
 const $btnSave = $secProduct.querySelector('.btn_save');
+const $secLoading = document.querySelector('.sec_loading');
 const url = `https://mandarin.api.weniv.co.kr`;
 const token = JSON.parse(sessionStorage.getItem('token'));
 
@@ -14,6 +15,7 @@ $btnBack.addEventListener('click', () => {
 
 // 상품 등록
 async function fetchPushProductData() {
+  $secLoading.style.display = 'block';
   try {
     const imgUrl = sessionStorage.getItem('imgUrl');
     const price = +$price.value
@@ -34,6 +36,10 @@ async function fetchPushProductData() {
     })
     const json = await res.json();
     console.log(json);
+    setTimeout(() => {
+      $secLoading.style.display = 'none';
+      location.href = 'myProfile.html'
+    }, 500);
   } catch (err) {
     throw {
       message : err.message,
@@ -101,7 +107,4 @@ $price.addEventListener('blur', () => {
 $btnSave.addEventListener('click', (e) => {
   e.preventDefault();
   fetchPushProductData();
-  setTimeout(() => {
-    location.href = 'myProfile.html'
-  }, 800);
 })

@@ -4,66 +4,14 @@ const $btnUpload = document.querySelector('.btn_upload');
 const $imgProfile = document.querySelector('.img_writer');
 const $listPreview = document.querySelector('.list_previewImg');
 const $labelImgUpload = document.querySelector('.label_upload');
+const $secLoading = document.querySelector('.sec_loading');
 const url = `https://mandarin.api.weniv.co.kr`;
 const token = JSON.parse(sessionStorage.getItem('token'));
 const userData = JSON.parse(sessionStorage.getItem('userData'));
 
-// 뒤로가기
-const $btnBack = document.querySelector('.btn_backPage');
-$btnBack.addEventListener('click', () => {
-  window.history.back();
-})
-
-// 작성자 프로필 이미지
-$imgProfile.src = userData.image;
-
-// 텍스트박스 크기 조절
-$inpText.addEventListener('keyup', () => {
-  $inpText.style.height = '1px';
-  $inpText.style.height = (12 + $inpText.scrollHeight) + 'px';
-});
-
-// 이미지 미리보기
-function previewImg(e) {
-  if($imgPosts.files.length <= 3) {
-    for (let image of e.target.files) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        $listPreview.innerHTML += `
-        <li class="item_previewImg">
-          <img src="${e.target.result}" alt="" class="img_preview">
-        </li>
-        `
-      };
-      reader.readAsDataURL(image);
-    }
-  } else {
-    alert('사진은 3장을 초과할 수 없습니다.')
-    return false;
-  }
-}
-$imgPosts.addEventListener('change', previewImg);
-
-// 미리보기 이미지 초기화
-$labelImgUpload.addEventListener('click', () => {
-  $listPreview.innerHTML = '';
-})
-
-// 이미지 업로드
-async function fetchImgData(files, index){
-  const formData = new FormData();
-  formData.append("image", files[index]);
-  const res = await fetch(`${url}/image/uploadfile`, {
-    method: "POST",
-    body : formData
-  })
-  const json = await res.json();
-  const productImgName = json.filename;
-  return productImgName;
-}
-
 // 게시글 생성
 async function createPost() {
+  $secLoading.style.display = 'block';
   try {
     const imageUrls = [];
     const files = $imgPosts.files;
@@ -86,6 +34,7 @@ async function createPost() {
         })
       });
       setTimeout(() => {
+        $secLoading.style.display = 'none';
         location.href = 'myProfile.html'
       }, 500);
     } else {
@@ -124,4 +73,58 @@ $imgPosts.addEventListener('change', () => {
     $btnUpload.classList.remove('on');
     $btnUpload.setAttribute('disabled', 'disabled');
   }
+})
+
+// 뒤로가기
+const $btnBack = document.querySelector('.btn_backPage');
+$btnBack.addEventListener('click', () => {
+  window.history.back();
+})
+
+// 작성자 프로필 이미지
+$imgProfile.src = userData.image;
+
+// 텍스트박스 크기 조절
+$inpText.addEventListener('keyup', () => {
+  $inpText.style.height = '1px';
+  $inpText.style.height = (12 + $inpText.scrollHeight) + 'px';
+});
+
+// 이미지 업로드
+async function fetchImgData(files, index){
+  const formData = new FormData();
+  formData.append("image", files[index]);
+  const res = await fetch(`${url}/image/uploadfile`, {
+    method: "POST",
+    body : formData
+  })
+  const json = await res.json();
+  const productImgName = json.filename;
+  return productImgName;
+}
+
+// 이미지 미리보기
+function previewImg(e) {
+  if($imgPosts.files.length <= 3) {
+    for (let image of e.target.files) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        $listPreview.innerHTML += `
+        <li class="item_previewImg">
+          <img src="${e.target.result}" alt="" class="img_preview">
+        </li>
+        `
+      };
+      reader.readAsDataURL(image);
+    }
+  } else {
+    alert('사진은 3장을 초과할 수 없습니다.')
+    return false;
+  }
+}
+$imgPosts.addEventListener('change', previewImg);
+
+// 미리보기 이미지 초기화
+$labelImgUpload.addEventListener('click', () => {
+  $listPreview.innerHTML = '';
 })
